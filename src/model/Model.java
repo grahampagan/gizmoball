@@ -1,16 +1,17 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Observable;
 
 import physics.*;
 
-public class Gameboard {
+public class Model extends Observable {
 	
 	private Ball b; 
 	private ArrayList<Line> lines;
 	private Walls walls; 
 
-	public Gameboard() {
+	public Model() {
 		b = new Ball(25, 25, 100, 100);
 		walls = new Walls(0, 0, 500, 500);
 		lines = new ArrayList<Line>();
@@ -37,10 +38,10 @@ public class Gameboard {
 			double tuc = cd.getTuc();
 			if (tuc > moveTime) {
 				// No collision ...
-				b = movelBallForTime(b, moveTime);
+				b = moveBallForTime(b, moveTime);
 			} else {
 				// We've got a collision in tuc
-				b = movelBallForTime(b, tuc);
+				b = moveBallForTime(b, tuc);
 				// Post collision velocity ...
 				b.setVelo(cd.getVelo());
 			}
@@ -61,7 +62,7 @@ public class Gameboard {
 				double time = 0.0;
 
 				// Time to collide with 4 walls
-				ArrayList<LineSegment> lss = gws.getLineSegments();
+				ArrayList<LineSegment> lss = walls.getLineSegments();
 				for (LineSegment line : lss) {
 					time = Geometry.timeUntilWallCollision(line, ballCircle, ballVelocity);
 					if (time < shortestTime) {
@@ -87,5 +88,13 @@ public class Gameboard {
 	
 	public void setBallSpeed(int x, int y){
 		b.setVelo(new Vect(x, y));
+	}
+	
+	public ArrayList<Line> getLines() {
+		return lines;
+	}
+	
+	public void addLine(Line l) {
+		lines.add(l);
 	}
 }

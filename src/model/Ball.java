@@ -23,27 +23,21 @@ public class Ball {
 	public Vect getVelo() {
 		return velo;
 	}
-	
-	public void setVelo(Vect v){
+
+	public void setVelo(Vect v) {
 		velo = v;
 	}
-	
-	public double getRadius(){
+
+	public double getRadius() {
 		return radius;
 	}
-	
-	public double getXPos(){
-		return xpos;
+
+	public Circle getCircle() {
+		return new Circle(xpos, ypos, radius);
+
 	}
-	
-	public double getYPos(){
-		return ypos; 
-	}
-	
-	public boolean stopped() {
-		return stopped;
-	}
-	
+
+	// Ball specific methods that deal with double precision.
 	public double getExactX() {
 		return xpos;
 	}
@@ -51,7 +45,7 @@ public class Ball {
 	public double getExactY() {
 		return ypos;
 	}
-	
+
 	public void setExactX(double x) {
 		xpos = x;
 	}
@@ -59,12 +53,19 @@ public class Ball {
 	public void setExactY(double y) {
 		ypos = y;
 	}
-	
-	public Circle getCircle() {
-		return new Circle(xpos, ypos, radius);
 
+	public void stop() {
+		stopped = true;
 	}
-	
+
+	public void start() {
+		stopped = false;
+	}
+
+	public boolean stopped() {
+		return stopped;
+	}
+
 	public Color getColour() {
 		return colour;
 	}
