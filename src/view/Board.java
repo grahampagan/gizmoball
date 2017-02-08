@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 
 import model.Ball;
 import model.Model;
+import physics.Circle;
 import model.Line;
 
 /**
@@ -47,6 +48,10 @@ public  class Board extends JPanel implements Observer {
 		// Draw all the vertical lines
 		for (Line vl : gm.getLines()) {
 			g2.fillRect(vl.getX(), vl.getY(), vl.getWidth(), 1);
+		}
+		
+		for (Circle c : gm.getCircles()) {
+			g2.fillOval((int)c.getCenter().getX(),(int)c.getCenter().getY(), (int)c.getRadius(),(int)c.getRadius());
 		}
 		
 		Ball b = gm.getBall();

@@ -9,12 +9,15 @@ public class Model extends Observable {
 	
 	private Ball b; 
 	private ArrayList<Line> lines;
+	private ArrayList<Circle> circles;
 	private Walls walls; 
 
 	public Model() {
-		b = new Ball(25, 25, 100, 100);
+		b = new Ball(335, 25, 100, 100);
 		walls = new Walls(0, 0, 500, 500);
 		lines = new ArrayList<Line>();
+		circles = new ArrayList<Circle>();
+		
 	}
 	
 	private Ball moveBallForTime(Ball ball, double time){
@@ -79,6 +82,14 @@ public class Model extends Observable {
 						newVelo = Geometry.reflectWall(ls, b.getVelo(), 1.0);
 					}
 				}
+				
+				for (Circle circle : circles) {
+					time = Geometry.timeUntilCircleCollision(circle, ballCircle, ballVelocity);
+					if (time < shortestTime) {
+						shortestTime = time;
+						newVelo = Geometry.reflectCircle(circle.getCenter(), b.getVelo(), b.getVelo());
+					}
+				}
 				return new Collisions(shortestTime, newVelo);
 	}
 	
@@ -94,7 +105,16 @@ public class Model extends Observable {
 		return lines;
 	}
 	
+	public ArrayList<Circle> getCircles() {
+		return circles;
+	}
+
+	
 	public void addLine(Line l) {
 		lines.add(l);
+	}
+	
+	public void addCircle(Circle c){
+		circles.add(c);
 	}
 }

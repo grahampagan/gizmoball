@@ -5,12 +5,14 @@ import javax.swing.UIManager;
 import model.Model;
 import model.Line;
 import view.RunGui;
+import physics.*; 
 
 /**
  * @author Murray Wood Demonstration of MVC and MIT Physics Collisions 2014
  */
 
 public class Main {
+
 
 	public static void main(String[] args) {
 		try {
@@ -29,6 +31,11 @@ public class Main {
 		model.addLine(new Line(100, 200, 300));
 		model.addLine(new Line(100, 300, 300));
 		model.addLine(new Line(100, 400, 300));
+		model.addCircle(new Circle(400, 400, 20));
+		model.addCircle(new Circle(200, 200, 10));
+		model.addCircle(new Circle(250, 250, 30));
+
+
 
 		RunGui gui = new RunGui(model);
 		gui.createAndShowGUI();

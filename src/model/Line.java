@@ -5,6 +5,8 @@ import physics.*;
 public class Line {
 	private int xpos;
 	private int ypos;
+	private Circle xCircle;
+	private Circle yCircle;
 	private int width;
 	private LineSegment ls;
 
@@ -13,6 +15,8 @@ public class Line {
 		ypos = y;
 		width = w;
 		ls = new LineSegment(x, y, x + w, y);
+		xCircle = new Circle(xpos, ypos, 25);
+		//yCircle = new Circle()
 	}
 
 	public LineSegment getLineSeg() {
