@@ -3,6 +3,8 @@ package main;
 import javax.swing.UIManager;
 
 import model.Model;
+import model.Square;
+import model.Absorber;
 import model.Line;
 import view.RunGui;
 import physics.*; 
@@ -27,13 +29,12 @@ public class Main {
 		model.setBallSpeed(200, 200);
 
 		// Vertical line at (100,100), width 300
-		model.addLine(new Line(100, 100, 300));
-		model.addLine(new Line(100, 200, 300));
-		model.addLine(new Line(100, 300, 300));
-		model.addLine(new Line(100, 400, 300));
-		model.addCircle(new Circle(400, 400, 20));
-		model.addCircle(new Circle(200, 200, 10));
-		model.addCircle(new Circle(250, 250, 30));
+//		model.addLine(new Line(100, 100, 300));
+//		model.addLine(new Line(100, 200, 300));
+//		model.addLine(new Line(100, 300, 300));
+//		model.addLine(new Line(100, 400, 300));
+		model.addSquare(new Square(40, 500, 300,400 ));
+
 
 
 

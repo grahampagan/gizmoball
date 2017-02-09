@@ -10,13 +10,17 @@ public class Model extends Observable {
 	private Ball b; 
 	private ArrayList<Line> lines;
 	private ArrayList<Circle> circles;
+	private Absorber absorber;
 	private Walls walls; 
+	private ArrayList<Square> squares;
+
 
 	public Model() {
 		b = new Ball(335, 25, 100, 100);
 		walls = new Walls(0, 0, 500, 500);
 		lines = new ArrayList<Line>();
 		circles = new ArrayList<Circle>();
+		squares = new ArrayList<Square>();
 		
 	}
 	
@@ -73,7 +77,7 @@ public class Model extends Observable {
 						newVelo = Geometry.reflectWall(line, b.getVelo(), 1.0);
 					}
 				}
-
+				//Time to collide with line segments
 				for (Line line : lines) {
 					LineSegment ls = line.getLineSeg();
 					time = Geometry.timeUntilWallCollision(ls, ballCircle, ballVelocity);
@@ -82,7 +86,7 @@ public class Model extends Observable {
 						newVelo = Geometry.reflectWall(ls, b.getVelo(), 1.0);
 					}
 				}
-				
+				//Time to collide with circle (slightly broken, detects it needs to but doesnt reflect)
 				for (Circle circle : circles) {
 					time = Geometry.timeUntilCircleCollision(circle, ballCircle, ballVelocity);
 					if (time < shortestTime) {
@@ -90,6 +94,26 @@ public class Model extends Observable {
 						newVelo = Geometry.reflectCircle(circle.getCenter(), b.getVelo(), b.getVelo());
 					}
 				}
+				
+				
+//				LineSegment lineseg = absorber.getLineSeg();
+//				time = Geometry.timeUntilWallCollision(lineseg, ballCircle, ballVelocity);
+//				if (time < shortestTime) {
+//					shortestTime = time;
+//							newVelo = Geometry.reflectWall(lineseg, b.getVelo(), 1.0);
+//						}
+				
+				// Time to collide with squares
+				for(Square s : squares){
+				for (LineSegment line : s.getLineSeg()) {
+					time = Geometry.timeUntilWallCollision(line, ballCircle, ballVelocity);
+					if (time < shortestTime) {
+						shortestTime = time;
+						newVelo = Geometry.reflectWall(line, b.getVelo(), 1.0);
+					}
+				}
+				}
+				
 				return new Collisions(shortestTime, newVelo);
 	}
 	
@@ -116,5 +140,23 @@ public class Model extends Observable {
 	
 	public void addCircle(Circle c){
 		circles.add(c);
+	}
+	
+	public void addAbsorber(Absorber a){
+		absorber = a;
+	}
+	
+	public void addSquare(Square s) {
+		squares.add(s);
+	}
+	
+	public ArrayList<Square> getSquares() {
+		return squares;
+	}
+
+
+	
+	public Absorber getAbsorber(){
+		return absorber;
 	}
 }

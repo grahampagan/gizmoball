@@ -10,8 +10,10 @@ import java.util.Observer;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
+import model.Absorber;
 import model.Ball;
 import model.Model;
+import model.Square;
 import physics.Circle;
 import model.Line;
 
@@ -50,9 +52,25 @@ public  class Board extends JPanel implements Observer {
 			g2.fillRect(vl.getX(), vl.getY(), vl.getWidth(), 1);
 		}
 		
+		
+		// Draw all the squares
+		for (Square s : gm.getSquares()) {
+			g2.drawRect(s.getX1(), s.getY1(), s.getWidth(), s.getHeight());
+			g2.fillRect(s.getX1(), s.getY1(), s.getWidth(), s.getHeight());
+
+		}
+
+		//draw all the circles
 		for (Circle c : gm.getCircles()) {
 			g2.fillOval((int)c.getCenter().getX(),(int)c.getCenter().getY(), (int)c.getRadius(),(int)c.getRadius());
 		}
+		
+		//draw all the absorbers
+		Absorber a = gm.getAbsorber();
+	    if(a !=null){
+	    	g.drawRect (a.getX(),a.getX()+a.getWidth(),a.getY(),a.getY()); 
+	    	g.fillRect(a.getX(),a.getX()+a.getWidth(),a.getY(),a.getHeight());
+	    }
 		
 		Ball b = gm.getBall();
 		if (b != null) {
