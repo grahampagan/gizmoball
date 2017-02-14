@@ -15,8 +15,8 @@ public class Line {
 		ypos = y;
 		width = w;
 		ls = new LineSegment(x, y, x + w, y);
-		xCircle = new Circle(xpos, ypos, 25);
-		//yCircle = new Circle()
+		xCircle = new Circle(xpos, ypos, 0);
+		yCircle = new Circle(xpos + w, y, 0);
 	}
 
 	public LineSegment getLineSeg() {
@@ -33,5 +33,13 @@ public class Line {
 
 	public int getWidth() {
 		return width;
+	}
+	
+	public Circle getXCircle() {
+		return xCircle;
+	}
+	
+	public Circle getYCircle() {
+		return yCircle;
 	}
 }

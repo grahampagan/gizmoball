@@ -33,7 +33,9 @@ public class Main {
 //		model.addLine(new Line(100, 200, 300));
 //		model.addLine(new Line(100, 300, 300));
 //		model.addLine(new Line(100, 400, 300));
-		model.addSquare(new Square(40, 500, 300,400 ));
+//		model.addSquare(new Square(40, 500, 300,400 ));
+//		model.addAbsorber(new Absorber(100, 200, 30, 90));
+		model.addCircle(new Circle(150, 150, 50));
 
 
 

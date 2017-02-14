@@ -13,6 +13,7 @@ public class Model extends Observable {
 	private Absorber absorber;
 	private Walls walls; 
 	private ArrayList<Square> squares;
+	private ArrayList<Absorber> absorbers; 
 
 
 	public Model() {
@@ -21,6 +22,7 @@ public class Model extends Observable {
 		lines = new ArrayList<Line>();
 		circles = new ArrayList<Circle>();
 		squares = new ArrayList<Square>();
+		absorbers = new ArrayList<Absorber>();
 		
 	}
 	
@@ -85,13 +87,27 @@ public class Model extends Observable {
 						shortestTime = time;
 						newVelo = Geometry.reflectWall(ls, b.getVelo(), 1.0);
 					}
+					
+					Circle x = line.getXCircle();
+					time = Geometry.timeUntilCircleCollision(x, ballCircle, ballVelocity);
+					if (time < shortestTime) {
+						shortestTime = time;
+						newVelo = Geometry.reflectCircle(x.getCenter(), b.getCenter(), b.getVelo());
+					}
+					
+					Circle y = line.getYCircle();
+					time = Geometry.timeUntilCircleCollision(y, ballCircle, ballVelocity);
+					if (time < shortestTime) {
+						shortestTime = time;
+						newVelo = Geometry.reflectCircle(y.getCenter(), b.getCenter(), b.getVelo());
+					}
 				}
 				//Time to collide with circle (slightly broken, detects it needs to but doesnt reflect)
 				for (Circle circle : circles) {
 					time = Geometry.timeUntilCircleCollision(circle, ballCircle, ballVelocity);
 					if (time < shortestTime) {
 						shortestTime = time;
-						newVelo = Geometry.reflectCircle(circle.getCenter(), b.getVelo(), b.getVelo());
+						newVelo = Geometry.reflectCircle(circle.getCenter(), b.getCenter(), b.getVelo());
 					}
 				}
 				

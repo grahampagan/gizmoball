@@ -69,4 +69,8 @@ public class Ball {
 	public Color getColour() {
 		return colour;
 	}
+	
+	public Vect getCenter() {
+		return new Vect(xpos, ypos);
+	}
 }

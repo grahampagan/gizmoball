@@ -19,10 +19,10 @@ public class Absorber {
 		height = h;
 		ls = new ArrayList();
 		
-		ls.add(new LineSegment(x, y, x, y));	//bottom
-		ls.add(new LineSegment(x, y, x, y));	//left
-		ls.add(new LineSegment(x, y, x, y));	//top
-		ls.add(new LineSegment(x, y, x, y));	//right
+		ls.add(new LineSegment(x, y + h, x + w, y + h));	//bottom
+		ls.add(new LineSegment(x, y, x, y + h));			//left
+		ls.add(new LineSegment(x, y, x + w, y));			//top
+		ls.add(new LineSegment(x + w, y, x + w, y + h));	//right
 		
 	}
 
