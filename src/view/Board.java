@@ -55,8 +55,8 @@ public  class Board extends JPanel implements Observer {
 		
 		// Draw all the squares
 		for (Square s : gm.getSquares()) {
-			g2.drawRect(s.getX1(), s.getY1(), s.getWidth(), s.getHeight());
-			g2.fillRect(s.getX1(), s.getY1(), s.getWidth(), s.getHeight());
+			g2.drawRect(s.getX(), s.getY(), s.getWidth(), s.getHeight());
+			g2.fillRect(s.getX(), s.getY(), s.getWidth(), s.getHeight());
 
 		}
 
@@ -68,8 +68,8 @@ public  class Board extends JPanel implements Observer {
 		//draw all the absorbers
 		Absorber a = gm.getAbsorber();
 	    if(a !=null){
-	    	g.drawRect (a.getX(),a.getX()+a.getWidth(),a.getY(),a.getY()); 
-	    	g.fillRect(a.getX(),a.getX()+a.getWidth(),a.getY(),a.getHeight());
+	    	g.drawRect(a.getX(), a.getY(), a.getWidth(), a.getHeight());
+	    	g.fillRect(a.getX(), a.getY(), a.getWidth(), a.getHeight());
 	    }
 		
 		Ball b = gm.getBall();

@@ -30,7 +30,7 @@ public class Absorber {
 		return ls;
 	}
 
-		public int getX() {
+	public int getX() {
 		return xpos;
 	}
 
@@ -45,6 +45,10 @@ public class Absorber {
 	public int getHeight(){
 		return height;
 	}	
+	
+	public void absorb(b){
+		b.
+	}
 }
 
 
