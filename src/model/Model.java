@@ -130,6 +130,7 @@ public class Model extends Observable {
 				}
 				
 				// Absorber collisions 
+				if (absorber != null) {
 				for (LineSegment line : absorber.getLineSeg()) {
 					time = Geometry.timeUntilWallCollision(line, ballCircle, ballVelocity);
 					if (time < shortestTime) {
@@ -140,6 +141,7 @@ public class Model extends Observable {
 						this.setChanged();
 						this.notifyObservers();
 					}
+				}
 				}
 				
 				return new Collisions(shortestTime, newVelo);
