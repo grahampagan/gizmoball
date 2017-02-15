@@ -13,7 +13,6 @@ public class Model extends Observable {
 	private Absorber absorber;
 	private Walls walls; 
 	private ArrayList<Square> squares;
-	private ArrayList<Absorber> absorbers; 
 
 
 	public Model() {
@@ -22,7 +21,7 @@ public class Model extends Observable {
 		lines = new ArrayList<Line>();
 		circles = new ArrayList<Circle>();
 		squares = new ArrayList<Square>();
-		absorbers = new ArrayList<Absorber>();
+		absorber = null;
 		
 	}
 	
@@ -128,6 +127,19 @@ public class Model extends Observable {
 						newVelo = Geometry.reflectWall(line, b.getVelo(), 1.0);
 					}
 				}
+				}
+				
+				// Absorber collisions 
+				for (LineSegment line : absorber.getLineSeg()) {
+					time = Geometry.timeUntilWallCollision(line, ballCircle, ballVelocity);
+					if (time < shortestTime) {
+						shortestTime = time;
+						b.setExactX(absorber.absorbCoor().getX());
+						b.setExactY(absorber.absorbCoor().getY());
+						b.setVelo(absorber.absorbVelo());
+						this.setChanged();
+						this.notifyObservers();
+					}
 				}
 				
 				return new Collisions(shortestTime, newVelo);

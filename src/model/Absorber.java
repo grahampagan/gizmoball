@@ -1,9 +1,7 @@
 package model;
 
 import java.util.ArrayList;
-
-import physics.Circle;
-import physics.LineSegment;
+import physics.*;
 
 public class Absorber {
 	private int xpos;
@@ -46,8 +44,13 @@ public class Absorber {
 		return height;
 	}	
 	
-	public void absorb(b){
-		b.
+	public Vect absorbVelo(){
+		return new Vect(0, -250);
+	}
+	
+	public Vect absorbCoor(){
+		return new Vect(480, 480);
+		
 	}
 }
 
