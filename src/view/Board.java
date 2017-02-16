@@ -17,9 +17,6 @@ import model.Square;
 import physics.Circle;
 import model.Line;
 
-/**
- * @author Murray Wood Demonstration of MVC and MIT Physics Collisions 2014
- */
 
 public  class Board extends JPanel implements Observer {
 

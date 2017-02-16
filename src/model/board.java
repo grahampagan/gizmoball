@@ -5,8 +5,8 @@ public class board {
 	gizmo[][] board = new gizmo[19][19];
 	
 	public board(){
-		for(int x = 0; x<20; x++){
-			for(int y = 0; y<20; y++){
+		for(int x = 0; x<19; x++){
+			for(int y = 0; y<19; y++){
 				board[x][y]=null;
 			}
 		}
