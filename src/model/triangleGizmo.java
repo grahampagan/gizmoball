@@ -2,14 +2,16 @@ package model;
 
 public class triangleGizmo implements gizmo{
 	
+	String id;
 	Triangle triangle;
 	int xChord;
 	int yChord;
 	
-	public triangleGizmo(Triangle t, int x, int y){
+	public triangleGizmo(Triangle t, int x, int y, String name){
 		triangle = t;
 		xChord = x;
 		yChord = y;
+		id = name;
 		
 	}
 	
@@ -24,4 +26,10 @@ public class triangleGizmo implements gizmo{
 	public int getY(){
 		return yChord;
 	}
+	
+	public String getID(){
+		return id;
+	}
+
+	
 }

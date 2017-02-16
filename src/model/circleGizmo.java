@@ -7,15 +7,17 @@ public class circleGizmo implements gizmo{
 	Circle circle;
 	int xChord;
 	int yChord;
+	String id;
 	
-	public circleGizmo(Circle c, int x, int y){
+	public circleGizmo(Circle c, int x, int y, String name){
 		circle = c;
 		xChord = x;
 		yChord = y;
+		id = name;
 		
 	}
 	
-	public Circle getSquare(){
+	public Circle getCircle(){
 		return circle;
 	}
 	
@@ -25,5 +27,9 @@ public class circleGizmo implements gizmo{
 	
 	public int getY(){
 		return yChord;
+	}
+	
+	public String getID(){
+		return id;
 	}
 }
