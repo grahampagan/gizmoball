@@ -34,7 +34,7 @@ public class Triangle {
 	}
 
 
-private ArrayList<LineSegment> getLineSeg(){
+public ArrayList<LineSegment> getLineSeg(){
 	return ls;
 }
 

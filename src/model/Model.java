@@ -115,6 +115,18 @@ public class Model extends Observable {
 					}
 				}
 				
+				//time to collide with triangles
+				for(Triangle triangle : triangles){
+					for (LineSegment line : triangle.getLineSeg()) {
+						time = Geometry.timeUntilWallCollision(line, ballCircle, ballVelocity);
+						if (time < shortestTime) {
+							shortestTime = time;
+							newVelo = Geometry.reflectWall(line, b.getVelo(), 1.0);
+
+					}
+
+				}
+				}
 				
 //				LineSegment lineseg = absorber.getLineSeg();
 //				time = Geometry.timeUntilWallCollision(lineseg, ballCircle, ballVelocity);
