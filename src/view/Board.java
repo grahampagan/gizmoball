@@ -62,7 +62,10 @@ public  class Board extends JPanel implements Observer {
 
 		//draw all the circles
 		for (Circle c : gm.getCircles()) {
-			g2.fillOval((int)c.getCenter().getX(),(int)c.getCenter().getY(), (int)c.getRadius(),(int)c.getRadius());
+			double x = c.getCenter().getX()-(c.getRadius());
+			double y = c.getCenter().getY()-(c.getRadius());
+			double d = (c.getRadius())*2;
+			g2.fillOval((int)x,(int)y, (int)d ,(int)d);
 		}
 		
 		//draw all the absorbers
