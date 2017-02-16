@@ -9,6 +9,7 @@ public class Absorber {
 	private int width;
 	private int height;
 	ArrayList<LineSegment> ls;
+	private boolean absorbed;
 
 	public Absorber(int x, int y, int w, int h) {
 		xpos = x;
@@ -16,6 +17,7 @@ public class Absorber {
 		width = w;
 		height = h;
 		ls = new ArrayList();
+		absorbed = false; 
 		
 		ls.add(new LineSegment(x, y + h, x + w, y + h));	//bottom
 		ls.add(new LineSegment(x, y, x, y + h));			//left
@@ -51,6 +53,14 @@ public class Absorber {
 	public Vect absorbCoor(){
 		return new Vect(480, 480);
 		
+	}
+	
+	public boolean getAbsorbed(){
+		return absorbed;
+	}
+	
+	public void setAbsorbed(boolean a){
+		absorbed = a;
 	}
 }
 

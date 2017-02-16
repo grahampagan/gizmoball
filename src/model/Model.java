@@ -133,12 +133,18 @@ public class Model extends Observable {
 				if (absorber != null) {
 				for (LineSegment line : absorber.getLineSeg()) {
 					time = Geometry.timeUntilWallCollision(line, ballCircle, ballVelocity);
-					if (time == 0) {
+					System.out.println(time);
+					if (absorber.getAbsorbed()){
 						b.setExactX(absorber.absorbCoor().getX());
 						b.setExactY(absorber.absorbCoor().getY());
 						b.setVelo(absorber.absorbVelo());
 						this.setChanged();
 						this.notifyObservers();
+						absorber.setAbsorbed(false);
+					}
+					if (time < 0.05){
+						shortestTime = time;
+						absorber.setAbsorbed(true);					
 					}
 				}
 				}
