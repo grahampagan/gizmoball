@@ -18,7 +18,7 @@ public class Triangle {
 	
 	public Triangle(int x1, int y1, int x2, int y2, int x3, int y3){
 		
-		ls = new ArrayList();
+		ls = new ArrayList<>();
 		
 		xPos1 = x1;
 		xPos2 = x2;
@@ -61,5 +61,28 @@ public int gety2(){
 public int gety3(){
 	return yPos3;
 }
+
+public int[] getXPoints(){
+	int[] a = new int[3];
+
+	a[0]=xPos1;
+	a[1]=xPos2;
+	a[2]=xPos3;
+	
+	return a;
+
+}
+
+public int[] getYPoints(){
+	int[] a = new int[3];
+
+	a[0]=yPos1;
+	a[1]=yPos2;
+	a[2]=yPos3;
+	
+	return a;
+
+}
+
 
 }

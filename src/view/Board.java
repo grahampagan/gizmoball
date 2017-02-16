@@ -14,6 +14,7 @@ import model.Absorber;
 import model.Ball;
 import model.Model;
 import model.Square;
+import model.Triangle;
 import physics.Circle;
 import model.Line;
 
@@ -70,6 +71,13 @@ public  class Board extends JPanel implements Observer {
 	    if(a !=null){
 	    	g.drawRect(a.getX(), a.getY(), a.getWidth(), a.getHeight());
 	    	g.fillRect(a.getX(), a.getY(), a.getWidth(), a.getHeight());
+	    }
+	    
+	    //draw all the triangles
+	    for(Triangle t : gm.getTriangles()){
+	    	if(t!=null){
+	    		g.drawPolygon(t.getXPoints(), t.getYPoints(), 3);
+	    	}
 	    }
 		
 		Ball b = gm.getBall();
