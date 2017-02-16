@@ -77,6 +77,7 @@ public  class Board extends JPanel implements Observer {
 	    for(Triangle t : gm.getTriangles()){
 	    	if(t!=null){
 	    		g.drawPolygon(t.getXPoints(), t.getYPoints(), 3);
+	    		g.fillPolygon(t.getXPoints(), t.getYPoints(), 3);
 	    	}
 	    }
 		
