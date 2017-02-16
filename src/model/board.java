@@ -28,5 +28,15 @@ public class board {
 			board[x][y] = g;
 		}
 	}
+	
+	public boolean removeGizmo(int x, int y){
+		
+		if(board[x][y] == null){
+			return true;
+		}else{
+			board[x][y]=null;
+			return true;
+		}
+	}
 }	
 
