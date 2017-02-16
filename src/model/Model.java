@@ -13,6 +13,7 @@ public class Model extends Observable {
 	private Absorber absorber;
 	private Walls walls; 
 	private ArrayList<Square> squares;
+	board gizmoBoard;
 
 
 	public Model() {
@@ -22,6 +23,7 @@ public class Model extends Observable {
 		circles = new ArrayList<Circle>();
 		squares = new ArrayList<Square>();
 		absorber = null;
+		gizmoBoard = new board();	
 		
 	}
 	

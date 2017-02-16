@@ -25,4 +25,9 @@ public class squareGizmo implements gizmo{
 	public int getY(){
 		return yChord;
 	}
+	
+	public String getID(){
+		return id;
+	}
+
 }
