@@ -161,12 +161,13 @@ public class Model extends Observable {
 				// Absorber collisions 
 				if (absorber != null) {
 					if (absorber.getAbsorbed()){
-						b.setExactX(absorber.absorbCoor().getX());
-						b.setExactY(absorber.absorbCoor().getY());
-						b.setVelo(absorber.absorbVelo());
+						b.setExactX(absorber.absorbCoor(b).getX());
+						b.setExactY(absorber.absorbCoor(b).getY());
+//						b.setVelo(absorber.absorbVelo());
+						b.setVelo(new Vect(0, 0));
 						this.setChanged();
 						this.notifyObservers();
-						absorber.setAbsorbed(false);
+//						absorber.setAbsorbed(false);
 					}
 
 				for (LineSegment line : absorber.getLineSeg()) {

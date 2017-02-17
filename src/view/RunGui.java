@@ -5,14 +5,14 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import model.Model;
-import controller.RunListener;
+import controller.*;
 
 /**
  * @author Murray Wood Demonstration of MVC and MIT Physics Collisions 2014
@@ -22,7 +22,10 @@ public class RunGui {
 
 	private Model model;
 	private JFrame frame;
+	private JPanel panel;
 	private ActionListener listener;
+	private KeyListener keyListener;
+	
 	private Board board;
 
 	public RunGui(Model m) {
@@ -30,12 +33,15 @@ public class RunGui {
 
 		// RunListener catches all GUI events. In reality might have many listeners.
 		listener = new RunListener(m);
+		keyListener = new KeyboardListener(m);
 	}
 
 	public void createAndShowGUI() {
 
 		frame = new JFrame("demo");
+		panel = new JPanel();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().add(panel);
 
 		// Board is passed the Model so it can act as Observer
 		board = new Board(500, 500, model);
@@ -77,6 +83,15 @@ public class RunGui {
 		frame.pack();
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
+
+		panel.addKeyListener(keyListener);
+		panel.setFocusable(true);
+        panel.requestFocusInWindow();
+        button1.setFocusable(false);
+        button2.setFocusable(false);
+        button3.setFocusable(false);
+        button4.setFocusable(false);
+		
 	}
 
 }

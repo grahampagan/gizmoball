@@ -1,9 +1,11 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Observable;
+
 import physics.*;
 
-public class Absorber {
+public class Absorber extends Observable {
 	private int xpos;
 	private int ypos;
 	private int width;
@@ -58,13 +60,22 @@ public class Absorber {
 	}	
 	
 	public Vect absorbVelo(){
-		return new Vect(0, -250);
+		return new Vect(0, -400);
 	}
 	
-	public Vect absorbCoor(){
+	public Vect absorbCoor(Ball b){
 		double x = (this.getWidth() * 0.95) + this.getX();
-		double y = this.getY();
-		return new Vect(x, y);
+		double y = this.getY() - b.getRadius();
+		return new Vect(x, y);		
+	}
+	
+	public void releaseBall(Ball b){
+		if (this.getAbsorbed()){
+			b.setVelo(this.absorbVelo());
+			this.setChanged();
+			this.notifyObservers();
+			this.setAbsorbed(false);
+		}
 		
 	}
 	
