@@ -62,7 +62,9 @@ public class Absorber {
 	}
 	
 	public Vect absorbCoor(){
-		return new Vect(480, 480);
+		double x = (this.getWidth() * 0.95) + this.getX();
+		double y = this.getY();
+		return new Vect(x, y);
 		
 	}
 	
