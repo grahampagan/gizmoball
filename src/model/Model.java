@@ -122,9 +122,14 @@ public class Model extends Observable {
 						if (time < shortestTime) {
 							shortestTime = time;
 							newVelo = Geometry.reflectWall(line, b.getVelo(), 1.0);
-
 					}
-
+					for (Circle c : triangle.getCircles()){
+						time = Geometry.timeUntilCircleCollision(c, ballCircle, ballVelocity);
+						if (time < shortestTime) {
+							shortestTime = time;
+							newVelo = Geometry.reflectCircle(c.getCenter(), b.getCenter(), b.getVelo());
+						}
+					}
 				}
 				}
 				
@@ -142,6 +147,13 @@ public class Model extends Observable {
 					if (time < shortestTime) {
 						shortestTime = time;
 						newVelo = Geometry.reflectWall(line, b.getVelo(), 1.0);
+					}
+				}
+				for (Circle c : s.getCircles()){
+					time = Geometry.timeUntilCircleCollision(c, ballCircle, ballVelocity);
+					if (time < shortestTime) {
+						shortestTime = time;
+						newVelo = Geometry.reflectCircle(c.getCenter(), b.getCenter(), b.getVelo());
 					}
 				}
 				}
@@ -162,6 +174,19 @@ public class Model extends Observable {
 					if (time <= 0.05){
 						shortestTime = time;
 						absorber.setAbsorbed(true);					
+					}
+					else if (time < shortestTime){
+						shortestTime = time;
+					}
+				}
+				for (Circle c : absorber.getCircles()){
+					time = Geometry.timeUntilCircleCollision(c, ballCircle, ballVelocity);
+					if (time <= 0.05){
+						shortestTime = time;
+						absorber.setAbsorbed(true);					
+					}
+					else if (time < shortestTime){
+						shortestTime = time;
 					}
 				}
 				}

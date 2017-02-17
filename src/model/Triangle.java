@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 
 import physics.LineSegment;
+import physics.Circle;
 
 public class Triangle {
 	
@@ -15,10 +16,12 @@ public class Triangle {
 	private int yPos3;
 
 	ArrayList<LineSegment> ls;
+	ArrayList<Circle> cs;
 	
 	public Triangle(int x1, int y1, int x2, int y2, int x3, int y3){
 		
 		ls = new ArrayList<>();
+		cs = new ArrayList<>();
 		
 		xPos1 = x1;
 		xPos2 = x2;
@@ -31,11 +34,19 @@ public class Triangle {
 		ls.add(new LineSegment(x1, y1, x2, y2));
 		ls.add(new LineSegment(x1, y1, x3, y3));
 		ls.add(new LineSegment(x2, y2, x3, y3));
+		
+		cs.add(new Circle(x1, y1, 0));
+		cs.add(new Circle(x2, y2, 0));
+		cs.add(new Circle(x3, y3, 0));
 	}
 
 
 public ArrayList<LineSegment> getLineSeg(){
 	return ls;
+}
+
+public ArrayList<Circle> getCircles() {
+	return cs;
 }
 
 public int getx1(){

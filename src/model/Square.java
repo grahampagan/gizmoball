@@ -32,6 +32,7 @@ public class Square {
 	private int width;
 	private int height;
 	ArrayList<LineSegment> ls;
+	ArrayList<Circle> cs;
 
 	public Square(int x, int y, int w, int h) {
 		xpos = x;
@@ -39,16 +40,26 @@ public class Square {
 		width = w;
 		height = h;
 		ls = new ArrayList();
+		cs = new ArrayList();
 		
 		ls.add(new LineSegment(x, y + h, x + w, y + h));	//bottom
 		ls.add(new LineSegment(x, y, x, y + h));			//left
 		ls.add(new LineSegment(x, y, x + w, y));			//top
 		ls.add(new LineSegment(x + w, y, x + w, y + h));	//right
 		
+		cs.add(new Circle(x, y ,0));			//top left
+		cs.add(new Circle(x + w, y, 0));		//top right
+		cs.add(new Circle(x, y + h, 0));		//bottom left
+		cs.add(new Circle(x + w, y + h, 0));	//bottom right
+		
 	}
 
 	public ArrayList<LineSegment> getLineSeg() {
 		return ls;
+	}
+	
+	public ArrayList<Circle> getCircles() {
+		return cs;
 	}
 
 //	public int getX1() {
