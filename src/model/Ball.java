@@ -10,7 +10,8 @@ public class Ball {
 	private double xpos;
 	private double ypos;
 	private boolean stopped; 
-	private Color colour; 
+	private Color colour;
+	private double gravity; 
 	
 	public Ball(double xPos, double yPos, double xVelo, double yVelo){
 		xpos = xPos;
@@ -18,6 +19,7 @@ public class Ball {
 		velo = new Vect(xVelo, yVelo);
 		radius = 10; 
 		colour = Color.BLUE;
+		gravity = -10;
 	}
 	
 	public Vect getVelo() {
@@ -72,5 +74,20 @@ public class Ball {
 	
 	public Vect getCenter() {
 		return new Vect(xpos, ypos);
+	}
+	
+	public void setGravity(double g){
+		gravity = g;
+	}
+	
+	public double getGraivty(){
+		return gravity;
+	}
+	
+	public void applyGravity(){
+		double x = this.getVelo().getX();
+		double y = (this.getVelo().getY() - this.getGraivty());
+		Vect v = new Vect(x,y);
+		this.setVelo(v);
 	}
 }

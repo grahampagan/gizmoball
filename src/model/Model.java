@@ -44,9 +44,9 @@ public class Model extends Observable {
 	
 	public void moveBall(){
 		double moveTime = 0.05; // 0.05 = 20 times per second as per Gizmoball
-
+		
 		if (b != null && !b.stopped()) {
-
+			b.applyGravity();
 			Collisions cd = timeUntilCollision();
 			double tuc = cd.getTuc();
 			if (tuc > moveTime) {
