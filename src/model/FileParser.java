@@ -57,7 +57,7 @@ public class FileParser {
 				}else{
 					int x = Integer.parseInt(array1[2]);	//converts the x array position to the co-ordinates
 					int y = Integer.parseInt(array1[3]);	//converts the y array position to the co-ordinates
-					Square a = new Square(x*30, y*30, 30, 30);	//creates a new square object for the underlying gizmo
+					Square a = new Square(x*25, y*25, 25, 25);	//creates a new square object for the underlying gizmo
 					board.addGizmo(new squareGizmo(a,x,y,array1[1]),x,y);	//adds a new gizmo (creating it with the label) and adding it to the board
 				}
 				;	
@@ -70,7 +70,7 @@ public class FileParser {
 				}else{
 					int x = Integer.parseInt(array1[2]);	//converts the x array position to the co-ordinates
 					int y = Integer.parseInt(array1[3]);	//converts the y array position to the co-ordinates
-					Circle a = new Circle((x*30)-15, (y*30)-15, 15);	//creates a new square object for the underlying gizmo
+					Circle a = new Circle((x*25)-15, (y*25)-12.5, 12.5);	//creates a new square object for the underlying gizmo
 					board.addGizmo(new circleGizmo(a,x,y,array1[1]),x,y);	//adds a new gizmo (creating it with the label) and adding it to the board
 				}
 
@@ -84,7 +84,7 @@ public class FileParser {
 				}else{
 					int x = Integer.parseInt(array1[2]);	//converts the x array position to the co-ordinates
 					int y = Integer.parseInt(array1[3]);	//converts the y array position to the co-ordinates
-					Triangle a = new Triangle(x*30, y*30, (x*30)+30, y*30, x*30, (y*30)+30);	//creates a new square object for the underlying gizmo
+					Triangle a = new Triangle(x*25, y*25, (x*25)+25, y*25, x*25, (y*25)+25);	//creates a new square object for the underlying gizmo
 					board.addGizmo(new triangleGizmo(a,x,y,array1[1]),x,y);	//adds a new gizmo (creating it with the label) and adding it to the board
 				}
 
