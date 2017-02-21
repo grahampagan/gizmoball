@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 public class board {
 
 	static gizmo[][] board = new gizmo[19][19];
@@ -53,6 +55,20 @@ public class board {
 			}
 		}
 		return false;
+	}
+	
+	public ArrayList<gizmo> getGizmos(){
+		ArrayList<gizmo> g = new ArrayList();
+		
+		for(int x=0;x<19;x++){
+			for(int y =0;y<19;y++){
+				if(board[x][y]!=null){
+					g.add(board[x][y]);
+				}
+			}
+		}
+		
+		return g;
 	}
 }	
 

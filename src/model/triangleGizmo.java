@@ -6,12 +6,14 @@ public class triangleGizmo implements gizmo{
 	Triangle triangle;
 	int xChord;
 	int yChord;
+	String type;
 	
 	public triangleGizmo(Triangle t, int x, int y, String name){
 		triangle = t;
 		xChord = x;
 		yChord = y;
 		id = name;
+		type = "Triangle";
 		
 	}
 	
@@ -31,5 +33,8 @@ public class triangleGizmo implements gizmo{
 		return id;
 	}
 
+	public String getType(){
+		return type;
+	}
 	
 }

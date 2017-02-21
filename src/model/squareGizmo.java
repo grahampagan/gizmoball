@@ -6,12 +6,14 @@ public class squareGizmo implements gizmo{
 	Square square;
 	int xChord;
 	int yChord;
+	String type;
 	
 	public squareGizmo(Square s, int x, int y, String name){
 		square = s;
 		xChord = x;
 		yChord = y;
 		id=name;
+		type = "Square";
 	}
 	
 	public Square getSquare(){
@@ -28,6 +30,10 @@ public class squareGizmo implements gizmo{
 	
 	public String getID(){
 		return id;
+	}
+	
+	public String getType(){
+		return type;
 	}
 
 }

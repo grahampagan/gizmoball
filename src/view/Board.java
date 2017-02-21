@@ -15,6 +15,10 @@ import model.Ball;
 import model.Model;
 import model.Square;
 import model.Triangle;
+import model.circleGizmo;
+import model.gizmo;
+import model.squareGizmo;
+import model.triangleGizmo;
 import physics.Circle;
 import model.Line;
 
@@ -95,5 +99,43 @@ public  class Board extends JPanel implements Observer {
 	public void update(Observable arg0, Object arg1) {
 			repaint();
 		}
+	
+	public void paintGizmo(Graphics g){
+		Graphics2D g2 = (Graphics2D) g;
+		
+		for(gizmo gizmo : gm.getBoard().getGizmos()){
+			if(gizmo.getType().equals("Square")){
+				squareGizmo s = (squareGizmo) gizmo;
+				Square square = s.getSquare();
+				g2.drawRect(square.getX(), square.getY(), square.getWidth(), square.getHeight());
+				g2.fillRect(square.getX(), square.getY(), square.getWidth(), square.getHeight());
+			}
+		}
+		
+		for(gizmo gizmo : gm.getBoard().getGizmos()){
+			if(gizmo.getType().equals("Circle")){
+				circleGizmo c = (circleGizmo) gizmo;
+				Circle circle = c.getCircle();
+				double x = circle.getCenter().getX()-(circle.getRadius());
+				double y = circle.getCenter().getY()-(circle.getRadius());
+				double d = (circle.getRadius())*2;
+				g2.fillOval((int)x,(int)y, (int)d ,(int)d);
+			}
+		}
+		
+		for(gizmo gizmo : gm.getBoard().getGizmos()){
+			if(gizmo.getType().equals("Triangle")){
+				triangleGizmo t = (triangleGizmo) gizmo;
+				Triangle triangle = t.getTriangle();
+
+	    		g.drawPolygon(triangle.getXPoints(), triangle.getYPoints(), 3);
+	    		g.fillPolygon(triangle.getXPoints(), triangle.getYPoints(), 3);
+
+			}
+		}
+
+		
+
+	}
 	
 }

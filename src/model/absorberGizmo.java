@@ -7,12 +7,14 @@ public class absorberGizmo implements gizmo{
 	int xChord;
 	int yChord;
 	String id;
+	String type;
 	
 	public absorberGizmo(Absorber a, int x, int y, String name){
 		absorber = a;
 		xChord = x;
 		yChord = y;
 		id = name;
+		type = "Absorber";
 		
 	}
 	
@@ -30,5 +32,9 @@ public class absorberGizmo implements gizmo{
 	
 	public String getID(){
 		return id;
+	}
+	
+	public String getType(){
+		return type;
 	}
 }

@@ -246,4 +246,8 @@ public class Model extends Observable {
 	public ArrayList<Triangle> getTriangles(){
 		return triangles;
 	}
+	
+	public board getBoard(){
+		return gizmoBoard;
+	}
 }
