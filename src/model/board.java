@@ -2,7 +2,7 @@ package model;
 
 public class board {
 
-	gizmo[][] board = new gizmo[19][19];
+	static gizmo[][] board = new gizmo[19][19];
 	
 	public board(){
 		for(int x = 0; x<19; x++){
@@ -16,8 +16,8 @@ public class board {
 		return board;
 	}
 	
-	public gizmo getAtPosition(int x, int y){
-		if(x>19 || y>19){
+	public static gizmo getAtPosition(int x, int y){
+		if((x>19 || y>19) || (x<0 || y<0)){
 			return null;
 		}else{
 			return board[x][y];
@@ -25,7 +25,7 @@ public class board {
 	}
 
 	
-	public void addGizmo(gizmo g, int x, int y){
+	public static void addGizmo(gizmo g, int x, int y){
 		if(getAtPosition(x,y) == null){
 			
 		}else{
@@ -41,6 +41,18 @@ public class board {
 			board[x][y]=null;
 			return true;
 		}
+	}
+	
+	public static boolean containsName(String s ){
+		for(int x=0;x<19;x++){
+			for(int y=0;y<19;y++){
+				if(board[x][y].getID().equals(s)==true){
+					return true;
+				}
+
+			}
+		}
+		return false;
 	}
 }	
 
