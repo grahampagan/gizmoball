@@ -1,5 +1,7 @@
 package main;
 
+import java.io.IOException;
+
 import javax.swing.UIManager;
 
 import model.Model;
@@ -17,7 +19,7 @@ import physics.*;
 public class Main {
 
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		try {
 			// Use the platform look and feel
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -26,6 +28,7 @@ public class Main {
 		}
 
 		Model model = new Model();
+		
 
 		model.setBallSpeed(200, 200);
 

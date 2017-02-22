@@ -27,6 +27,16 @@ public class board {
 			return board[x][y];
 		}
 	}
+	
+	public static boolean atPosition(int x, int y){
+		if((x>19 || y>19) || (x<0 || y<0)){
+			return false;
+		}else if(board[x][y]!=null){
+			return true;
+		}else{
+			return false;
+		}
+	}
 
 	
 	public static void addGizmo(gizmo g, int x, int y){
@@ -50,7 +60,9 @@ public class board {
 	public static boolean containsName(String s ){
 		for(int x=0;x<19;x++){
 			for(int y=0;y<19;y++){
-				if(board[x][y].getID().equals(s)==true){
+				if(board[x][y] == null){
+					
+				}else if(board[x][y].getID().equals(s)==true){
 					return true;
 				}
 
@@ -131,6 +143,22 @@ public class board {
 	public static void move(String id, int x, int y){
 		
 		board[x][y]=getGizmo(id);
+	}
+	
+	public static Ball getBall(){
+		return b;
+	}
+	
+	public void printBoard(){
+		for(int x=0;x<19;x++){
+			for(int y =0;y<19;y++){
+				if(board[x][y]==null){
+					System.out.println(x+" "+y+" ");
+				}else{
+					System.out.println(x + " "+ y + " "+ board[x][y]);
+				}
+			}
+		}
 	}
 
 }	

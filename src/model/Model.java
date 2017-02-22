@@ -1,5 +1,6 @@
 package model;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Observable;
 
@@ -18,7 +19,7 @@ public class Model extends Observable {
 	board gizmoBoard;
 
 
-	public Model() {
+	public Model() throws IOException {
 		b = new Ball(335, 25, 100, 100, "ball1");
 		walls = new Walls(0, 0, 500, 500);
 		lines = new ArrayList<Line>();
@@ -27,6 +28,12 @@ public class Model extends Observable {
 		triangles = new ArrayList<Triangle>();
 		absorber = null;
 		gizmoBoard = new board();	
+		
+		FileParser f = new FileParser();
+		
+		gizmoBoard = f.run();
+		
+		gizmoBoard.printBoard();
 		
 	}
 	

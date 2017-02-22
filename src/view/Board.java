@@ -16,6 +16,7 @@ import model.Model;
 import model.Square;
 import model.Triangle;
 import model.absorberGizmo;
+import model.board;
 import model.circleGizmo;
 import model.gizmo;
 import model.squareGizmo;
@@ -139,18 +140,14 @@ public  class Board extends JPanel implements Observer {
 
 			}
 			
-			if(gizmo.getType().equals("ball")){
-				Ball b = (Ball) gizmo;
-				if (b != null) {
-					g2.setColor(b.getColour());
-					int x = (int) (b.getExactX() - b.getRadius());
-					int y = (int) (b.getExactY() - b.getRadius());
-					int width = (int) (2 * b.getRadius());
-					g2.fillOval(x, y, width, width);
-				}
-
+			Ball b = board.getBall();
+			if (b != null) {
+				g2.setColor(b.getColour());
+				int x = (int) (b.getExactX() - b.getRadius());
+				int y = (int) (b.getExactY() - b.getRadius());
+				int width = (int) (2 * b.getRadius());
+				g2.fillOval(x, y, width, width);
 			}
-
 			
 			
 		}
