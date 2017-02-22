@@ -5,7 +5,7 @@ import java.util.Observable;
 
 import physics.*;
 
-public class Absorber extends Observable {
+public class Absorber extends Observable  {
 	private int xpos;
 	private int ypos;
 	private int width;
@@ -13,7 +13,9 @@ public class Absorber extends Observable {
 	ArrayList<LineSegment> ls;
 	ArrayList<Circle> cs;
 	private boolean absorbed;
-
+	private String type;
+	private String ID;
+	
 	public Absorber(int x, int y, int w, int h) {
 		xpos = x;
 		ypos = y;
@@ -32,7 +34,7 @@ public class Absorber extends Observable {
 		cs.add(new Circle(x + w, y, 0));		//top right
 		cs.add(new Circle(x, y + h, 0));		//bottom left
 		cs.add(new Circle(x + w, y + h, 0));	//bottom right
-		
+		type = "Absorber";
 	}
 
 	public ArrayList<LineSegment> getLineSeg() {
@@ -86,6 +88,7 @@ public class Absorber extends Observable {
 	public void setAbsorbed(boolean a){
 		absorbed = a;
 	}
+
 }
 
 

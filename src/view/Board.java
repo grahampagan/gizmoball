@@ -15,6 +15,7 @@ import model.Ball;
 import model.Model;
 import model.Square;
 import model.Triangle;
+import model.absorberGizmo;
 import model.circleGizmo;
 import model.gizmo;
 import model.squareGizmo;
@@ -110,9 +111,8 @@ public  class Board extends JPanel implements Observer {
 				g2.drawRect(square.getX(), square.getY(), square.getWidth(), square.getHeight());
 				g2.fillRect(square.getX(), square.getY(), square.getWidth(), square.getHeight());
 			}
-		}
 		
-		for(gizmo gizmo : gm.getBoard().getGizmos()){
+		
 			if(gizmo.getType().equals("Circle")){
 				circleGizmo c = (circleGizmo) gizmo;
 				Circle circle = c.getCircle();
@@ -121,9 +121,7 @@ public  class Board extends JPanel implements Observer {
 				double d = (circle.getRadius())*2;
 				g2.fillOval((int)x,(int)y, (int)d ,(int)d);
 			}
-		}
 		
-		for(gizmo gizmo : gm.getBoard().getGizmos()){
 			if(gizmo.getType().equals("Triangle")){
 				triangleGizmo t = (triangleGizmo) gizmo;
 				Triangle triangle = t.getTriangle();
@@ -132,7 +130,31 @@ public  class Board extends JPanel implements Observer {
 	    		g.fillPolygon(triangle.getXPoints(), triangle.getYPoints(), 3);
 
 			}
+		
+			if(gizmo.getType().equals("Absorber")){
+				absorberGizmo a = (absorberGizmo) gizmo;
+				Absorber absorber = a.getAbsorber();
+		    	g.drawRect(absorber.getX(), absorber.getY(), absorber.getWidth(), absorber.getHeight());
+		    	g.fillRect(absorber.getX(), absorber.getY(), absorber.getWidth(), absorber.getHeight());
+
+			}
+			
+			if(gizmo.getType().equals("ball")){
+				Ball b = (Ball) gizmo;
+				if (b != null) {
+					g2.setColor(b.getColour());
+					int x = (int) (b.getExactX() - b.getRadius());
+					int y = (int) (b.getExactY() - b.getRadius());
+					int width = (int) (2 * b.getRadius());
+					g2.fillOval(x, y, width, width);
+				}
+
+			}
+
+			
+			
 		}
+
 
 		
 

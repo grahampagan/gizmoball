@@ -95,5 +95,9 @@ public int[] getYPoints(){
 
 }
 
+public void rotate(){
+
+}
+
 
 }

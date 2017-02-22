@@ -3,7 +3,7 @@ package model;
 import physics.*;
 import java.awt.*;
 
-public class Ball {
+public class Ball implements gizmo {
 
 	private Vect velo;
 	private double radius;
@@ -12,14 +12,18 @@ public class Ball {
 	private boolean stopped; 
 	private Color colour;
 	private double gravity; 
+	private String type;
+	private String ID;
 	
-	public Ball(double xPos, double yPos, double xVelo, double yVelo){
+	public Ball(double xPos, double yPos, double xVelo, double yVelo, String id){
 		xpos = xPos;
 		ypos = yPos;
 		velo = new Vect(xVelo, yVelo);
 		radius = 10; 
 		colour = Color.BLUE;
 		gravity = -10;
+		type = "Ball";
+		ID = id;
 	}
 	
 	public Vect getVelo() {
@@ -89,5 +93,16 @@ public class Ball {
 		double y = (this.getVelo().getY() - this.getGraivty());
 		Vect v = new Vect(x,y);
 		this.setVelo(v);
+	}
+
+	@Override
+	public String getID() {
+		// TODO Auto-generated method stub
+		return ID;	}
+
+	@Override
+	public String getType() {
+		// TODO Auto-generated method stub
+		return type;
 	}
 }

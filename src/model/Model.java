@@ -19,7 +19,7 @@ public class Model extends Observable {
 
 
 	public Model() {
-		b = new Ball(335, 25, 100, 100);
+		b = new Ball(335, 25, 100, 100, "ball1");
 		walls = new Walls(0, 0, 500, 500);
 		lines = new ArrayList<Line>();
 		circles = new ArrayList<Circle>();
