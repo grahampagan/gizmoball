@@ -10,7 +10,7 @@ public class Model extends Observable {
 	
 	private Ball b; 
 	private ArrayList<Line> lines;
-	private ArrayList<Circle> circles;
+	private ArrayList<circle> circles;
 	private Absorber absorber;
 	private Walls walls; 
 	private ArrayList<Square> squares;
@@ -23,17 +23,12 @@ public class Model extends Observable {
 		b = new Ball(335, 25, 100, 100, "ball1");
 		walls = new Walls(0, 0, 500, 500);
 		lines = new ArrayList<Line>();
-		circles = new ArrayList<Circle>();
+		circles = new ArrayList<circle>();
 		squares = new ArrayList<Square>();
 		triangles = new ArrayList<Triangle>();
 		absorber = null;
 		gizmoBoard = new board();	
 		
-		FileParser f = new FileParser();
-		
-		gizmoBoard = f.run();
-		
-		gizmoBoard.printBoard();
 		
 	}
 	
@@ -114,11 +109,12 @@ public class Model extends Observable {
 					}
 				}
 				//Time to collide with circle (slightly broken, detects it needs to but doesnt reflect)
-				for (Circle circle : circles) {
-					time = Geometry.timeUntilCircleCollision(circle, ballCircle, ballVelocity);
+				for (circle circle : circles) {
+					Circle c = circle.getCircle();
+					time = Geometry.timeUntilCircleCollision(c, ballCircle, ballVelocity);
 					if (time < shortestTime) {
 						shortestTime = time;
-						newVelo = Geometry.reflectCircle(circle.getCenter(), b.getCenter(), b.getVelo());
+						newVelo = Geometry.reflectCircle(c.getCenter(), b.getCenter(), b.getVelo());
 					}
 				}
 				
@@ -215,7 +211,7 @@ public class Model extends Observable {
 		return lines;
 	}
 	
-	public ArrayList<Circle> getCircles() {
+	public ArrayList<circle> getCircles() {
 		return circles;
 	}
 
@@ -225,7 +221,7 @@ public class Model extends Observable {
 	}
 	
 	public void addCircle(Circle c){
-		circles.add(c);
+		circles.add(new circle(c));
 	}
 	
 	public void addAbsorber(Absorber a){
@@ -257,4 +253,75 @@ public class Model extends Observable {
 	public board getBoard(){
 		return gizmoBoard;
 	}
-}
+	
+	public boolean containsName(String id){
+		for (circle circle : circles) {
+			if (circle.getID().equals(id)){
+				return true;
+			}
+		}
+		
+		for(Triangle triangle : triangles){
+			if(triangle.getID().equals(id)){
+				return true;
+			}
+		}
+		
+		for(Square s : squares){
+			if(s.getID().equals(id)){
+				return true;
+			}
+		}
+
+		return false;
+
+	}
+
+	public boolean hasAtPosition(int parseInt, int parseInt2) {
+		for (circle circle : circles) {
+			if (circle.getPositionX()==parseInt && circle.getPositionY()==parseInt2){
+				return true;
+			}
+		}
+		
+		for(Triangle triangle : triangles){
+			if(triangle.getPositionX()==parseInt && triangle.getPositionY()==parseInt2){
+				return true;
+			}
+		}
+		
+		for(Square s : squares){
+			if(s.getPositionX()==parseInt && s.getPositionY()==parseInt2){
+				return true;
+			}
+		}
+
+		return false;
+
+	}
+	
+	public void delete(String id){
+		for (circle circle : circles) {
+			if (circle.getID().equals(id)){
+				circles.remove(circle);
+			}
+		}
+		
+		for(Triangle triangle : triangles){
+			if(triangle.getID().equals(id)){
+				triangles.remove(triangle);
+			}
+		}
+		
+		for(Square s : squares){
+			if(s.getID().equals(id)){
+				squares.remove(s);
+			}
+		}
+
+	}
+	
+	
+	}
+	
+

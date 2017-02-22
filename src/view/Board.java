@@ -17,6 +17,7 @@ import model.Square;
 import model.Triangle;
 import model.absorberGizmo;
 import model.board;
+import model.circle;
 import model.circleGizmo;
 import model.gizmo;
 import model.squareGizmo;
@@ -65,10 +66,11 @@ public  class Board extends JPanel implements Observer {
 		}
 
 		//draw all the circles
-		for (Circle c : gm.getCircles()) {
-			double x = c.getCenter().getX()-(c.getRadius());
-			double y = c.getCenter().getY()-(c.getRadius());
-			double d = (c.getRadius())*2;
+		for (circle c : gm.getCircles()) {
+			Circle circle = c.getCircle();
+			double x = circle.getCenter().getX()-(circle.getRadius());
+			double y = circle.getCenter().getY()-(circle.getRadius());
+			double d = (circle.getRadius())*2;
 			g2.fillOval((int)x,(int)y, (int)d ,(int)d);
 		}
 		

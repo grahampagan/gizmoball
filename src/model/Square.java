@@ -33,15 +33,22 @@ public class Square {
 	private int height;
 	ArrayList<LineSegment> ls;
 	ArrayList<Circle> cs;
+	private String ID;
+	
+	private int xboardpos;
+	private int yboardpos;
 
-	public Square(int x, int y, int w, int h) {
+	public Square(int x, int y, int w, int h, String i, int j, int k) {
 		xpos = x;
 		ypos = y;
 		width = w;
 		height = h;
 		ls = new ArrayList();
 		cs = new ArrayList();
-		
+		ID = i;
+
+		xboardpos = j;
+		yboardpos=k;
 		ls.add(new LineSegment(x, y + h, x + w, y + h));	//bottom
 		ls.add(new LineSegment(x, y, x, y + h));			//left
 		ls.add(new LineSegment(x, y, x + w, y));			//top
@@ -101,5 +108,16 @@ public class Square {
 	public int getHeight(){
 		return height;
 	}	
+	
+	public String getID(){
+		return ID;
+	}
+	
+	public int getPositionX(){
+		return xboardpos;
+	}
+	public int getPositionY(){
+		return yboardpos;
+	}
 
 }

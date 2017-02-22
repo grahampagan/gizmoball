@@ -14,12 +14,20 @@ public class Triangle {
 	private int yPos1;
 	private int yPos2;
 	private int yPos3;
+	
+	private int xboardpos;
+	private int yboardpos;
 
 	ArrayList<LineSegment> ls;
 	ArrayList<Circle> cs;
 	
-	public Triangle(int x1, int y1, int x2, int y2, int x3, int y3){
+	String ID;
+	
+	public Triangle(int x1, int y1, int x2, int y2, int x3, int y3, String i, int xpos, int ypos){
 		
+		ID = i;
+		xboardpos = xpos;
+		yboardpos=ypos;
 		ls = new ArrayList<>();
 		cs = new ArrayList<>();
 		
@@ -98,6 +106,18 @@ public int[] getYPoints(){
 public void rotate(){
 
 }
+
+public String getID(){
+	return ID;
+}
+
+public int getPositionX(){
+	return xboardpos;
+}
+public int getPositionY(){
+	return yboardpos;
+}
+
 
 
 }
