@@ -11,7 +11,6 @@ public class Ball implements gizmo {
 	private double ypos;
 	private boolean stopped; 
 	private Color colour;
-	private double gravity; 
 	private String type;
 	private String ID;
 	
@@ -21,7 +20,6 @@ public class Ball implements gizmo {
 		velo = new Vect(xVelo, yVelo);
 		radius = 10; 
 		colour = Color.BLUE;
-		gravity = -10;
 		type = "Ball";
 		ID = id;
 	}
@@ -80,18 +78,20 @@ public class Ball implements gizmo {
 		return new Vect(xpos, ypos);
 	}
 	
-	public void setGravity(double g){
-		gravity = g;
-	}
-	
-	public double getGraivty(){
-		return gravity;
-	}
-	
-	public void applyGravity(){
+	public void applyGravity(double g, double time){
 		double x = this.getVelo().getX();
-		double y = (this.getVelo().getY() - this.getGraivty());
+		double y = (this.getVelo().getY() + g * time);
 		Vect v = new Vect(x,y);
+		this.setVelo(v);
+	}
+	
+	public void applyFriction(double mu, double mu2, double time){
+		double friction = 1 - mu * time - mu2 * Math.abs(this.getVelo().length()) * time;
+
+		double x = this.getVelo().getX() * friction;
+		double y = this.getVelo().getY() * friction;
+		Vect v = new Vect(x, y);
+		
 		this.setVelo(v);
 	}
 

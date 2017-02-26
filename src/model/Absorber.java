@@ -73,8 +73,8 @@ public class Absorber extends Observable  {
 	
 	public void releaseBall(Ball b){
 		if (this.getAbsorbed()){
-			b.setExactY(this.getY() - b.getRadius());
 			b.setVelo(this.absorbVelo());
+			b.setExactY(this.getY() - b.getRadius());
 			this.setChanged();
 			this.notifyObservers();
 			this.setAbsorbed(false);

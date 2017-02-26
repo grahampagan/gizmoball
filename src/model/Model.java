@@ -15,6 +15,8 @@ public class Model extends Observable {
 	private Walls walls; 
 	private ArrayList<Square> squares;
 	private ArrayList<Triangle> triangles;
+	private double gravity;
+	private double mu, mu2;
 
 	board gizmoBoard;
 
@@ -27,9 +29,13 @@ public class Model extends Observable {
 		squares = new ArrayList<Square>();
 		triangles = new ArrayList<Triangle>();
 		absorber = null;
-		gizmoBoard = new board();	
-		
-		
+		gizmoBoard = new board();
+//		gravity = 25;							//These are the values that 
+//		mu = 0.025;								//the game should be played at, but it doesn't work well.
+//		mu2 = 0.025;	
+		gravity = 100;
+		mu = 0.001;
+		mu2 = 0.001;
 	}
 	
 	private Ball moveBallForTime(Ball ball, double time){
@@ -48,18 +54,22 @@ public class Model extends Observable {
 		double moveTime = 0.05; // 0.05 = 20 times per second as per Gizmoball
 		
 		if (b != null && !b.stopped()) {
-//			b.applyGravity();
 			Collisions cd = timeUntilCollision();
 			double tuc = cd.getTuc();
 			if (tuc > moveTime) {
 				// No collision ...
 				b = moveBallForTime(b, moveTime);
+				b.applyFriction(mu, mu2, moveTime);
+				b.applyGravity(gravity, moveTime);
 			} else {
 				// We've got a collision in tuc
 				b = moveBallForTime(b, tuc);
 				// Post collision velocity ...
 				b.setVelo(cd.getVelo());
+				b.applyFriction(mu, mu2, tuc);
+				b.applyGravity(gravity, tuc);
 			}
+			
 
 			// Notify observers ... redraw updated view
 			this.setChanged();
@@ -320,6 +330,30 @@ public class Model extends Observable {
 	}
 	
 	
+	public void setGravity(double g){
+		gravity = g;
 	}
+	
+	public double getGraivty(){
+		return gravity;
+	}
+	
+	public void setMu(double i){
+		mu = i;
+	}
+	
+	public double getMu(){
+		return mu;
+	}
+	
+	public void setMu2(double i){
+		mu2 = i;
+	}
+	
+	public double getMu2(){
+		return mu2;
+	}
+	}
+
 	
 
