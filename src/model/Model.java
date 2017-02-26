@@ -48,7 +48,7 @@ public class Model extends Observable {
 		double moveTime = 0.05; // 0.05 = 20 times per second as per Gizmoball
 		
 		if (b != null && !b.stopped()) {
-			b.applyGravity();
+//			b.applyGravity();
 			Collisions cd = timeUntilCollision();
 			double tuc = cd.getTuc();
 			if (tuc > moveTime) {
@@ -166,11 +166,9 @@ public class Model extends Observable {
 					if (absorber.getAbsorbed()){
 						b.setExactX(absorber.absorbCoor(b).getX());
 						b.setExactY(absorber.absorbCoor(b).getY());
-//						b.setVelo(absorber.absorbVelo());
 						b.setVelo(new Vect(0, 0));
 						this.setChanged();
 						this.notifyObservers();
-//						absorber.setAbsorbed(false);
 					}
 
 				for (LineSegment line : absorber.getLineSeg()) {

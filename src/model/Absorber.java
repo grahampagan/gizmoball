@@ -66,13 +66,14 @@ public class Absorber extends Observable  {
 	}
 	
 	public Vect absorbCoor(Ball b){
-		double x = (this.getWidth() * 0.95) + this.getX();
-		double y = this.getY() - b.getRadius();
+		double x = (this.getWidth() - b.getRadius()) + this.getX();
+		double y = this.getY() + b.getRadius();
 		return new Vect(x, y);		
 	}
 	
 	public void releaseBall(Ball b){
 		if (this.getAbsorbed()){
+			b.setExactY(this.getY() - b.getRadius());
 			b.setVelo(this.absorbVelo());
 			this.setChanged();
 			this.notifyObservers();

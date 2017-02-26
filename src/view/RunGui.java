@@ -38,7 +38,7 @@ public class RunGui {
 
 	public void createAndShowGUI() {
 
-		frame = new JFrame("demo");
+		frame = new JFrame("Load Prototype");
 		panel = new JPanel();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().add(panel);

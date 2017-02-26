@@ -42,7 +42,7 @@ public class Main {
 //		model.addLine(new Line(100, 300, 300));
 //		model.addLine(new Line(100, 400, 300));
 //		model.addSquare(new Square(40, 500, 300,400 ));
-//		model.addAbsorber(new Absorber(0, 450, 500, 50));
+		model.addAbsorber(new Absorber(0, 450, 500, 50));
 //		model.addSquare(new Square (10, 10, 300, 300));
 //		model.addCircle(new Circle(480, 10, 5));
 //		model.addSquare(new Square (250, 250, 100, 100));
