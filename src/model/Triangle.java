@@ -18,6 +18,8 @@ public class Triangle {
 	private int xboardpos;
 	private int yboardpos;
 
+	private int rotations;
+	
 	ArrayList<LineSegment> ls;
 	ArrayList<Circle> cs;
 	
@@ -30,6 +32,7 @@ public class Triangle {
 		yboardpos=ypos;
 		ls = new ArrayList<>();
 		cs = new ArrayList<>();
+		rotations = 0;
 		
 		xPos1 = x1;
 		xPos2 = x2;
@@ -132,6 +135,14 @@ public int getPositionX(){
 }
 public int getPositionY(){
 	return yboardpos;
+}
+
+public int getRotations(){
+	return rotations;
+}
+
+public void incrementRotations(){
+	rotations++;
 }
 
 

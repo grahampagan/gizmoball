@@ -17,7 +17,6 @@ public class Model extends Observable {
 	private ArrayList<Triangle> triangles;
 	private double gravity;
 	private double mu, mu2;
-	private int triRotations;
 
 	board gizmoBoard;
 
@@ -37,7 +36,6 @@ public class Model extends Observable {
 		gravity = 100;
 		mu = 0.001;
 		mu2 = 0.001;
-		triRotations = 0;
 	}
 	
 	private Ball moveBallForTime(Ball ball, double time){
@@ -332,10 +330,13 @@ public class Model extends Observable {
 	}
 	
 	public void rotate(String id){
-		triRotations++;
 
 		for(Triangle t: triangles){
 			if(t.getID().equals(id)){
+				
+				t.incrementRotations();
+				int triRotations = t.getRotations();
+				
 				int oldX1 = t.getx1();
 				int oldX2 = t.getx2();
 				int oldX3 = t.getx3();
