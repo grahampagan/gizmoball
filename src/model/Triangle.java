@@ -103,8 +103,24 @@ public int[] getYPoints(){
 
 }
 
-public void rotate(){
-
+public void rotate(int x1, int x2, int x3, int y1, int y2, int y3){
+	xPos1 = x1;
+	xPos2 = x2;
+	xPos3 = x3;
+	yPos1 = y1;
+	yPos2 = y2;
+	yPos3 = y3;
+	
+	ls.clear();
+	cs.clear();
+	
+	ls.add(new LineSegment(x1, y1, x2, y2));
+	ls.add(new LineSegment(x1, y1, x3, y3));
+	ls.add(new LineSegment(x2, y2, x3, y3));
+	
+	cs.add(new Circle(x1, y1, 0));
+	cs.add(new Circle(x2, y2, 0));
+	cs.add(new Circle(x3, y3, 0));
 }
 
 public String getID(){

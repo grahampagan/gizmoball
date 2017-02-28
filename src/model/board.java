@@ -106,7 +106,7 @@ public class board {
 		}else if(getGizmo(id).getType().equals("Triangle")){
 			triangleGizmo t = (triangleGizmo)getGizmo(id);
 			Triangle triangle = t.getTriangle();
-			triangle.rotate();
+//			triangle.rotate();
 			return true;
 		}else{
 			return false;

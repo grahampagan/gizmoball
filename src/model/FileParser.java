@@ -8,9 +8,10 @@ import physics.Circle;
 
 public class FileParser {
 	Model Board;
+	board b;
 	
 	public FileParser(Model m){
-		Board=m;
+		Board = m;
 	}
 	
 	public Model run() throws IOException{
@@ -49,17 +50,17 @@ public class FileParser {
 				;
 				
 			case "Rotate":
-//				if(Board.containsName(array1[1])==true){
-//					Board.rotate(array1[1]);
-//				}else{
-//					System.out.println("tried to rotate a gizmo which doesn't exist");
-//				}
+				if(Board.containsName(array1[1])==true){
+					Board.rotate(array1[1]);
+				}else{
+					System.out.println("tried to rotate a gizmo which doesn't exist");
+				}
 				;
 		
 			case "Delete":
-				if(Board.containsName(array1[1])==true){
-					Board.delete(array1[1]);
-				}
+//				if(Board.containsName(array1[1])==true){
+//					Board.delete(array1[1]);
+//				}
 				;
 			
 			case "Move":

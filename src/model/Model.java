@@ -17,6 +17,7 @@ public class Model extends Observable {
 	private ArrayList<Triangle> triangles;
 	private double gravity;
 	private double mu, mu2;
+	private int triRotations;
 
 	board gizmoBoard;
 
@@ -36,6 +37,7 @@ public class Model extends Observable {
 		gravity = 100;
 		mu = 0.001;
 		mu2 = 0.001;
+		triRotations = 0;
 	}
 	
 	private Ball moveBallForTime(Ball ball, double time){
@@ -327,6 +329,70 @@ public class Model extends Observable {
 			}
 		}
 
+	}
+	
+	public void rotate(String id){
+		triRotations++;
+
+		for(Triangle t: triangles){
+			if(t.getID().equals(id)){
+				int oldX1 = t.getx1();
+				int oldX2 = t.getx2();
+				int oldX3 = t.getx3();
+				int oldY1 = t.gety1();
+				int oldY2 = t.gety2();
+				int oldY3 = t.gety3();
+				
+				int newX1 = 0;
+				int newX2 = 0;
+				int newX3 = 0;
+				int newY1 = 0;
+				int newY2 = 0;
+				int newY3 = 0;
+								
+				if((triRotations+4) % 4 == 0){
+					newX1 = oldX1;
+					newX2 = oldX2 + 25;
+					newX3 = oldX3 - 25;
+					newY1 = oldY1 - 25;
+					newY2 = oldY2;
+					newY3 = oldY3;
+				}
+				
+				else if ((triRotations+4) % 4 == 1){
+					newX1 = oldX1 + 25;
+					newX2 = oldX2;
+					newX3 = oldX3;
+					newY1 = oldY1;
+					newY2 = oldY2 + 25;
+					newY3 = oldY3 - 25;
+				}
+				
+				else if ((triRotations+4) % 4 == 2){
+					newX1 = oldX1;
+					newX2 = oldX2 - 25;
+					newX3 = oldX3 + 25;
+					newY1 = oldY1 + 25;
+					newY2 = oldY2;
+					newY3 = oldY3;
+				}
+				
+				else if ((triRotations+4) % 4 == 3){
+					newX1 = oldX1 - 25;
+					newX2 = oldX2;
+					newX3 = oldX3;
+					newY1 = oldY1;
+					newY2 = oldY2 - 25;
+					newY3 = oldY3 + 25;
+				}
+				
+				
+				t.rotate(newX1, newX2, newX3, newY1, newY2, newY3);
+						
+				this.setChanged();
+				this.notifyObservers();
+			}
+		}
 	}
 	
 	

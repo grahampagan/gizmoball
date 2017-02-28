@@ -43,11 +43,11 @@ public class Main {
 //		model.addLine(new Line(100, 300, 300));
 //		model.addLine(new Line(100, 400, 300));
 //		model.addSquare(new Square(40, 500, 300,400 ));
-		model.addAbsorber(new Absorber(0, 450, 500, 50));
+//		model.addAbsorber(new Absorber(0, 450, 500, 50));
 //		model.addSquare(new Square (10, 10, 300, 300));
-		model.addCircle(new Circle(480, 10, 5));
+//		model.addCircle(new Circle(480, 10, 5));
 //		model.addSquare(new Square (250, 250, 100, 100));
-		model.addCircle(new Circle (250, 250, 50));
+//		model.addCircle(new Circle (250, 250, 50));
 //		model.addTriangle(new Triangle(500, 30, 500, 20, 470, 20));
 
 
@@ -55,6 +55,7 @@ public class Main {
 
 		RunGui gui = new RunGui(model);
 		gui.createAndShowGUI();
+		f.run();
 		
 //		new gui, not fully working
 //		GUI g = new GUI(model);
