@@ -2,6 +2,7 @@ package model;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Observable;
 
 import physics.*;
@@ -59,15 +60,15 @@ public class Model extends Observable {
 			if (tuc > moveTime) {
 				// No collision ...
 				b = moveBallForTime(b, moveTime);
-				b.applyFriction(mu, mu2, moveTime);
-				b.applyGravity(gravity, moveTime);
+//				b.applyFriction(mu, mu2, moveTime);
+//				b.applyGravity(gravity, moveTime);
 			} else {
 				// We've got a collision in tuc
 				b = moveBallForTime(b, tuc);
 				// Post collision velocity ...
 				b.setVelo(cd.getVelo());
-				b.applyFriction(mu, mu2, tuc);
-				b.applyGravity(gravity, tuc);
+//				b.applyFriction(mu, mu2, tuc);
+//				b.applyGravity(gravity, tuc);
 			}
 			
 
@@ -309,23 +310,48 @@ public class Model extends Observable {
 	}
 	
 	public void delete(String id){
-		for (circle circle : circles) {
-			if (circle.getID().equals(id)){
-				circles.remove(circle);
-			}
+		
+		Iterator<circle> circleIter = circles.iterator();
+		while(circleIter.hasNext()){
+			circle c = circleIter.next();
+		      if(c.getID().equals(id)) {
+		        circleIter.remove();
+		      }
 		}
 		
-		for(Triangle triangle : triangles){
-			if(triangle.getID().equals(id)){
-				triangles.remove(triangle);
-			}
+		Iterator<Triangle> triangleIter = triangles.iterator();
+		while(triangleIter.hasNext()){
+			Triangle t = triangleIter.next();
+		      if(t.getID().equals(id)) {
+		        triangleIter.remove();
+		      }
 		}
 		
-		for(Square s : squares){
-			if(s.getID().equals(id)){
-				squares.remove(s);
-			}
+		Iterator<Square> squareIter = squares.iterator();
+		while(squareIter.hasNext()){
+			Square s = squareIter.next();
+		      if(s.getID().equals(id)) {
+		        squareIter.remove();
+		      }
 		}
+		
+//		for (circle circle : circles) {
+//			if (circle.getID().equals(id)){
+//				circles.remove(circle);
+//			}
+//		}
+//		
+//		for(Triangle triangle : triangles){
+//			if(triangle.getID().equals(id)){
+//				triangles.remove(triangle);
+//			}
+//		}
+//		
+//		for(Square s : squares){
+//			if(s.getID().equals(id)){
+//				squares.remove(s);
+//			}
+//		}
 
 	}
 	

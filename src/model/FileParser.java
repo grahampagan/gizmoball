@@ -8,7 +8,6 @@ import physics.Circle;
 
 public class FileParser {
 	Model Board;
-	board b;
 	
 	public FileParser(Model m){
 		Board = m;
@@ -22,7 +21,7 @@ public class FileParser {
 		while((myline = bufread.readLine()) != null){
 			
 			String[] array1 = myline.split("\\s+");
-		
+
 			switch(array1[0]){
 			case "Absorber":
 				if(Board.containsName(array1[1])==true){
@@ -52,15 +51,18 @@ public class FileParser {
 			case "Rotate":
 				if(Board.containsName(array1[1])==true){
 					Board.rotate(array1[1]);
+					System.out.println("Rotated triangle: " + array1[1]);
 				}else{
 					System.out.println("tried to rotate a gizmo which doesn't exist");
 				}
-				;
+				break;
 		
 			case "Delete":
-//				if(Board.containsName(array1[1])==true){
-//					Board.delete(array1[1]);
-//				}
+				if(Board.containsName(array1[1])==true){
+					Board.delete(array1[1]);
+				}else{
+					System.out.println("Tried to delete a gizmo that doesn't exist.");
+				}
 				;
 			
 			case "Move":
