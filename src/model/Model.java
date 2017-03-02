@@ -264,11 +264,11 @@ public class Model extends Observable {
 	}
 	
 	public boolean containsName(String id){
-		for (circle circle : circles) {
-			if (circle.getID().equals(id)){
-				return true;
-			}
-		}
+//		for (circle circle : circles) {
+//			if (circle.getID().equals(id)){
+//				return true;
+//			}
+//		}
 		
 		for(Triangle triangle : triangles){
 			if(triangle.getID().equals(id)){

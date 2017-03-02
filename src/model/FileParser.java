@@ -35,7 +35,7 @@ public class FileParser {
 					Board.addAbsorber(a);	//adds a new gizmo (creating it with the label) and adding it to the board
 				}
 
-				;
+				break;
 				
 			case "Ball":
 //				if(Board.containsName(array1[1])==true){
@@ -97,9 +97,10 @@ public class FileParser {
 					Board.addSquare(a);	//adds a new gizmo (creating it with the label) and adding it to the board
 					System.out.println("added gizmo at " + x + " " + y);
 				}
-				;	
+				break;	
 			
 			case "Circle":
+				System.out.println("hello");
 				if(Board.containsName(array1[1])==true){
 					System.out.println("Tried to add a gizmo with a duplicate name");
 				}else if(Board.hasAtPosition(Integer.parseInt(array1[2]),Integer.parseInt(array1[3]))==true){
@@ -107,13 +108,13 @@ public class FileParser {
 				}else{
 					int x = Integer.parseInt(array1[2]);	//converts the x array position to the co-ordinates
 					int y = Integer.parseInt(array1[3]);	//converts the y array position to the co-ordinates
-					Circle a = new Circle((x*25)-15, (y*25)-12.5, 12.5);	//creates a new circle object for the underlying gizmo
+					Circle a = new Circle((x*25)-12.5, (y*25)-12.5, 12.5);	//creates a new circle object for the underlying gizmo
 					Board.addCircle(a);	//adds a new gizmo (creating it with the label) and adding it to the board
 					System.out.println("added gizmo at " + x + " " + y);
 
 				}
 
-				;
+				break;
 			
 			case "Triangle":
 				if(Board.containsName(array1[1])==true){
@@ -128,7 +129,7 @@ public class FileParser {
 					System.out.println("added triangle gizmo at " + x + " " + y);
 				}
 
-				;
+				break;
 			
 			case "RightFlipper":
 				;
