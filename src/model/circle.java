@@ -11,7 +11,7 @@ public class circle {
 	int x;
 	int y;
 
-	public circle(int x, int y, int r, String i, int xpos, int ypos) {
+	public circle(double x, double y, double r, String i, int xpos, int ypos) {
 		ID = i;
 		circle=new Circle(x,y,r);
 		x = xpos;

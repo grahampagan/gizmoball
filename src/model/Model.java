@@ -229,8 +229,8 @@ public class Model extends Observable {
 		lines.add(l);
 	}
 	
-	public void addCircle(Circle c){
-		circles.add(new circle(c));
+	public void addCircle(circle c){
+		circles.add(c);
 	}
 	
 	public void addAbsorber(Absorber a){
@@ -264,11 +264,13 @@ public class Model extends Observable {
 	}
 	
 	public boolean containsName(String id){
-//		for (circle circle : circles) {
-//			if (circle.getID().equals(id)){
-//				return true;
-//			}
-//		}
+		System.out.println(circles.isEmpty());
+		for (circle c : circles) {
+			System.out.println(c.getID());
+			if (c.getID().equals(id)){
+				return true;
+			}
+		}
 		
 		for(Triangle triangle : triangles){
 			if(triangle.getID().equals(id)){
