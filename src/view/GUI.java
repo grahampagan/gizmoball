@@ -222,10 +222,11 @@ public class GUI implements ActionListener {
 
 
 		
-		f.pack();
+
 		f.setVisible(true);
 		runButtons.setVisible(true);
 		buildButtons.setVisible(false);
+		f.pack();
 		
 		p.addKeyListener(k);
 		p.setFocusable(true);
@@ -267,10 +268,12 @@ public class GUI implements ActionListener {
 		case "Build Mode":
 			runButtons.setVisible(false);
 			buildButtons.setVisible(true);
+			f.pack();
 			break;
 		case "Run Mode":
 			runButtons.setVisible(true);
 			buildButtons.setVisible(false);
+			f.pack();
 			break;
 		}
 	}
