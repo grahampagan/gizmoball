@@ -20,6 +20,11 @@ public class board {
 		return board;
 	}
 	
+	public void clearBoard() {
+		gizmo[][] b1 = new gizmo[19][19];
+		board = b1;
+	}
+	
 	public static gizmo getAtPosition(int x, int y){
 		if((x>19 || y>19) || (x<0 || y<0)){
 			return null;

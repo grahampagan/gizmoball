@@ -18,9 +18,7 @@ import controller.*;
 public class GUI implements ActionListener {
 	private Model mod;
 	private JFrame f;
-	private JFrame f2;
 	private JPanel p;
-	private JPanel p2;
 	private JPanel runButtons;
 	private JPanel buildButtons;
 	private ActionListener l;
@@ -219,7 +217,38 @@ public class GUI implements ActionListener {
 		c.add(b, BorderLayout.CENTER);
 		c.add(runButtons, BorderLayout.WEST);
 		c.add(buildButtons, BorderLayout.EAST);
+		b.addMouseListener(new MouseListener() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int x = e.getX();
+				int y = e.getY();
+				System.out.println("x: " + x + " y: " + y);
+			}
 
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 
 		
 

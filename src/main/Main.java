@@ -55,9 +55,9 @@ public class Main {
 
 //		RunGui gui = new RunGui(model);
 //		gui.createAndShowGUI();
-		f.run();
+//		f.run();
 		
-//		new gui, not fully working
+
 		GUI g = new GUI(model);
 		g.createGUI();
 	}
