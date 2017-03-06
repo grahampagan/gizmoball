@@ -5,10 +5,16 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -34,17 +40,21 @@ public class GUI implements ActionListener {
 		b = new Board(500, 500, mod);
 	}
 	
-	public void createGUI() {
+	public void createGUI() throws IOException {
 		runModeGUI();
 	}
 	
-	public void runModeGUI () {
+	public void runModeGUI () throws IOException {
 		
 		f = new JFrame("MW8 Gizmoball");
 		p = new JPanel();
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Container c = f.getContentPane();
 		c.add(p);
+		
+		BufferedImage grid = ImageIO.read(new File("grid.png"));
+		JLabel gridLabel = new JLabel(new ImageIcon(grid));
+		p.add(gridLabel);
 		
 		runButtons = new JPanel();
 		runButtons.setLayout(new GridLayout(7, 1));
@@ -217,11 +227,12 @@ public class GUI implements ActionListener {
 		c.add(b, BorderLayout.CENTER);
 		c.add(runButtons, BorderLayout.WEST);
 		c.add(buildButtons, BorderLayout.EAST);
+		
 		b.addMouseListener(new MouseListener() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				int x = e.getX();
-				int y = e.getY();
+				double x = Math.floor(e.getX()/25);
+				double y = Math.floor(e.getY()/25);
 				System.out.println("x: " + x + " y: " + y);
 			}
 
@@ -261,11 +272,11 @@ public class GUI implements ActionListener {
 		p.setFocusable(true);
 		p.requestFocusInWindow();
 		
-		bButton1.setFocusable(false);
-		bButton2.setFocusable(false);
-		bButton3.setFocusable(false);
-		bButton4.setFocusable(false);
-		bButton5.setFocusable(false);
+		bButton1.setFocusable(true);
+		bButton2.setFocusable(true);
+		bButton3.setFocusable(true);
+		bButton4.setFocusable(true);
+		bButton5.setFocusable(true);
 		bButton6.setFocusable(false);
 		bButton7.setFocusable(false);
 		button1.setFocusable(false);
