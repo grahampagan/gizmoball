@@ -310,11 +310,13 @@ public class GUI implements ActionListener {
 			runButtons.setVisible(false);
 			buildButtons.setVisible(true);
 			f.pack();
+			mod.setBuildMode(true);
 			break;
 		case "Run Mode":
 			runButtons.setVisible(true);
 			buildButtons.setVisible(false);
 			f.pack();
+			mod.setBuildMode(false);
 			break;
 		}
 	}

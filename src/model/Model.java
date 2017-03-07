@@ -19,6 +19,7 @@ public class Model extends Observable {
 	private double gravity;
 	private double mu, mu2;
 	private Square gridHighlight;
+	private boolean buildMode;
 
 	board gizmoBoard;
 
@@ -31,7 +32,7 @@ public class Model extends Observable {
 		squares = new ArrayList<Square>();
 		triangles = new ArrayList<Triangle>();
 		absorber = null;
-		gridHighlight = new Square(0, 0, 25, 25, "GS", 0, 0);
+		gridHighlight = new Square(0, 0, 25, 25, "GH", 0, 0);
 		gizmoBoard = new board();
 //		gravity = 25;							//These are the values that 
 //		mu = 0.025;								//the game should be played at, but it doesn't work well.
@@ -39,6 +40,7 @@ public class Model extends Observable {
 		gravity = 100;
 		mu = 0.001;
 		mu2 = 0.001;
+		buildMode = false;
 	}
 	
 	private Ball moveBallForTime(Ball ball, double time){
@@ -461,6 +463,14 @@ public class Model extends Observable {
 		gridHighlight = new Square (x*25, y*25, 25, 25, "GS", x, y);
 		this.setChanged();
 		this.notifyObservers();		
+	}
+
+	public boolean getBuildMode() {
+		return buildMode;
+	}
+
+	public void setBuildMode(boolean c) {
+		buildMode = c;
 	}
 	}
 
