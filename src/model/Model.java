@@ -18,6 +18,7 @@ public class Model extends Observable {
 	private ArrayList<Triangle> triangles;
 	private double gravity;
 	private double mu, mu2;
+	private Square gridHighlight;
 
 	board gizmoBoard;
 
@@ -30,6 +31,7 @@ public class Model extends Observable {
 		squares = new ArrayList<Square>();
 		triangles = new ArrayList<Triangle>();
 		absorber = null;
+		gridHighlight = new Square(0, 0, 25, 25, "GS", 0, 0);
 		gizmoBoard = new board();
 //		gravity = 25;							//These are the values that 
 //		mu = 0.025;								//the game should be played at, but it doesn't work well.
@@ -447,6 +449,18 @@ public class Model extends Observable {
 	
 	public double getMu2(){
 		return mu2;
+	}
+	
+	public Square getGridHighlight(){
+		return gridHighlight;
+	}
+
+	public void setGridHighlight(double xD, double yD) {
+		int x = (int)xD;
+		int y = (int)yD;
+		gridHighlight = new Square (x*25, y*25, 25, 25, "GS", x, y);
+		this.setChanged();
+		this.notifyObservers();		
 	}
 	}
 

@@ -88,6 +88,10 @@ public  class Board extends JPanel implements Observer {
 	    		g.fillPolygon(t.getXPoints(), t.getYPoints(), 3);
 	    	}
 	    }
+	    
+	    //draw grid highlight
+	    Square gh = gm.getGridHighlight();
+	    g.drawRect(gh.getX(), gh.getY(), gh.getWidth(), gh.getHeight());
 		
 		Ball b = gm.getBall();
 		if (b != null) {

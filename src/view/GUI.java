@@ -234,6 +234,7 @@ public class GUI implements ActionListener {
 				double x = Math.floor(e.getX()/25);
 				double y = Math.floor(e.getY()/25);
 				System.out.println("x: " + x + " y: " + y);
+				mod.setGridHighlight(x, y);
 			}
 
 			@Override
