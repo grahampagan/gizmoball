@@ -29,13 +29,17 @@ public class GUI implements ActionListener {
 	private JPanel buildButtons;
 	private ActionListener l;
 	private KeyListener k;
+	private JComboBox<String> gizmo;
 	
 	private Board b;
 	
 	public GUI (Model m) {
 		this.mod = m;
 		
-		l = new RunListener(mod);
+		String[] gizmos = {"Circle", "Square", "Triangle"};
+		gizmo = new JComboBox(gizmos);
+		
+		l = new RunListener(mod, gizmo);
 		k = new KeyboardListener(mod);
 		b = new Board(500, 500, mod);
 	}
@@ -102,8 +106,6 @@ public class GUI implements ActionListener {
 		bButton1.setMaximumSize(new Dimension(160, 160));
 		buildButtons.add(bButton1);
 
-		String[] gizmos = {"Circle", "Square", "Triangle"};
-		JComboBox gizmo = new JComboBox(gizmos);
 		gizmo.setSelectedIndex(0);
 		gizmo.setMaximumSize(new Dimension(160, 160));
 		gizmo.addActionListener(l);
@@ -231,10 +233,12 @@ public class GUI implements ActionListener {
 		b.addMouseListener(new MouseListener() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				if(mod.getBuildMode()){
 				double x = Math.floor(e.getX()/25);
 				double y = Math.floor(e.getY()/25);
 				System.out.println("x: " + x + " y: " + y);
 				mod.setGridHighlight(x, y);
+			}
 			}
 
 			@Override

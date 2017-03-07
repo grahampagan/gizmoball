@@ -100,7 +100,6 @@ public class FileParser {
 				break;	
 			
 			case "Circle":
-				System.out.println("hello");
 				if(Board.containsName(array1[1])==true){
 					System.out.println("Tried to add a gizmo with a duplicate name");
 				}else if(Board.hasAtPosition(Integer.parseInt(array1[2]),Integer.parseInt(array1[3]))==true){
@@ -112,9 +111,7 @@ public class FileParser {
 					circle c = new circle((x*25)-12.5, (y*25)-12.5, 12.5, array1[1], x, y);
 					Board.addCircle(c);	//adds a new gizmo (creating it with the label) and adding it to the board
 					System.out.println("added gizmo at " + x + " " + y);
-
 				}
-
 				break;
 			
 			case "Triangle":
