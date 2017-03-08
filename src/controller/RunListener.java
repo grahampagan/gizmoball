@@ -57,7 +57,6 @@ public class RunListener implements ActionListener {
 			case "Load":
 //				System.out.println("not yet implemented");
 				try {
-					model.clearBoard();
 					f.run();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
