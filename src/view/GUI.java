@@ -38,93 +38,93 @@ public class GUI implements ActionListener {
 	private int absorberXEnd;
 	private int absorberYEnd;
 	private ArrayList<JButton> buildButtonsArray = new ArrayList<JButton>();
-	
+
 	private Board b;
-	
+
 	public GUI (Model m) {
 		this.mod = m;
-		
+
 		String[] gizmos = {"Circle", "Square", "Triangle"};
 		gizmo = new JComboBox(gizmos);
-		
+
 		l = new RunListener(mod, gizmo);
 		k = new KeyboardListener(mod);
 		b = new Board(500, 500, mod);
 	}
-	
+
 	public void createGUI() throws IOException {
 		runModeGUI();
 	}
-	
+
 	public void runModeGUI () throws IOException {
-		
+
 		f = new JFrame("MW8 Gizmoball");
 		p = new JPanel();
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Container c = f.getContentPane();
 		c.add(p);
-		
+
 		BufferedImage grid = ImageIO.read(new File("grid.png"));
 		JLabel gridLabel = new JLabel(new ImageIcon(grid));
 		p.add(gridLabel);
-		
+
 		runButtons = new JPanel();
 		runButtons.setLayout(new GridLayout(7, 1));
-		
-		JButton button1 = new JButton("Start");
-		button1.addActionListener(l);
-		button1.setMaximumSize(new Dimension(160, 160));
-		runButtons.add(button1);
-		
-		JButton button2 = new JButton("Stop");
-		button2.addActionListener(l);
-		button2.setMaximumSize(new Dimension(160, 160));
-		runButtons.add(button2);
-		
-		JButton button3 = new JButton("Tick");
-		button3.addActionListener(l);
-		button3.setMaximumSize(new Dimension(160, 160));
-		runButtons.add(button3);
-		
-		JButton button4 = new JButton("Load");
-		button4.addActionListener(l);
-		button4.setMaximumSize(new Dimension(160, 160));
-		runButtons.add(button4);
-		
-		JButton button5 = new JButton("Reload");
-		button5.addActionListener(l);
-		button5.setMaximumSize(new Dimension(160, 160));
-		runButtons.add(button5);
-		
-		JButton button6 = new JButton("Build Mode");
-		button6.addActionListener(this);
-		button6.setMaximumSize(new Dimension(160, 160));
-		runButtons.add(button6);
-		
-		JButton button7 = new JButton("Quit");
-		button7.addActionListener(l);
-		button7.setMaximumSize(new Dimension(160, 160));
-		runButtons.add(button7);
+
+		JButton startButton = new JButton("Start");
+		startButton.addActionListener(l);
+		startButton.setMaximumSize(new Dimension(160, 160));
+		runButtons.add(startButton);
+
+		JButton stopButton = new JButton("Stop");
+		stopButton.addActionListener(l);
+		stopButton.setMaximumSize(new Dimension(160, 160));
+		runButtons.add(stopButton);
+
+		JButton tickButton = new JButton("Tick");
+		tickButton.addActionListener(l);
+		tickButton.setMaximumSize(new Dimension(160, 160));
+		runButtons.add(tickButton);
+
+		JButton loadButton = new JButton("Load");
+		loadButton.addActionListener(l);
+		loadButton.setMaximumSize(new Dimension(160, 160));
+		runButtons.add(loadButton);
+
+		JButton reloadButton = new JButton("Reload");
+		reloadButton.addActionListener(l);
+		reloadButton.setMaximumSize(new Dimension(160, 160));
+		runButtons.add(reloadButton);
+
+		JButton buildModeButton = new JButton("Build Mode");
+		buildModeButton.addActionListener(this);
+		buildModeButton.setMaximumSize(new Dimension(160, 160));
+		runButtons.add(buildModeButton);
+
+		JButton quitButton = new JButton("Quit");
+		quitButton.addActionListener(l);
+		quitButton.setMaximumSize(new Dimension(160, 160));
+		runButtons.add(quitButton);
 
 		buildButtons = new JPanel();
 		buildButtons.setLayout(new GridLayout(12, 2));
 
-		JButton bButton1 = new JButton("Add Gizmo: ");
-		bButton1.addActionListener(l);
-		bButton1.setMaximumSize(new Dimension(160, 160));
-		buildButtons.add(bButton1);
-		buildButtonsArray.add(bButton1);
+		JButton addGizmoButton = new JButton("Add Gizmo: ");
+		addGizmoButton.addActionListener(l);
+		addGizmoButton.setMaximumSize(new Dimension(160, 160));
+		buildButtons.add(addGizmoButton);
+		buildButtonsArray.add(addGizmoButton);
 
 		gizmo.setSelectedIndex(0);
 		gizmo.setMaximumSize(new Dimension(160, 160));
 		gizmo.addActionListener(l);
 		buildButtons.add(gizmo);
 
-		JButton bButton2 = new JButton("Add Ball: ");
-		bButton2.addActionListener(l);
-		bButton2.setMaximumSize(new Dimension(160, 160));
-		buildButtons.add(bButton2);
-		buildButtonsArray.add(bButton2);
+		JButton addBallButton = new JButton("Add Ball: ");
+		addBallButton.addActionListener(l);
+		addBallButton.setMaximumSize(new Dimension(160, 160));
+		buildButtons.add(addBallButton);
+		buildButtonsArray.add(addBallButton);
 
 		JPanel ballInput = new JPanel();
 		ballInput.setLayout(new GridLayout(2, 1));
@@ -134,56 +134,56 @@ public class GUI implements ActionListener {
 		ballInput.add(yCoord);
 		buildButtons.add(ballInput);
 
-		JButton bButton3 = new JButton("Add Absorber: ");
-		bButton3.addActionListener(this);
-		bButton3.setMaximumSize(new Dimension(160, 160));
-		buildButtons.add(bButton3);
-		buildButtonsArray.add(bButton3);
+		JButton addAbsorberButton = new JButton("Add Absorber: ");
+		addAbsorberButton.addActionListener(this);
+		addAbsorberButton.setMaximumSize(new Dimension(160, 160));
+		buildButtons.add(addAbsorberButton);
+		buildButtonsArray.add(addAbsorberButton);
 
 		JPanel empty = new JPanel();
 		buildButtons.add(empty);
 
-		JButton bButton4 = new JButton("Add Left Flipper");
-		bButton4.addActionListener(l);
-		bButton4.setMaximumSize(new Dimension(160, 160));
-		buildButtons.add(bButton4);
-		buildButtonsArray.add(bButton4);
+		JButton AddLeftFlipperButton = new JButton("Add Left Flipper");
+		AddLeftFlipperButton.addActionListener(l);
+		AddLeftFlipperButton.setMaximumSize(new Dimension(160, 160));
+		buildButtons.add(AddLeftFlipperButton);
+		buildButtonsArray.add(AddLeftFlipperButton);
 
-		JButton bButton5 = new JButton("Add Right Flipper");
-		bButton5.addActionListener(l);
-		bButton5.setMaximumSize(new Dimension(160, 160));
-		buildButtons.add(bButton5);
-		buildButtonsArray.add(bButton5);
+		JButton addRightFlipperButton = new JButton("Add Right Flipper");
+		addRightFlipperButton.addActionListener(l);
+		addRightFlipperButton.setMaximumSize(new Dimension(160, 160));
+		buildButtons.add(addRightFlipperButton);
+		buildButtonsArray.add(addRightFlipperButton);
 
-		JButton bButton6 = new JButton("Rotate");
-		bButton6.addActionListener(l);
-		bButton6.setMaximumSize(new Dimension(160, 160));
-		buildButtons.add(bButton6);
-		buildButtonsArray.add(bButton6);
+		JButton rotateButton = new JButton("Rotate");
+		rotateButton.addActionListener(l);
+		rotateButton.setMaximumSize(new Dimension(160, 160));
+		buildButtons.add(rotateButton);
+		buildButtonsArray.add(rotateButton);
 
-		JButton bButton7 = new JButton("Delete");
-		bButton7.addActionListener(l);
-		bButton7.setMaximumSize(new Dimension(160, 160));
-		buildButtons.add(bButton7);
-		buildButtonsArray.add(bButton7);
+		JButton deleteButton = new JButton("Delete");
+		deleteButton.addActionListener(l);
+		deleteButton.setMaximumSize(new Dimension(160, 160));
+		buildButtons.add(deleteButton);
+		buildButtonsArray.add(deleteButton);
 
-		JButton bButton8 = new JButton("Move");
-		bButton8.addActionListener(l);
-		bButton8.setMaximumSize(new Dimension(160, 160));
-		buildButtons.add(bButton8);
-		buildButtonsArray.add(bButton8);
+		JButton moveButton = new JButton("Move");
+		moveButton.addActionListener(l);
+		moveButton.setMaximumSize(new Dimension(160, 160));
+		buildButtons.add(moveButton);
+		buildButtonsArray.add(moveButton);
 
-		JButton bButton9 = new JButton("Clear board");
-		bButton9.addActionListener(l);
-		bButton9.setMaximumSize(new Dimension(160, 160));
-		buildButtons.add(bButton9);
-		buildButtonsArray.add(bButton9);
+		JButton clearBoardButton = new JButton("Clear board");
+		clearBoardButton.addActionListener(l);
+		clearBoardButton.setMaximumSize(new Dimension(160, 160));
+		buildButtons.add(clearBoardButton);
+		buildButtonsArray.add(clearBoardButton);
 
-		JButton button10 = new JButton("Friction: ");
-		button10.addActionListener(l);
-		button10.setMaximumSize(new Dimension(160, 160));
-		buildButtons.add(button10);
-		buildButtonsArray.add(button10);
+		JButton frictionButton = new JButton("Friction: ");
+		frictionButton.addActionListener(l);
+		frictionButton.setMaximumSize(new Dimension(160, 160));
+		buildButtons.add(frictionButton);
+		buildButtonsArray.add(frictionButton);
 
 		JPanel fricInput = new JPanel();
 		fricInput.setLayout(new GridLayout(2, 1));
@@ -193,11 +193,11 @@ public class GUI implements ActionListener {
 		fricInput.add(yIn);
 		buildButtons.add(fricInput);
 
-		JButton button11 = new JButton("Gravity: ");
-		button11.addActionListener(l);
-		button11.setMaximumSize(new Dimension(160, 160));
-		buildButtons.add(button11);
-		buildButtonsArray.add(button11);
+		JButton gravityButton = new JButton("Gravity: ");
+		gravityButton.addActionListener(l);
+		gravityButton.setMaximumSize(new Dimension(160, 160));
+		buildButtons.add(gravityButton);
+		buildButtonsArray.add(gravityButton);
 
 		JPanel gravInput = new JPanel();
 		gravInput.setLayout(new GridLayout(1, 1));
@@ -205,57 +205,57 @@ public class GUI implements ActionListener {
 		gravInput.add(inp);
 		buildButtons.add(gravInput);
 
-		JButton button12 = new JButton("Connect");
-		button12.addActionListener(l);
-		button12.setMaximumSize(new Dimension(160, 160));
-		buildButtons.add(button12);
-		buildButtonsArray.add(button12);
+		JButton connectButton = new JButton("Connect");
+		connectButton.addActionListener(l);
+		connectButton.setMaximumSize(new Dimension(160, 160));
+		buildButtons.add(connectButton);
+		buildButtonsArray.add(connectButton);
 
-		JButton button13 = new JButton("Disconnect");
-		button13.addActionListener(l);
-		button13.setMaximumSize(new Dimension(160, 160));
-		buildButtons.add(button13);
-		buildButtonsArray.add(button13);
+		JButton disconnectButton = new JButton("Disconnect");
+		disconnectButton.addActionListener(l);
+		disconnectButton.setMaximumSize(new Dimension(160, 160));
+		buildButtons.add(disconnectButton);
+		buildButtonsArray.add(disconnectButton);
 
-		JButton button14 = new JButton("Key Connect");
-		button14.addActionListener(l);
-		button14.setMaximumSize(new Dimension(160, 160));
-		buildButtons.add(button14);
-		buildButtonsArray.add(button14);
+		JButton keyConnectButton = new JButton("Key Connect");
+		keyConnectButton.addActionListener(l);
+		keyConnectButton.setMaximumSize(new Dimension(160, 160));
+		buildButtons.add(keyConnectButton);
+		buildButtonsArray.add(keyConnectButton);
 
-		JButton button15 = new JButton("Key Disconnect");
-		button15.addActionListener(l);
-		button15.setMaximumSize(new Dimension(160, 160));
-		buildButtons.add(button15);
-		buildButtonsArray.add(button15);
-		
-		JButton button16 = new JButton("Load Model");
-		button16.addActionListener(l);
-		button16.setMaximumSize(new Dimension(160, 160));
-		buildButtons.add(button16);
-		buildButtonsArray.add(button16);
+		JButton keyDisconnectButton = new JButton("Key Disconnect");
+		keyDisconnectButton.addActionListener(l);
+		keyDisconnectButton.setMaximumSize(new Dimension(160, 160));
+		buildButtons.add(keyDisconnectButton);
+		buildButtonsArray.add(keyDisconnectButton);
 
-		JButton button17 = new JButton("Reload Model");
-		button17.addActionListener(l);
-		button17.setMaximumSize(new Dimension(160, 160));
-		buildButtons.add(button17);
-		buildButtonsArray.add(button17);
+		JButton loadModelButton = new JButton("Load Model");
+		loadModelButton.addActionListener(l);
+		loadModelButton.setMaximumSize(new Dimension(160, 160));
+		buildButtons.add(loadModelButton);
+		buildButtonsArray.add(loadModelButton);
 
-		JButton button18 = new JButton("Quit");
-		button18.addActionListener(l);
-		button18.setMaximumSize(new Dimension(160, 160));
-		buildButtons.add(button18);
+		JButton reloadModelButton = new JButton("Reload Model");
+		reloadModelButton.addActionListener(l);
+		reloadModelButton.setMaximumSize(new Dimension(160, 160));
+		buildButtons.add(reloadModelButton);
+		buildButtonsArray.add(reloadModelButton);
 
-		JButton button19 = new JButton("Run Mode");
-		button19.addActionListener(this);
-		button19.setMaximumSize(new Dimension(160, 160));
-		buildButtons.add(button19);
-		buildButtonsArray.add(button19);
-		
+		JButton quitBuildButton = new JButton("Quit");
+		quitBuildButton.addActionListener(l);
+		quitBuildButton.setMaximumSize(new Dimension(160, 160));
+		buildButtons.add(quitBuildButton);
+
+		JButton runModeButton = new JButton("Run Mode");
+		runModeButton.addActionListener(this);
+		runModeButton.setMaximumSize(new Dimension(160, 160));
+		buildButtons.add(runModeButton);
+		buildButtonsArray.add(runModeButton);
+
 		c.add(b, BorderLayout.CENTER);
 		c.add(runButtons, BorderLayout.WEST);
 		c.add(buildButtons, BorderLayout.EAST);
-		
+
 		b.addMouseListener(new MouseListener() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -268,11 +268,11 @@ public class GUI implements ActionListener {
 			}
 
 			@Override
-			public void mouseEntered(MouseEvent e) {		
+			public void mouseEntered(MouseEvent e) {
 			}
 
 			@Override
-			public void mouseExited(MouseEvent e) {				
+			public void mouseExited(MouseEvent e) {
 			}
 
 			@Override
@@ -285,7 +285,7 @@ public class GUI implements ActionListener {
 						absorberX = ((int)x)*25;
 						absorberY = ((int)y)*25;
 					}
-				}				
+				}
 			}
 
 			@Override
@@ -297,41 +297,41 @@ public class GUI implements ActionListener {
 						System.out.println("Mouse dragged to x: " + x + " y: " + y);
 						absorberXEnd = (((int)x)*25) + 25;
 						absorberYEnd = (((int)y)*25) + 25;
-						
+
 						if(absorberX > absorberXEnd){
 							int oldX = absorberX;
 							absorberX = absorberXEnd;
 							absorberXEnd = oldX;
 						}
-						
+
 						if(absorberY > absorberYEnd){
 							int oldY = absorberY;
 							absorberY = absorberYEnd;
 							absorberYEnd = oldY;
 						}
-						
+
 						int width = absorberXEnd - absorberX;
 						int height = absorberYEnd - absorberY;
-						
+
 						if(width == 0){
 							width = 25;
 						}
-						
+
 						if(height == 0){
 							height = 25;
 						}
-						
+
 						System.out.println(absorberX + " " + absorberY + " " + width+ " " + height);
-						
+
 						Absorber a = new Absorber(absorberX, absorberY, width, height);
 						mod.addAbsorber(a);
-						
+
 						addingAbsorber = false;
 						for(JButton b: buildButtonsArray){
 							b.setEnabled(true);
-						}	
+						}
 					}
-				}						
+				}
 			}
 		});
 
@@ -339,66 +339,66 @@ public class GUI implements ActionListener {
 		runButtons.setVisible(true);
 		buildButtons.setVisible(false);
 		f.pack();
-		
+
 		p.addKeyListener(k);
 		p.setFocusable(true);
 		p.requestFocusInWindow();
-		
-		bButton1.setFocusable(true);
-		bButton2.setFocusable(true);
-		bButton3.setFocusable(true);
-		bButton4.setFocusable(true);
-		bButton5.setFocusable(true);
-		bButton6.setFocusable(false);
-		bButton7.setFocusable(false);
-		button1.setFocusable(false);
-		button2.setFocusable(false);
-		button3.setFocusable(false);
-		button4.setFocusable(false);
-		button5.setFocusable(false);
-		button6.setFocusable(false);
-		button7.setFocusable(false);
-		bButton8.setFocusable(false);
-		bButton9.setFocusable(false);
-		button10.setFocusable(false);
-		button11.setFocusable(false);
-		button12.setFocusable(false);
-		button13.setFocusable(false);
-		button14.setFocusable(false);
-		button15.setFocusable(false);
-		button16.setFocusable(false);
-		button17.setFocusable(false);
-		button18.setFocusable(false);
-		button19.setFocusable(false);
+
+		addGizmoButton.setFocusable(true);
+		addBallButton.setFocusable(true);
+		addAbsorberButton.setFocusable(true);
+		AddLeftFlipperButton.setFocusable(true);
+		addRightFlipperButton.setFocusable(true);
+		rotateButton.setFocusable(false);
+		deleteButton.setFocusable(false);
+		startButton.setFocusable(false);
+		stopButton.setFocusable(false);
+		tickButton.setFocusable(false);
+		loadButton.setFocusable(false);
+		reloadButton.setFocusable(false);
+		buildModeButton.setFocusable(false);
+		quitButton.setFocusable(false);
+		moveButton.setFocusable(false);
+		clearBoardButton.setFocusable(false);
+		frictionButton.setFocusable(false);
+		gravityButton.setFocusable(false);
+		connectButton.setFocusable(false);
+		disconnectButton.setFocusable(false);
+		keyConnectButton.setFocusable(false);
+		keyDisconnectButton.setFocusable(false);
+		loadModelButton.setFocusable(false);
+		reloadModelButton.setFocusable(false);
+		quitBuildButton.setFocusable(false);
+		runModeButton.setFocusable(false);
 		empty.setFocusable(false);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		switch(e.getActionCommand()) {
-		case "Build Mode":
-			runButtons.setVisible(false);
-			buildButtons.setVisible(true);
-			f.pack();
-			mod.setBuildMode(true);
-			break;
-		
-		case "Run Mode":
-			runButtons.setVisible(true);
-			buildButtons.setVisible(false);
-			f.pack();
-			mod.setBuildMode(false);
-			break;
-			
-		case "Add Absorber: ":
-			addingAbsorber = true;
-			for(JButton b: buildButtonsArray){
-				b.setEnabled(false);
-			}			
-			break;
+			case "Build Mode":
+				runButtons.setVisible(false);
+				buildButtons.setVisible(true);
+				f.pack();
+				mod.setBuildMode(true);
+				break;
+
+			case "Run Mode":
+				runButtons.setVisible(true);
+				buildButtons.setVisible(false);
+				f.pack();
+				mod.setBuildMode(false);
+				break;
+
+			case "Add Absorber: ":
+				addingAbsorber = true;
+				for(JButton b: buildButtonsArray){
+					b.setEnabled(false);
+				}
+				break;
 		}
 	}
-	
-	
+
+
 
 }
