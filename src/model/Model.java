@@ -472,6 +472,16 @@ public class Model extends Observable {
 	public void setBuildMode(boolean c) {
 		buildMode = c;
 	}
+	
+	public void clearBoard(){
+		b = null;
+		absorber = null;
+		squares.clear();
+		circles.clear();
+		triangles.clear();
+		this.setChanged();
+		this.notifyObservers();
+	}
 	}
 
 	

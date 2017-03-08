@@ -57,6 +57,7 @@ public class RunListener implements ActionListener {
 			case "Load":
 //				System.out.println("not yet implemented");
 				try {
+					model.clearBoard();
 					f.run();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
@@ -66,7 +67,7 @@ public class RunListener implements ActionListener {
 			case "Reload":
 //				System.out.println("not yet implemented");
 				try { 
-					bo.clearBoard();
+					model.clearBoard();
 					f.run();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
@@ -74,7 +75,7 @@ public class RunListener implements ActionListener {
 				}
 				break;
 			case "Clear board":
-				bo.clearBoard();
+				model.clearBoard();
 				break;
 				
 			case "Add Gizmo: ":
