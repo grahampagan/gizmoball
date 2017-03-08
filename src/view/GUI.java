@@ -18,6 +18,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import model.Absorber;
 import model.Model;
 import controller.*;
 
@@ -30,6 +31,11 @@ public class GUI implements ActionListener {
 	private ActionListener l;
 	private KeyListener k;
 	private JComboBox<String> gizmo;
+	private boolean addingAbsorber = false;
+	private int absorberX;
+	private int absorberY;
+	private int absorberXEnd;
+	private int absorberYEnd;
 	
 	private Board b;
 	
@@ -125,7 +131,7 @@ public class GUI implements ActionListener {
 		buildButtons.add(ballInput);
 
 		JButton bButton3 = new JButton("Add Absorber: ");
-		bButton3.addActionListener(l);
+		bButton3.addActionListener(this);
 		bButton3.setMaximumSize(new Dimension(160, 160));
 		buildButtons.add(bButton3);
 
@@ -234,39 +240,77 @@ public class GUI implements ActionListener {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(mod.getBuildMode()){
-				double x = Math.floor(e.getX()/25);
-				double y = Math.floor(e.getY()/25);
-				System.out.println("x: " + x + " y: " + y);
-				mod.setGridHighlight(x, y);
-			}
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
+					double x = Math.floor(e.getX()/25);
+					double y = Math.floor(e.getY()/25);
+					System.out.println("x: " + x + " y: " + y);
+					mod.setGridHighlight(x, y);
+				}
 			}
 
 			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
+			public void mouseEntered(MouseEvent e) {		
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {				
 			}
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
+				if(mod.getBuildMode()){
+					double x = Math.floor(e.getX()/25);
+					double y = Math.floor(e.getY()/25);
+					if(addingAbsorber){
+						System.out.println("Mouse dragged from x: " + x + " y: " + y);
+						absorberX = ((int)x)*25;
+						absorberY = ((int)y)*25;
+					}
+				}				
 			}
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
+				if(mod.getBuildMode()){
+					double x = Math.floor(e.getX()/25);
+					double y = Math.floor(e.getY()/25);
+					if(addingAbsorber){
+						System.out.println("Mouse dragged to x: " + x + " y: " + y);
+						absorberXEnd = (((int)x)*25) + 25;
+						absorberYEnd = (((int)y)*25) + 25;
+						
+						if(absorberX > absorberXEnd){
+							int oldX = absorberX;
+							absorberX = absorberXEnd;
+							absorberXEnd = oldX;
+						}
+						
+						if(absorberY > absorberYEnd){
+							int oldY = absorberY;
+							absorberY = absorberYEnd;
+							absorberYEnd = oldY;
+						}
+						
+						int width = absorberXEnd - absorberX;
+						int height = absorberYEnd - absorberY;
+						
+						if(width == 0){
+							width = 25;
+						}
+						
+						if(height == 0){
+							height = 25;
+						}
+						
+						System.out.println(absorberX + " " + absorberY + " " + width+ " " + height);
+						
+						Absorber a = new Absorber(absorberX, absorberY, width, height);
+						mod.addAbsorber(a);
+						
+						addingAbsorber = false;
+					}
+				}						
 			}
 		});
-
-		
 
 		f.setVisible(true);
 		runButtons.setVisible(true);
@@ -316,11 +360,16 @@ public class GUI implements ActionListener {
 			f.pack();
 			mod.setBuildMode(true);
 			break;
+		
 		case "Run Mode":
 			runButtons.setVisible(true);
 			buildButtons.setVisible(false);
 			f.pack();
 			mod.setBuildMode(false);
+			break;
+			
+		case "Add Absorber: ":
+			addingAbsorber = true;
 			break;
 		}
 	}
