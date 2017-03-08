@@ -313,14 +313,6 @@ public class GUI implements ActionListener {
 						int width = absorberXEnd - absorberX;
 						int height = absorberYEnd - absorberY;
 
-						if(width == 0){
-							width = 25;
-						}
-
-						if(height == 0){
-							height = 25;
-						}
-
 						System.out.println(absorberX + " " + absorberY + " " + width+ " " + height);
 
 						Absorber a = new Absorber(absorberX, absorberY, width, height);
