@@ -8,6 +8,7 @@ import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -36,6 +37,7 @@ public class GUI implements ActionListener {
 	private int absorberY;
 	private int absorberXEnd;
 	private int absorberYEnd;
+	private ArrayList<JButton> buildButtonsArray = new ArrayList<JButton>();
 	
 	private Board b;
 	
@@ -111,6 +113,7 @@ public class GUI implements ActionListener {
 		bButton1.addActionListener(l);
 		bButton1.setMaximumSize(new Dimension(160, 160));
 		buildButtons.add(bButton1);
+		buildButtonsArray.add(bButton1);
 
 		gizmo.setSelectedIndex(0);
 		gizmo.setMaximumSize(new Dimension(160, 160));
@@ -121,6 +124,7 @@ public class GUI implements ActionListener {
 		bButton2.addActionListener(l);
 		bButton2.setMaximumSize(new Dimension(160, 160));
 		buildButtons.add(bButton2);
+		buildButtonsArray.add(bButton2);
 
 		JPanel ballInput = new JPanel();
 		ballInput.setLayout(new GridLayout(2, 1));
@@ -134,6 +138,7 @@ public class GUI implements ActionListener {
 		bButton3.addActionListener(this);
 		bButton3.setMaximumSize(new Dimension(160, 160));
 		buildButtons.add(bButton3);
+		buildButtonsArray.add(bButton3);
 
 		JPanel empty = new JPanel();
 		buildButtons.add(empty);
@@ -142,36 +147,43 @@ public class GUI implements ActionListener {
 		bButton4.addActionListener(l);
 		bButton4.setMaximumSize(new Dimension(160, 160));
 		buildButtons.add(bButton4);
+		buildButtonsArray.add(bButton4);
 
 		JButton bButton5 = new JButton("Add Right Flipper");
 		bButton5.addActionListener(l);
 		bButton5.setMaximumSize(new Dimension(160, 160));
 		buildButtons.add(bButton5);
+		buildButtonsArray.add(bButton5);
 
 		JButton bButton6 = new JButton("Rotate");
 		bButton6.addActionListener(l);
 		bButton6.setMaximumSize(new Dimension(160, 160));
 		buildButtons.add(bButton6);
+		buildButtonsArray.add(bButton6);
 
 		JButton bButton7 = new JButton("Delete");
 		bButton7.addActionListener(l);
 		bButton7.setMaximumSize(new Dimension(160, 160));
 		buildButtons.add(bButton7);
+		buildButtonsArray.add(bButton7);
 
 		JButton bButton8 = new JButton("Move");
 		bButton8.addActionListener(l);
 		bButton8.setMaximumSize(new Dimension(160, 160));
 		buildButtons.add(bButton8);
+		buildButtonsArray.add(bButton8);
 
 		JButton bButton9 = new JButton("Clear board");
 		bButton9.addActionListener(l);
 		bButton9.setMaximumSize(new Dimension(160, 160));
 		buildButtons.add(bButton9);
+		buildButtonsArray.add(bButton9);
 
 		JButton button10 = new JButton("Friction: ");
 		button10.addActionListener(l);
 		button10.setMaximumSize(new Dimension(160, 160));
 		buildButtons.add(button10);
+		buildButtonsArray.add(button10);
 
 		JPanel fricInput = new JPanel();
 		fricInput.setLayout(new GridLayout(2, 1));
@@ -185,6 +197,7 @@ public class GUI implements ActionListener {
 		button11.addActionListener(l);
 		button11.setMaximumSize(new Dimension(160, 160));
 		buildButtons.add(button11);
+		buildButtonsArray.add(button11);
 
 		JPanel gravInput = new JPanel();
 		gravInput.setLayout(new GridLayout(1, 1));
@@ -196,31 +209,37 @@ public class GUI implements ActionListener {
 		button12.addActionListener(l);
 		button12.setMaximumSize(new Dimension(160, 160));
 		buildButtons.add(button12);
+		buildButtonsArray.add(button12);
 
 		JButton button13 = new JButton("Disconnect");
 		button13.addActionListener(l);
 		button13.setMaximumSize(new Dimension(160, 160));
 		buildButtons.add(button13);
+		buildButtonsArray.add(button13);
 
 		JButton button14 = new JButton("Key Connect");
 		button14.addActionListener(l);
 		button14.setMaximumSize(new Dimension(160, 160));
 		buildButtons.add(button14);
+		buildButtonsArray.add(button14);
 
 		JButton button15 = new JButton("Key Disconnect");
 		button15.addActionListener(l);
 		button15.setMaximumSize(new Dimension(160, 160));
 		buildButtons.add(button15);
-
+		buildButtonsArray.add(button15);
+		
 		JButton button16 = new JButton("Load Model");
 		button16.addActionListener(l);
 		button16.setMaximumSize(new Dimension(160, 160));
 		buildButtons.add(button16);
+		buildButtonsArray.add(button16);
 
 		JButton button17 = new JButton("Reload Model");
 		button17.addActionListener(l);
 		button17.setMaximumSize(new Dimension(160, 160));
 		buildButtons.add(button17);
+		buildButtonsArray.add(button17);
 
 		JButton button18 = new JButton("Quit");
 		button18.addActionListener(l);
@@ -231,6 +250,7 @@ public class GUI implements ActionListener {
 		button19.addActionListener(this);
 		button19.setMaximumSize(new Dimension(160, 160));
 		buildButtons.add(button19);
+		buildButtonsArray.add(button19);
 		
 		c.add(b, BorderLayout.CENTER);
 		c.add(runButtons, BorderLayout.WEST);
@@ -307,6 +327,9 @@ public class GUI implements ActionListener {
 						mod.addAbsorber(a);
 						
 						addingAbsorber = false;
+						for(JButton b: buildButtonsArray){
+							b.setEnabled(true);
+						}	
 					}
 				}						
 			}
@@ -347,7 +370,6 @@ public class GUI implements ActionListener {
 		button17.setFocusable(false);
 		button18.setFocusable(false);
 		button19.setFocusable(false);
-
 		empty.setFocusable(false);
 	}
 
@@ -370,6 +392,9 @@ public class GUI implements ActionListener {
 			
 		case "Add Absorber: ":
 			addingAbsorber = true;
+			for(JButton b: buildButtonsArray){
+				b.setEnabled(false);
+			}			
 			break;
 		}
 	}
