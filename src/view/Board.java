@@ -15,13 +15,7 @@ import model.Ball;
 import model.Model;
 import model.Square;
 import model.Triangle;
-import model.absorberGizmo;
-import model.board;
 import model.circle;
-import model.circleGizmo;
-import model.gizmo;
-import model.squareGizmo;
-import model.triangleGizmo;
 import physics.Circle;
 import model.Line;
 

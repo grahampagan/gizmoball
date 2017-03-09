@@ -11,7 +11,6 @@ import model.FileParser;
 import model.Model;
 import model.Square;
 import model.Triangle;
-import model.board;
 import model.circle;
 import physics.Circle;
 

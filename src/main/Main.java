@@ -10,7 +10,6 @@ import model.Absorber;
 import model.FileParser;
 import model.Line;
 import model.Triangle;
-import model.squareGizmo;
 import view.GUI;
 import view.RunGui;
 import physics.*; 
