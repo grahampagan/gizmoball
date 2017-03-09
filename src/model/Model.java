@@ -235,14 +235,20 @@ public class Model extends Observable {
 	
 	public void addCircle(circle c){
 		circles.add(c);
+		this.setChanged();
+		this.notifyObservers();
 	}
 	
 	public void addAbsorber(Absorber a){
 		absorber = a;
+		this.setChanged();
+		this.notifyObservers();
 	}
 	
 	public void addSquare(Square s) {
 		squares.add(s);
+		this.setChanged();
+		this.notifyObservers();
 	}
 	
 	public ArrayList<Square> getSquares() {
@@ -257,6 +263,8 @@ public class Model extends Observable {
 	
 	public void addTriangle(Triangle t){
 		triangles.add(t);
+		this.setChanged();
+		this.notifyObservers();
 	}
 	
 	public ArrayList<Triangle> getTriangles(){
