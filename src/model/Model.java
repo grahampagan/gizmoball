@@ -21,7 +21,6 @@ public class Model extends Observable {
 	private Square gridHighlight;
 	private boolean buildMode;
 
-	board gizmoBoard;
 
 
 	public Model() throws IOException {
@@ -33,7 +32,6 @@ public class Model extends Observable {
 		triangles = new ArrayList<Triangle>();
 		absorber = null;
 		gridHighlight = new Square(0, 0, 25, 25, "GH", 0, 0);
-		gizmoBoard = new board();
 //		gravity = 25;							//These are the values that 
 //		mu = 0.025;								//the game should be played at, but it doesn't work well.
 //		mu2 = 0.025;	
@@ -271,9 +269,6 @@ public class Model extends Observable {
 		return triangles;
 	}
 	
-	public board getBoard(){
-		return gizmoBoard;
-	}
 	
 	public boolean containsName(String id){
 		System.out.println(circles.isEmpty());

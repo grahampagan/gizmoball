@@ -24,7 +24,6 @@ public class RunListener implements ActionListener {
 	private Timer timer;
 	private Model model;
 	private FileParser f;
-	private board bo;
 	private JComboBox<String> gizmo;
 
 	public RunListener(Model m, JComboBox<String> g) {
@@ -32,7 +31,6 @@ public class RunListener implements ActionListener {
 		gizmo = g;
 		timer = new Timer(50, this);
 		f = new FileParser(model);
-		bo = model.getBoard();
 	}
 
 	@Override
