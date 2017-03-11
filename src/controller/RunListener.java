@@ -3,6 +3,8 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JComboBox;
 import javax.swing.Timer;
@@ -12,6 +14,7 @@ import model.Model;
 import model.Square;
 import model.Triangle;
 import model.circle;
+import model.gizmo;
 import physics.Circle;
 
 /**
@@ -24,12 +27,17 @@ public class RunListener implements ActionListener {
 	private Model model;
 	private FileParser f;
 	private JComboBox<String> gizmo;
+	private List<gizmo> giz;
+	private Square s;
+	private circle c;
+	private Triangle t;
 
 	public RunListener(Model m, JComboBox<String> g) {
 		model = m;
 		gizmo = g;
 		timer = new Timer(50, this);
 		f = new FileParser(model);
+		giz = new ArrayList<>();
 	}
 
 	@Override
@@ -73,7 +81,20 @@ public class RunListener implements ActionListener {
 			case "Clear board":
 				model.clearBoard();
 				break;
-				
+			case "Delete":
+				int xp1 = model.getGridHighlight().getPositionX();
+				int yp1 = model.getGridHighlight().getPositionY();
+
+				String s12 = model.getIdOfPosition(xp1, yp1);
+				if (s12 != null) {
+					model.delete(s12);
+					model.notifyObs();
+					System.out.println("gizmo " + s12 + " deleted");
+				}
+				else {
+					System.out.println("could not delete gizmo");
+				}
+				break;
 			case "Add Gizmo: ":
 				String g = gizmo.getSelectedItem().toString();
 				

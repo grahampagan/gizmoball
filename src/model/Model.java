@@ -468,6 +468,35 @@ public class Model extends Observable {
 		this.notifyObservers();		
 	}
 
+	public String getIdOfPosition(int x, int y) {
+		String r = null;
+		if (hasAtPosition(x, y)) {
+			for (circle c : circles) {
+				if (c.getPositionX() == x && c.getPositionY() == y){
+					r = c.getID();
+				}
+			}
+
+			for(Triangle triangle : triangles){
+				if(triangle.getPositionX() == x && triangle.getPositionY() == y){
+					r = triangle.getID();
+				}
+			}
+
+			for(Square s : squares){
+				if(s.getPositionX() == x && s.getPositionY() == y){
+					r = s.getID();
+				}
+			}
+		}
+		return r;
+	}
+
+	public void notifyObs() {
+		this.setChanged();
+		this.notifyObservers();
+	}
+
 	public boolean getBuildMode() {
 		return buildMode;
 	}
