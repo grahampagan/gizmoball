@@ -81,6 +81,20 @@ public class RunListener implements ActionListener {
 			case "Clear board":
 				model.clearBoard();
 				break;
+			case "Rotate":
+				int xp12 = model.getGridHighlight().getPositionX();
+				int yp12 = model.getGridHighlight().getPositionY();
+
+				String s123 = model.getIdOfPosition(xp12, yp12);
+				if (s123 != null) {
+					model.rotate(s123);
+					model.notifyObs();
+					System.out.println("gizmo " + s123 + " rotated");
+				}
+				else {
+					System.out.println("could not rotate gizmo");
+				}
+				break;
 			case "Delete":
 				int xp1 = model.getGridHighlight().getPositionX();
 				int yp1 = model.getGridHighlight().getPositionY();
