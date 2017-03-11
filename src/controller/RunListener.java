@@ -3,8 +3,6 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.JComboBox;
 import javax.swing.Timer;
@@ -14,7 +12,6 @@ import model.Model;
 import model.Square;
 import model.Triangle;
 import model.circle;
-import model.gizmo;
 import physics.Circle;
 
 /**
@@ -27,17 +24,12 @@ public class RunListener implements ActionListener {
 	private Model model;
 	private FileParser f;
 	private JComboBox<String> gizmo;
-	private List<gizmo> giz;
-	private Square s;
-	private circle c;
-	private Triangle t;
 
 	public RunListener(Model m, JComboBox<String> g) {
 		model = m;
 		gizmo = g;
 		timer = new Timer(50, this);
 		f = new FileParser(model);
-		giz = new ArrayList<>();
 	}
 
 	@Override
