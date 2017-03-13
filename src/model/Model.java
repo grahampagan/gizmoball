@@ -500,12 +500,37 @@ public class Model extends Observable {
 			System.out.println("from x: " + fromX + " y: " + fromY);
 			if(!hasAtPosition(x, y)) {
 				System.out.println("to x: " + x + " y: " + y);
-				// not implemented for circle yet
-//				for (circle c : circles) {
-//					if (c.getPositionX() == x && c.getPositionY() == y){
-//						
-//					}
-//				}
+				// not implemented for circle yet				
+				
+				Iterator<circle> cirIte = circles.iterator();
+				ArrayList<circle> newCircles = new ArrayList<>();
+				ArrayList<circle> oldCircles = new ArrayList<>();
+
+				while (cirIte.hasNext()) {
+					circle c = cirIte.next();
+					if (c.getPositionX() == fromX && c.getPositionY() == fromY) {
+						int ox = c.getPositionX();
+						int oy = c.getPositionY();
+
+						circle c1 = new circle(x * 25, y * 25, 7, c.getID(), x, y);
+						// delete(s.getID());
+						// addSquare(s1);
+						// squIte.remove();
+						oldCircles.add(c);
+						newCircles.add(c1);
+
+						System.out.println(
+								"ox: " + ox + " oy: " + oy + " cx: " + c.getPositionX() + " cy: " + c.getPositionY());
+
+					}
+				}
+				for (circle c : oldCircles) {
+					delete(c.getID());
+				}
+				for (circle c : newCircles) {
+					addCircle(c);
+				}
+
 
 //				for(Triangle triangle : triangles){
 //					if(triangle.getPositionX() == fromX && triangle.getPositionY() == fromY){
