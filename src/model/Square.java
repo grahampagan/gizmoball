@@ -119,5 +119,13 @@ public class Square {
 	public int getPositionY(){
 		return yboardpos;
 	}
+	
+	public void setPositionX(int x) {
+		xboardpos = x;
+	}
+	
+	public void setPositionY(int y) {
+		yboardpos = y;
+	}
 
 }

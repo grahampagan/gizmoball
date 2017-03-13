@@ -15,7 +15,7 @@ public class circle {
 		ID = i;
 		circle=new Circle(x,y,r);
 		x = xpos;
-		y=ypos;
+		y= ypos;
 	}
 
 	public circle(Circle c){

@@ -33,6 +33,9 @@ public class GUI implements ActionListener {
 	private KeyListener k;
 	private JComboBox<String> gizmo;
 	private boolean addingAbsorber = false;
+	private boolean moving = false;
+	private int fx;
+	private int fy;
 	private int absorberX;
 	private int absorberY;
 	private int absorberXEnd;
@@ -168,7 +171,7 @@ public class GUI implements ActionListener {
 		buildButtonsArray.add(deleteButton);
 
 		JButton moveButton = new JButton("Move");
-		moveButton.addActionListener(l);
+		moveButton.addActionListener(this);
 		moveButton.setMaximumSize(new Dimension(160, 160));
 		buildButtons.add(moveButton);
 		buildButtonsArray.add(moveButton);
@@ -264,6 +267,18 @@ public class GUI implements ActionListener {
 					double y = Math.floor(e.getY()/25);
 					System.out.println("x: " + x + " y: " + y);
 					mod.setGridHighlight(x, y);
+					if (moving) {
+
+						int xm = (int) Math.floor(e.getX() / 25);
+						int ym = (int) Math.floor(e.getY() / 25);
+
+						mod.move(fx, fy, xm, ym);
+						mod.notifyObs();
+						if(!mod.hasAtPosition(xm, ym)) {
+							System.out.println("not moved");
+						}
+						moving = false;
+					}
 				}
 			}
 
@@ -284,7 +299,9 @@ public class GUI implements ActionListener {
 						System.out.println("Mouse dragged from x: " + x + " y: " + y);
 						absorberX = ((int)x)*25;
 						absorberY = ((int)y)*25;
+						
 					}
+					
 				}
 			}
 
@@ -387,6 +404,14 @@ public class GUI implements ActionListener {
 				for(JButton b: buildButtonsArray){
 					b.setEnabled(false);
 				}
+				break;
+			case "Move":
+				System.out.println("starting move gizmo");
+				
+				fx = mod.getGridHighlight().getPositionX();
+				fy = mod.getGridHighlight().getPositionY();
+				
+				moving = true;
 				break;
 		}
 	}

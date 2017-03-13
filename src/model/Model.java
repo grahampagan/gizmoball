@@ -491,6 +491,71 @@ public class Model extends Observable {
 		}
 		return r;
 	}
+	
+	public void move(int fx, int fy, int x, int y) {
+		int fromX = fx;
+		int fromY = fy;
+
+		if(hasAtPosition(fromX, fromY)) {
+			System.out.println("from x: " + fromX + " y: " + fromY);
+			if(!hasAtPosition(x, y)) {
+				System.out.println("to x: " + x + " y: " + y);
+				// not implemented for circle yet
+//				for (circle c : circles) {
+//					if (c.getPositionX() == x && c.getPositionY() == y){
+//						
+//					}
+//				}
+
+//				for(Triangle triangle : triangles){
+//					if(triangle.getPositionX() == fromX && triangle.getPositionY() == fromY){
+//						triangle.setPositionX(x);
+//						triangle.setPositionY(y);
+//						System.out.println("moved triangle");
+//					}
+//				}
+
+				
+				Iterator<Square> squIte = squares.iterator();
+				ArrayList<Square> newSquares = new ArrayList<>();
+				ArrayList<Square> oldSquares = new ArrayList<>();
+				
+				while (squIte.hasNext()) {
+					Square s = squIte.next();
+					if (s.getPositionX() == fromX && s.getPositionY() == fromY) {
+						int ox = s.getPositionX();
+						int oy = s.getPositionY();
+						
+						Square s1 = new Square(x * 25, y * 25, s.getWidth(), s.getHeight(), s.getID(), x, y);
+//						delete(s.getID());
+//						addSquare(s1);
+//						squIte.remove();
+						oldSquares.add(s);
+						newSquares.add(s1);
+						
+						System.out.println("ox: " + ox + " oy: " + oy + 
+								" cx: " + s.getPositionX() + " cy: " + s.getPositionY());
+						
+						
+					}
+				}
+				for (Square s : oldSquares) {
+					delete(s.getID());
+				}
+				for (Square s : newSquares) {
+					addSquare(s);
+				}
+			}
+			else {
+				System.out.println("could not move gizmo, "
+						+ "position x: " + x + " y:" + y + " is not empty");
+			}
+		}
+		else {
+			System.out.println("could not move gizmo, "
+					+ "position x: " + x + " y:" + y + " is not a gizmo");
+		}
+	}
 
 	public void notifyObs() {
 		this.setChanged();
