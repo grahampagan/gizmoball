@@ -2,7 +2,7 @@ package model;
 
 
 import java.awt.Color;
-import java.awt.Dimension;
+//import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
@@ -10,7 +10,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.geom.AffineTransform;
 
-import javax.swing.JFrame;
+//import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class Flipper extends JPanel implements KeyListener {
@@ -23,10 +23,10 @@ public class Flipper extends JPanel implements KeyListener {
 	AffineTransform translateTransform;
 
 	public Flipper() {
-		setPreferredSize(new Dimension(800, 600));
-		setFocusable(true);
+	//	setPreferredSize(new Dimension(800, 600));
+	//	setFocusable(true);
 
-		init();
+	//	init();
 		updateTransforms();
 	}
 
@@ -87,12 +87,17 @@ public class Flipper extends JPanel implements KeyListener {
 	public void keyTyped(KeyEvent k) {
 	}
 
-	public static void main(String input[]) {
-		JFrame f = new JFrame("Flipper");
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.setSize(600, 800);
-		f.setResizable(false);
-		f.getContentPane().add(new Flipper());
-		f.setVisible(true);
+	public Object getID() {
+		// TODO Auto-generated method stub
+		return null;
 	}
+
+//	public static void main(String input[]) {
+//		JFrame f = new JFrame("Flipper");
+//		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		f.setSize(600, 800);
+//		f.setResizable(false);
+//		f.getContentPane().add(new Flipper());
+//		f.setVisible(true);
+//	}
 }

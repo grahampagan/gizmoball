@@ -21,6 +21,7 @@ public class Model extends Observable {
 	private Square gridHighlight;
 	private boolean buildMode;
 
+	private ArrayList<Flipper> flippers;
 
 
 	public Model() throws IOException {
@@ -39,6 +40,8 @@ public class Model extends Observable {
 		mu = 0.001;
 		mu2 = 0.001;
 		buildMode = false;
+		
+		flippers=new ArrayList<Flipper>();
 	}
 	
 	private Ball moveBallForTime(Ball ball, double time){
@@ -226,6 +229,7 @@ public class Model extends Observable {
 		return circles;
 	}
 	
+		
 	public void addLine(Line l) {
 		lines.add(l);
 	}
@@ -266,6 +270,17 @@ public class Model extends Observable {
 		return triangles;
 	}
 	
+	
+	public void addFlipper(Flipper f){
+		flippers.add(f);
+		this.setChanged();
+		this.notifyObservers();
+	}
+	
+	public ArrayList<Flipper> getFLippers(){
+		return flippers;
+	}
+	
 	public boolean containsName(String id){
 		System.out.println(circles.isEmpty());
 		for (circle c : circles) {
@@ -283,6 +298,12 @@ public class Model extends Observable {
 		
 		for(Square s : squares){
 			if(s.getID().equals(id)){
+				return true;
+			}
+		}
+		
+		for(Flipper f: flippers){
+			if(f.getID().equals(id)){
 				return true;
 			}
 		}
