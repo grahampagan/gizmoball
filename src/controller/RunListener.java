@@ -139,7 +139,7 @@ public class RunListener implements ActionListener {
 				
 				case "Circle":							
 					if (!model.hasAtPosition(xPos, yPos)) {
-						String id = "C" + xPos + yPos;
+						String id = "C0" + xPos + "0" + yPos;
 						circle c = new circle(x + 12.5, y + 12.5, 12.5, id, xPos, yPos);
 
 						model.addCircle(c);
@@ -152,7 +152,7 @@ public class RunListener implements ActionListener {
 					
 				case "Square":
 					if (!model.hasAtPosition(xPos, yPos)) {
-						String id2 = "S" + xPos + yPos;
+						String id2 = "S0" + xPos + "0" + yPos;
 						Square s = new Square(x, y, 25, 25, id2, xPos, yPos);
 
 						model.addSquare(s);
@@ -164,7 +164,7 @@ public class RunListener implements ActionListener {
 					
 				case "Triangle":
 					if (!model.hasAtPosition(xPos, yPos)) {
-						String id3 = "T" + xPos + yPos;
+						String id3 = "T0" + xPos + "0" + yPos;
 						Triangle t = new Triangle(x, y, x2, y, x, y3, id3, xPos, yPos);
 
 						model.addTriangle(t);
