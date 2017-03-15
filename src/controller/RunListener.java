@@ -52,7 +52,6 @@ public class RunListener implements ActionListener {
 				System.exit(0);
 				break;
 			case "Load":
-//				System.out.println("not yet implemented");
 				try {
 					f.run();
 				} catch (IOException e1) {
@@ -60,10 +59,26 @@ public class RunListener implements ActionListener {
 					e1.printStackTrace();
 				}
 				break;
+			case "Load Model":
+				try {
+					f.run();
+				} catch (IOException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+				break;
 			case "Reload":
-//				System.out.println("not yet implemented");
 				try { 
 					model.clearBoard();
+					f.run();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				break;
+			case "Reload Model":
+				model.clearBoard();
+				try {
 					f.run();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
