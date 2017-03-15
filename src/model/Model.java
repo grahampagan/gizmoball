@@ -225,7 +225,6 @@ public class Model extends Observable {
 	public ArrayList<circle> getCircles() {
 		return circles;
 	}
-
 	
 	public void addLine(Line l) {
 		lines.add(l);
@@ -253,8 +252,6 @@ public class Model extends Observable {
 		return squares;
 	}
 
-
-	
 	public Absorber getAbsorber(){
 		return absorber;
 	}
@@ -268,7 +265,6 @@ public class Model extends Observable {
 	public ArrayList<Triangle> getTriangles(){
 		return triangles;
 	}
-	
 	
 	public boolean containsName(String id){
 		System.out.println(circles.isEmpty());

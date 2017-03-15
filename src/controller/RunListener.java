@@ -131,21 +131,27 @@ public class RunListener implements ActionListener {
 				switch(g){
 				
 				case "Circle":							
-					circle c = new circle(x + 12.5, y + 12.5, 12.5, "SOME ID", xPos, yPos);
+					
+					String id = "C" + xPos + yPos;
+					circle c = new circle(x + 12.5, y + 12.5, 12.5, id, xPos, yPos);
 					
 					model.addCircle(c);
 					System.out.println("added circle at " + xPos + " " + yPos);		
 					break;
 					
 				case "Square":
-					Square s = new Square(x, y, 25, 25, "SOME ID", xPos, yPos);
+					
+					String id2 = "S" + xPos + yPos;
+					Square s = new Square(x, y, 25, 25, id2, xPos, yPos);
 					
 					model.addSquare(s);
 					System.out.println("added square at " + xPos + " " + yPos);
 					break;
 					
 				case "Triangle":
-					Triangle t = new Triangle(x, y, x2, y, x, y3, "SOME ID", xPos, yPos);
+					
+					String id3 = "T" + xPos + yPos;
+					Triangle t = new Triangle(x, y, x2, y, x, y3, id3, xPos, yPos);
 					
 					model.addTriangle(t);
 					System.out.println("added triangle at " + xPos + " " + yPos);
