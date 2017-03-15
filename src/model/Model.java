@@ -36,7 +36,7 @@ public class Model extends Observable {
 //		gravity = 25;							//These are the values that 
 //		mu = 0.025;								//the game should be played at, but it doesn't work well.
 //		mu2 = 0.025;	
-		gravity = 100;
+		gravity = 0;
 		mu = 0.001;
 		mu2 = 0.001;
 		buildMode = false;
@@ -67,6 +67,7 @@ public class Model extends Observable {
 				b = moveBallForTime(b, moveTime);
 //				b.applyFriction(mu, mu2, moveTime);
 //				b.applyGravity(gravity, moveTime);
+				b.applyGravity(gravity);
 			} else {
 				// We've got a collision in tuc
 				b = moveBallForTime(b, tuc);
@@ -74,6 +75,7 @@ public class Model extends Observable {
 				b.setVelo(cd.getVelo());
 //				b.applyFriction(mu, mu2, tuc);
 //				b.applyGravity(gravity, tuc);
+				b.applyGravity(gravity);
 			}
 			
 
@@ -451,6 +453,8 @@ public class Model extends Observable {
 	
 	public void setGravity(double g){
 		gravity = g;
+		this.setChanged();
+		this.notifyObservers();
 	}
 	
 	public double getGraivty(){

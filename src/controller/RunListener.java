@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import javax.swing.JComboBox;
+import javax.swing.JTextField;
 import javax.swing.Timer;
 
 import model.FileParser;
@@ -24,10 +25,12 @@ public class RunListener implements ActionListener {
 	private Model model;
 	private FileParser f;
 	private JComboBox<String> gizmo;
+	private JTextField gravity;
 
-	public RunListener(Model m, JComboBox<String> g) {
+	public RunListener(Model m, JComboBox<String> g, JTextField grav) {
 		model = m;
 		gizmo = g;
+		gravity = grav;
 		timer = new Timer(50, this);
 		f = new FileParser(model);
 	}
@@ -165,8 +168,14 @@ public class RunListener implements ActionListener {
 					} else {
 						System.out.println("could not add triangle at " + xPos + " " + yPos);
 					}
-					break;
+					break;					
 				}
+			
+			case "Apply Gravity: ":
+				int grav = Integer.parseInt(gravity.getText());				
+				model.setGravity(grav);
+				break;
 			}
+		
 	}
 }

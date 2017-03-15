@@ -85,6 +85,13 @@ public class Ball implements gizmo {
 		this.setVelo(v);
 	}
 	
+	public void applyGravity(double g){
+		double x = this.getVelo().getX();
+		double y = this.getVelo().getY() + g;
+		Vect v = new Vect(x,y);
+		this.setVelo(v);
+	}
+	
 	public void applyFriction(double mu, double mu2, double time){
 		double friction = 1 - mu * time - mu2 * Math.abs(this.getVelo().length()) * time;
 

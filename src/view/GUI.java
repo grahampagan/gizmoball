@@ -41,6 +41,7 @@ public class GUI implements ActionListener {
 	private int absorberXEnd;
 	private int absorberYEnd;
 	private ArrayList<JButton> buildButtonsArray = new ArrayList<JButton>();
+	private JTextField gravInp;
 
 	private Board b;
 
@@ -49,8 +50,8 @@ public class GUI implements ActionListener {
 
 		String[] gizmos = {"Circle", "Square", "Triangle"};
 		gizmo = new JComboBox(gizmos);
-
-		l = new RunListener(mod, gizmo);
+		gravInp = new JTextField();
+		l = new RunListener(mod, gizmo, gravInp);
 		k = new KeyboardListener(mod);
 		b = new Board(500, 500, mod);
 	}
@@ -196,7 +197,7 @@ public class GUI implements ActionListener {
 		fricInput.add(yIn);
 		buildButtons.add(fricInput);
 
-		JButton gravityButton = new JButton("Gravity: ");
+		JButton gravityButton = new JButton("Apply Gravity: ");
 		gravityButton.addActionListener(l);
 		gravityButton.setMaximumSize(new Dimension(160, 160));
 		buildButtons.add(gravityButton);
@@ -204,8 +205,8 @@ public class GUI implements ActionListener {
 
 		JPanel gravInput = new JPanel();
 		gravInput.setLayout(new GridLayout(1, 1));
-		JTextField inp = new JTextField();
-		gravInput.add(inp);
+		gravInput.add(gravInp);
+		gravInp.setText("0");
 		buildButtons.add(gravInput);
 
 		JButton connectButton = new JButton("Connect");
