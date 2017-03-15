@@ -508,7 +508,7 @@ public class Model extends Observable {
 						int ox = c.getPositionX();
 						int oy = c.getPositionY();
 
-						circle c1 = new circle(x * 25, y * 25, 7, c.getID(), x, y);
+						circle c1 = new circle((x * 25) + 12.5, (y * 25) + 12.5, 12.5, c.getID(), x, y);
 						// delete(s.getID());
 						// addSquare(s1);
 						// squIte.remove();

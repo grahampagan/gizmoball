@@ -107,8 +107,8 @@ public class FileParser {
 				}else{
 					int x = Integer.parseInt(array1[2]);	//converts the x array position to the co-ordinates
 					int y = Integer.parseInt(array1[3]);	//converts the y array position to the co-ordinates
-					Circle a = new Circle((x*25)-12.5, (y*25)-12.5, 12.5);	//creates a new circle object for the underlying gizmo
-					circle c = new circle((x*25)-12.5, (y*25)-12.5, 12.5, array1[1], x, y);
+					Circle a = new Circle((x*25)+12.5, (y*25)+12.5, 12.5);	//creates a new circle object for the underlying gizmo
+					circle c = new circle((x*25)+12.5, (y*25)+12.5, 12.5, array1[1], x, y);
 					Board.addCircle(c);	//adds a new gizmo (creating it with the label) and adding it to the board
 					System.out.println("added gizmo at " + x + " " + y);
 				}

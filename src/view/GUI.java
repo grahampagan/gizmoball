@@ -263,6 +263,7 @@ public class GUI implements ActionListener {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(mod.getBuildMode()){
+					
 					double x = Math.floor(e.getX()/25);
 					double y = Math.floor(e.getY()/25);
 					System.out.println("x: " + x + " y: " + y);

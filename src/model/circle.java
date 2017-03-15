@@ -14,8 +14,8 @@ public class circle {
 	public circle(double x, double y, double r, String i, int xpos, int ypos) {
 		ID = i;
 		circle=new Circle(x,y,r);
-		x = xpos;
-		y= ypos;
+		this.x = xpos;
+		this.y = ypos;
 	}
 
 	public circle(Circle c){
