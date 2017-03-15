@@ -69,8 +69,7 @@ public  class Board extends JPanel implements Observer {
 		}
 		
 		//draw all the absorbers
-		Absorber a = gm.getAbsorber();
-	    if(a !=null){
+		for (Absorber a : gm.getAbsorbers()){
 	    	g.drawRect(a.getX(), a.getY(), a.getWidth(), a.getHeight());
 	    	g.fillRect(a.getX(), a.getY(), a.getWidth(), a.getHeight());
 	    }

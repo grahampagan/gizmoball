@@ -12,7 +12,7 @@ public class Model extends Observable {
 	private Ball b; 
 	private ArrayList<Line> lines;
 	private ArrayList<circle> circles;
-	private Absorber absorber;
+	private ArrayList<Absorber> absorbers;
 	private Walls walls; 
 	private ArrayList<Square> squares;
 	private ArrayList<Triangle> triangles;
@@ -31,7 +31,7 @@ public class Model extends Observable {
 		circles = new ArrayList<circle>();
 		squares = new ArrayList<Square>();
 		triangles = new ArrayList<Triangle>();
-		absorber = null;
+		absorbers = new ArrayList<Absorber>();
 		gridHighlight = new Square(0, 0, 25, 25, "GH", 0, 0);
 //		gravity = 25;							//These are the values that 
 //		mu = 0.025;								//the game should be played at, but it doesn't work well.
@@ -182,7 +182,7 @@ public class Model extends Observable {
 				}
 				
 				// Absorber collisions 
-				if (absorber != null) {
+				for (Absorber absorber: absorbers) {
 					if (absorber.getAbsorbed()){
 						b.setExactX(absorber.absorbCoor(b).getX());
 						b.setExactY(absorber.absorbCoor(b).getY());
@@ -245,7 +245,7 @@ public class Model extends Observable {
 	}
 	
 	public void addAbsorber(Absorber a){
-		absorber = a;
+		absorbers.add(a);
 		this.setChanged();
 		this.notifyObservers();
 	}
@@ -260,8 +260,8 @@ public class Model extends Observable {
 		return squares;
 	}
 
-	public Absorber getAbsorber(){
-		return absorber;
+	public ArrayList<Absorber> getAbsorbers(){
+		return absorbers;
 	}
 	
 	public void addTriangle(Triangle t){
@@ -618,7 +618,7 @@ public class Model extends Observable {
 	
 	public void clearBoard(){
 		b = null;
-		absorber = null;
+		absorbers.clear();
 		squares.clear();
 		circles.clear();
 		triangles.clear();

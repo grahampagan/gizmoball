@@ -1,6 +1,7 @@
 package controller;
 
 import java.awt.event.*;
+import java.util.ArrayList;
 
 import model.*;
 
@@ -15,10 +16,10 @@ public class KeyboardListener implements KeyListener {
 	@Override
 	public void keyPressed(KeyEvent k) {
 		if(k.getKeyCode()==KeyEvent.VK_R){
-//            System.out.println("YOOOO");
-            Absorber a = model.getAbsorber();
-            Ball b = model.getBall();
-            a.releaseBall(b);
+            for(Absorber a : model.getAbsorbers()){
+            	Ball b = model.getBall();
+            	a.releaseBall(b);
+            }
 		}	
 	}
 
