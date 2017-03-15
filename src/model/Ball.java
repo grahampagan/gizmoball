@@ -101,6 +101,17 @@ public class Ball implements gizmo {
 		
 		this.setVelo(v);
 	}
+	
+	public void applyFriction(double mu, double mu2){
+		double xFriction = 1 - (mu/100);
+		double yFriction = 1 - (mu2/100);
+		
+		double x = this.getVelo().getX() * xFriction;
+		double y = this.getVelo().getY() * yFriction;
+		Vect v = new Vect(x, y);
+		
+		this.setVelo(v);
+	}
 
 	@Override
 	public String getID() {

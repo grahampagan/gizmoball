@@ -32,7 +32,7 @@ public class RunGui {
 		model = m;
 
 		// RunListener catches all GUI events. In reality might have many listeners.
-		listener = new RunListener(m, null, null);
+		listener = new RunListener(m, null, null, null, null);
 		keyListener = new KeyboardListener(m);
 	}
 

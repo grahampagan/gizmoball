@@ -42,6 +42,8 @@ public class GUI implements ActionListener {
 	private int absorberYEnd;
 	private ArrayList<JButton> buildButtonsArray = new ArrayList<JButton>();
 	private JTextField gravInp;
+	private JTextField xFricIn;
+	private JTextField yFricIn;
 
 	private Board b;
 
@@ -51,7 +53,9 @@ public class GUI implements ActionListener {
 		String[] gizmos = {"Circle", "Square", "Triangle"};
 		gizmo = new JComboBox(gizmos);
 		gravInp = new JTextField();
-		l = new RunListener(mod, gizmo, gravInp);
+		xFricIn = new JTextField();
+		yFricIn = new JTextField();
+		l = new RunListener(mod, gizmo, gravInp, xFricIn, yFricIn);
 		k = new KeyboardListener(mod);
 		b = new Board(500, 500, mod);
 	}
@@ -183,7 +187,7 @@ public class GUI implements ActionListener {
 		buildButtons.add(clearBoardButton);
 		buildButtonsArray.add(clearBoardButton);
 
-		JButton frictionButton = new JButton("Friction: ");
+		JButton frictionButton = new JButton("Apply Friction: ");
 		frictionButton.addActionListener(l);
 		frictionButton.setMaximumSize(new Dimension(160, 160));
 		buildButtons.add(frictionButton);
@@ -191,10 +195,10 @@ public class GUI implements ActionListener {
 
 		JPanel fricInput = new JPanel();
 		fricInput.setLayout(new GridLayout(2, 1));
-		JTextField xIn = new JTextField();
-		JTextField yIn = new JTextField();
-		fricInput.add(xIn);
-		fricInput.add(yIn);
+		fricInput.add(xFricIn);
+		fricInput.add(yFricIn);
+		xFricIn.setText("0");
+		yFricIn.setText("0");
 		buildButtons.add(fricInput);
 
 		JButton gravityButton = new JButton("Apply Gravity: ");

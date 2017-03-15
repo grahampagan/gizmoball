@@ -26,11 +26,15 @@ public class RunListener implements ActionListener {
 	private FileParser f;
 	private JComboBox<String> gizmo;
 	private JTextField gravity;
+	private JTextField xFric;
+	private JTextField yFric;
 
-	public RunListener(Model m, JComboBox<String> g, JTextField grav) {
+	public RunListener(Model m, JComboBox<String> g, JTextField grav, JTextField xF, JTextField yF) {
 		model = m;
 		gizmo = g;
 		gravity = grav;
+		xFric = xF;
+		yFric = yF;
 		timer = new Timer(50, this);
 		f = new FileParser(model);
 	}
@@ -172,8 +176,15 @@ public class RunListener implements ActionListener {
 				}
 			
 			case "Apply Gravity: ":
-				int grav = Integer.parseInt(gravity.getText());				
+				double grav = Double.parseDouble(gravity.getText());				
 				model.setGravity(grav);
+				break;
+				
+			case "Apply Friction: ":
+				double xFr = Double.parseDouble(xFric.getText());
+				double yFr = Double.parseDouble(yFric.getText());
+				model.setMu(xFr);
+				model.setMu2(yFr);
 				break;
 			}
 		
