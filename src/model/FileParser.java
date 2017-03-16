@@ -31,7 +31,8 @@ public class FileParser {
 				}else{
 					int x = Integer.parseInt(array1[2]);	//converts the x array position to the co-ordinates
 					int y = Integer.parseInt(array1[3]);	//converts the y array position to the co-ordinates
-					Absorber a = new Absorber(x*25, y*25, 25, 25);	//creates a new square object for the underlying gizmo
+					String id = "A0" + x + "0" + y;
+					Absorber a = new Absorber(x*25, y*25, 25, 25, id);	//creates a new square object for the underlying gizmo
 					Board.addAbsorber(a);	//adds a new gizmo (creating it with the label) and adding it to the board
 				}
 

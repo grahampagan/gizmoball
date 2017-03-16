@@ -304,8 +304,7 @@ public class GUI implements ActionListener {
 					if(addingAbsorber){
 						System.out.println("Mouse dragged from x: " + x + " y: " + y);
 						absorberX = ((int)x)*25;
-						absorberY = ((int)y)*25;
-						
+						absorberY = ((int)y)*25;						
 					}
 					
 				}
@@ -318,37 +317,40 @@ public class GUI implements ActionListener {
 					double y = Math.floor(e.getY()/25);
 					if(addingAbsorber){
 						System.out.println("Mouse dragged to x: " + x + " y: " + y);
-						absorberXEnd = (((int)x)*25) + 25;
-						absorberYEnd = (((int)y)*25) + 25;
+						absorberXEnd = (((int)x)*25);
+						absorberYEnd = (((int)y)*25);
 
 						if(absorberX > absorberXEnd){
 							int oldX = absorberX;
 							absorberX = absorberXEnd;
-							absorberXEnd = oldX;
+							absorberXEnd = oldX + 25;
+						} else {
+							absorberXEnd += 25;
 						}
 
 						if(absorberY > absorberYEnd){
 							int oldY = absorberY;
 							absorberY = absorberYEnd;
-							absorberYEnd = oldY;
+							absorberYEnd = oldY + 25;
+						} else {
+							absorberYEnd += 25;
 						}
-
+						
+						System.out.println(absorberX + " " + absorberY + " " + absorberXEnd + " " + absorberYEnd);
+						
 						int width = absorberXEnd - absorberX;
 						int height = absorberYEnd - absorberY;
 						
-						if(width == 0){
-							width = 25;
+						System.out.println(absorberX + " " + absorberY + " " + width + " " + height);
+						String id = "A0" + absorberX + "0" + absorberY;
+						
+						if (!mod.hasInArea(absorberX, absorberY, absorberXEnd, absorberYEnd)) {
+							Absorber a = new Absorber(absorberX, absorberY, width, height, id);
+							mod.addAbsorber(a);
+						} else {
+							System.out.println("Could not add absorber.");
 						}
 						
-						if(height == 0){
-							height = 25;
-						}
-
-						System.out.println(absorberX + " " + absorberY + " " + width+ " " + height);
-
-						Absorber a = new Absorber(absorberX, absorberY, width, height);
-						mod.addAbsorber(a);
-
 						addingAbsorber = false;
 						for(JButton b: buildButtonsArray){
 							b.setEnabled(true);

@@ -334,9 +334,51 @@ public class Model extends Observable {
 				return true;
 			}
 		}
+		
+		for(Absorber a: absorbers){
+			int x = a.getX()/25;
+			int y = a.getY()/25;
+			int xEnd = x + a.getWidth()/25;
+			int yEnd = y + a.getHeight()/25;
+			
+			if(x <= parseInt && xEnd> parseInt && y<= parseInt2 && yEnd> parseInt2){
+				return true;
+			}
+		}
 
 		return false;
 
+	}
+	
+	public boolean hasInArea(int x, int y, int xEnd, int yEnd){
+		
+		int xPos = x/25;
+		int yPos = y/25;
+		int xEndPos = xEnd/25;
+		int yEndPos = yEnd/25;
+		
+		for (circle circle : circles) {
+			if (circle.getPositionX() >= xPos && circle.getPositionX() < xEndPos && circle.getPositionY() >= yPos && circle.getPositionY() < yEndPos){
+				return true;
+			}
+		}
+		
+		for(Triangle triangle : triangles){
+			if(triangle.getPositionX() >= xPos && triangle.getPositionX() < xEndPos && triangle.getPositionY() >= yPos && triangle.getPositionY() < yEndPos){
+				return true;
+			}
+		}
+		
+		for(Square s : squares){
+			if(s.getPositionX() >= xPos && s.getPositionX() < xEndPos && s.getPositionY() >= yPos && s.getPositionY() < yEndPos){
+				return true;
+			}
+		}
+		
+		for(Absorber a : absorbers){
+			//STILL TO DOOOOOOOOOOOOOOOOOOOOOO
+		}
+		return false;
 	}
 	
 	public void delete(String id){

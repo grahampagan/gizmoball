@@ -16,7 +16,7 @@ public class Absorber extends Observable  {
 	private String type;
 	private String ID;
 	
-	public Absorber(int x, int y, int w, int h) {
+	public Absorber(int x, int y, int w, int h, String id) {
 		xpos = x;
 		ypos = y;
 		width = w;
@@ -24,6 +24,7 @@ public class Absorber extends Observable  {
 		ls = new ArrayList();
 		cs = new ArrayList();
 		absorbed = false; 
+		ID = id;
 		
 		ls.add(new LineSegment(x, y + h, x + w, y + h));	//bottom
 		ls.add(new LineSegment(x, y, x, y + h));			//left
@@ -88,6 +89,10 @@ public class Absorber extends Observable  {
 	
 	public void setAbsorbed(boolean a){
 		absorbed = a;
+	}
+	
+	public String getID(){
+		return ID;
 	}
 
 }
