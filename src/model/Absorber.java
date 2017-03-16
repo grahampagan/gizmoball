@@ -118,6 +118,21 @@ public class Absorber extends Observable  {
 		}
 	}
 
+	public int getPositionX(){
+		return xpos/25;
+	}
+	
+	public int getPositionY(){
+		return ypos/25;
+	}
+	
+	public int getEndPositonX(){
+		return (xpos + width)/25;
+	}
+	
+	public int getEndPositionY(){
+		return (ypos + height)/25;
+	}
 
 }
 

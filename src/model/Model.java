@@ -728,9 +728,27 @@ public class Model extends Observable {
 	public void saveToFile(){
 		StringBuilder output = new StringBuilder();
 		String newLine = System.getProperty("line.separator");
+
+		for(Square s : squares){
+			output.append("Square " + s.getID() + " " + s.getPositionX() + " " + s.getPositionY() + newLine);
+		}
 		
-		output.append("testing" + newLine);
-		output.append("hi");
+		for(circle c : circles){
+			output.append("Circle " + c.getID() + " " + c.getPositionX() + " " + c.getPositionY() + newLine);
+		}
+		
+		for(Triangle t : triangles){
+			output.append("Triangle " + t.getID() + " " + t.getPositionX() + " " + t.getPositionY() + newLine);
+			if(t.getRotations() > 0){
+				for(int i = 1; i <= t.getRotations(); i++){
+					output.append("Rotate " + t.getID() + newLine);
+				}
+			}
+		}
+		
+		for(Absorber a : absorbers){
+			output.append("Absorber " + a.getID() + " " + a.getPositionX() + " " + a.getPositionY() + " " + a.getEndPositonX() + " " + a.getEndPositionY() + newLine);
+		}
 		
 		String userdir = System.getProperty("user.dir");
 	    JFileChooser chooser = new JFileChooser(userdir +"\\SavedModels");
