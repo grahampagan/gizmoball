@@ -407,23 +407,13 @@ public class Model extends Observable {
 		      }
 		}
 		
-//		for (circle circle : circles) {
-//			if (circle.getID().equals(id)){
-//				circles.remove(circle);
-//			}
-//		}
-//		
-//		for(Triangle triangle : triangles){
-//			if(triangle.getID().equals(id)){
-//				triangles.remove(triangle);
-//			}
-//		}
-//		
-//		for(Square s : squares){
-//			if(s.getID().equals(id)){
-//				squares.remove(s);
-//			}
-//		}
+		Iterator<Absorber> absorberIter = absorbers.iterator();
+		while(absorberIter.hasNext()){
+			Absorber a = absorberIter.next();
+		      if(a.getID().equals(id)) {
+		        absorberIter.remove();
+		      }
+		}
 
 	}
 	
@@ -549,6 +539,17 @@ public class Model extends Observable {
 			for(Square s : squares){
 				if(s.getPositionX() == x && s.getPositionY() == y){
 					r = s.getID();
+				}
+			}
+			
+			for (Absorber a : absorbers) {
+				int xStart = a.getX()/25;
+				int yStart = a.getY()/25;
+				int xEnd = x + a.getWidth()/25;
+				int yEnd = y + a.getHeight()/25;
+				
+				if(xStart <= x && xEnd> x && yStart<= y && yEnd> y){
+					r = a.getID();
 				}
 			}
 		}

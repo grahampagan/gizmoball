@@ -341,8 +341,7 @@ public class GUI implements ActionListener {
 						int width = absorberXEnd - absorberX;
 						int height = absorberYEnd - absorberY;
 						
-						System.out.println(absorberX + " " + absorberY + " " + width + " " + height);
-						String id = "A0" + absorberX + "0" + absorberY;
+						String id = "A" + absorberX/25 + "x" + absorberY/25;
 						
 						if (!mod.hasInArea(absorberX, absorberY, absorberXEnd, absorberYEnd)) {
 							Absorber a = new Absorber(absorberX, absorberY, width, height, id);
