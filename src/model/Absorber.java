@@ -107,6 +107,16 @@ public class Absorber extends Observable  {
 	public void clearConnected(){
 		connectedID = "";
 	}
+	
+	public boolean isConnected(){
+		String clear = "";
+		
+		if(connectedID.equals(clear)){
+			return false;
+		}else{
+			return true;
+		}
+	}
 
 
 }

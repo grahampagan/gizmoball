@@ -136,4 +136,15 @@ public class Square {
 	public void setConnected(String a){
 		connectedID = a;
 	}
+	
+	public boolean isConnected(){
+		String clear = "";
+		
+		if(connectedID.equals(clear)){
+			return false;
+		}else{
+			return true;
+		}
+	}
+
 }

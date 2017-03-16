@@ -109,6 +109,17 @@ public class Flipper extends JPanel implements KeyListener {
 	public void clearConnected(){
 		connectedID = "";
 	}
+	
+	public boolean isConnected(){
+		String clear = "";
+		
+		if(connectedID.equals(clear)){
+			return false;
+		}else{
+			return true;
+		}
+	}
+
 
 //	public static void main(String input[]) {
 //		JFrame f = new JFrame("Flipper");
