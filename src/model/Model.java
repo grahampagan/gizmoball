@@ -1,9 +1,13 @@
 package model;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Observable;
+
+import javax.swing.JFileChooser;
 
 import physics.*;
 
@@ -719,6 +723,25 @@ public class Model extends Observable {
 			}
 		}
 		return false;
+	}
+	
+	public void saveToFile(){
+		StringBuilder output = new StringBuilder();
+		String newLine = System.getProperty("line.separator");
+		
+		output.append("testing" + newLine);
+		output.append("hi");
+		
+		String userdir = System.getProperty("user.dir");
+	    JFileChooser chooser = new JFileChooser(userdir +"\\SavedModels");
+	    int retrival = chooser.showSaveDialog(null);
+	    if (retrival == JFileChooser.APPROVE_OPTION) {
+	    	try (FileWriter fw = new FileWriter(chooser.getSelectedFile()+".txt")) {
+	    	    fw.write(output.toString());
+	    	} catch (Exception ex) {
+	            ex.printStackTrace();
+	        }
+	    }
 	}
 
 	}

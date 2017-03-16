@@ -93,6 +93,7 @@ public class RunListener implements ActionListener {
 				}
 				break;
 			case "Clear board":
+				model.saveToFile();
 				model.clearBoard();
 				break;
 			case "Rotate":
