@@ -18,19 +18,27 @@ public class Flipper extends JPanel implements KeyListener {
 	private Rectangle rect;
 	private String ID;
 	private String connectedID;
+	private int xpos;
+	private int ypos;
+	
+	private int xboardpos;
+	private int yboardpos;
 
 	private int rotation = 0;
 	AffineTransform transform;
 	AffineTransform rotationTransform;
 	AffineTransform translateTransform;
 
-	public Flipper(String id) {
+	//public Flipper(String id,int x,int y) {
+	public Flipper(int x,int y) {
+		xpos = x;
+		ypos = y;
 	//	setPreferredSize(new Dimension(800, 600));
 	//	setFocusable(true);
 
-	//	init();
+		init();
 		updateTransforms();
-		ID = id;
+		//ID = id;
 		
 	}
 
@@ -118,6 +126,16 @@ public class Flipper extends JPanel implements KeyListener {
 		}else{
 			return true;
 		}
+	}
+
+	public static int getPositionX() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public static int getPositionY() {
+		// TODO Auto-generated method stub
+				return 0;
 	}
 
 

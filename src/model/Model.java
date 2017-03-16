@@ -351,6 +351,12 @@ public class Model extends Observable {
 			}
 		}
 		
+		for (Flipper f : flippers) {
+			if (Flipper.getPositionX()==parseInt && Flipper.getPositionY()==parseInt2){
+				return true;
+			}
+		}
+		
 		for(Absorber a: absorbers){
 			int x = a.getX()/25;
 			int y = a.getY()/25;
