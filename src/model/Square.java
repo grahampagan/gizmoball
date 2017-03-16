@@ -34,6 +34,7 @@ public class Square {
 	ArrayList<LineSegment> ls;
 	ArrayList<Circle> cs;
 	private String ID;
+	private String connectedID;
 	
 	private int xboardpos;
 	private int yboardpos;
@@ -127,5 +128,12 @@ public class Square {
 	public void setPositionY(int y) {
 		yboardpos = y;
 	}
-
+	
+	public String getConnected(){
+		return connectedID;
+	}
+	
+	public void setConnected(String a){
+		connectedID = a;
+	}
 }

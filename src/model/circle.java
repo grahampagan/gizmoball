@@ -10,6 +10,7 @@ public class circle {
 	private String ID;
 	int x;
 	int y;
+	private String connectedID;
 
 	public circle(double x, double y, double r, String i, int xpos, int ypos) {
 		ID = i;
@@ -36,6 +37,18 @@ public class circle {
 	
 	public int getPositionY(){
 		return y;
+	}
+	
+	public String getConnected(){
+		return connectedID;
+	}
+	
+	public void setConnected(String a){
+		connectedID = a;
+	}
+	
+	public void clearConnected(){
+		connectedID = "";
 	}
 
 }

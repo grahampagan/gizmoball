@@ -15,6 +15,7 @@ public class Absorber extends Observable  {
 	private boolean absorbed;
 	private String type;
 	private String ID;
+	private String connectedID;
 	
 	public Absorber(int x, int y, int w, int h, String id) {
 		xpos = x;
@@ -94,6 +95,19 @@ public class Absorber extends Observable  {
 	public String getID(){
 		return ID;
 	}
+	
+	public String getConnected(){
+		return connectedID;
+	}
+	
+	public void setConnected(String a){
+		connectedID = a;
+	}
+	
+	public void clearConnected(){
+		connectedID = "";
+	}
+
 
 }
 

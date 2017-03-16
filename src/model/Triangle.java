@@ -24,6 +24,7 @@ public class Triangle {
 	ArrayList<Circle> cs;
 	
 	String ID;
+	String connectedID;
 	
 	public Triangle(int x1, int y1, int x2, int y2, int x3, int y3, String i, int xpos, int ypos){
 		
@@ -153,6 +154,16 @@ public void incrementRotations(){
 	rotations++;
 }
 
+public String getConnected(){
+	return connectedID;
+}
 
+public void setConnected(String a){
+	connectedID = a;
+}
+
+public void clearConnected(){
+	connectedID = "";
+}
 
 }
