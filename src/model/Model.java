@@ -135,7 +135,9 @@ public class Model extends Observable {
 					if (time < shortestTime) {
 						shortestTime = time;
 						newVelo = Geometry.reflectCircle(c.getCenter(), b.getCenter(), b.getVelo());
-						triggerCircle(circle.getID());
+						if(circle.isConnected()){
+							triggerCircle(circle.getConnected());
+						}
 					}
 				}
 				
@@ -146,14 +148,18 @@ public class Model extends Observable {
 						if (time < shortestTime) {
 							shortestTime = time;
 							newVelo = Geometry.reflectWall(line, b.getVelo(), 1.0);
-							triggerTriangle(triangle.getID());
+							if(triangle.isConnected()){
+								triggerTriangle(triangle.getConnected());
+							}
 					}
 					for (Circle c : triangle.getCircles()){
 						time = Geometry.timeUntilCircleCollision(c, ballCircle, ballVelocity);
 						if (time < shortestTime) {
 							shortestTime = time;
 							newVelo = Geometry.reflectCircle(c.getCenter(), b.getCenter(), b.getVelo());
-							triggerTriangle(triangle.getID());
+							if(triangle.isConnected()){
+								triggerTriangle(triangle.getConnected());
+							}
 						}
 					}
 				}
@@ -173,7 +179,9 @@ public class Model extends Observable {
 					if (time < shortestTime) {
 						shortestTime = time;
 						newVelo = Geometry.reflectWall(line, b.getVelo(), 1.0);
-						triggerSquare(s.getID());
+						if(s.isConnected()){
+							triggerSquare(s.getConnected());
+						}
 
 					}
 				}
@@ -182,7 +190,9 @@ public class Model extends Observable {
 					if (time < shortestTime) {
 						shortestTime = time;
 						newVelo = Geometry.reflectCircle(c.getCenter(), b.getCenter(), b.getVelo());
-						triggerSquare(s.getID());
+						if(s.isConnected()){
+							triggerSquare(s.getConnected());
+						}
 					}
 				}
 				}

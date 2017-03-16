@@ -48,6 +48,7 @@ public class Square {
 		ls = new ArrayList();
 		cs = new ArrayList();
 		ID = i;
+		connectedID = "";
 
 		triggered = false;
 		
@@ -142,7 +143,6 @@ public class Square {
 	
 	public boolean isConnected(){
 		String clear = "";
-		
 		if(connectedID.equals(clear)){
 			return false;
 		}else{

@@ -19,6 +19,7 @@ public class circle {
 		this.x = xpos;
 		this.y = ypos;
 		triggered=false;
+		connectedID = "";
 	}
 
 	public circle(Circle c){

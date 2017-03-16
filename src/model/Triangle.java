@@ -54,6 +54,8 @@ public class Triangle {
 		cs.add(new Circle(x3, y3, 0));
 		
 		triggered = false;
+		connectedID = "";
+
 	}
 
 
