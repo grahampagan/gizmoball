@@ -26,6 +26,8 @@ public class Triangle {
 	String ID;
 	String connectedID;
 	
+	private boolean triggered;
+	
 	public Triangle(int x1, int y1, int x2, int y2, int x3, int y3, String i, int xpos, int ypos){
 		
 		ID = i;
@@ -50,6 +52,8 @@ public class Triangle {
 		cs.add(new Circle(x1, y1, 0));
 		cs.add(new Circle(x2, y2, 0));
 		cs.add(new Circle(x3, y3, 0));
+		
+		triggered = false;
 	}
 
 
@@ -175,5 +179,14 @@ public boolean isConnected(){
 		return true;
 	}
 }
+
+public void trigger(){
+	triggered = true;
+}
+
+public void unTrigger(){
+	triggered = false;
+}
+
 
 }

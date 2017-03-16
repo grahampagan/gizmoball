@@ -11,12 +11,14 @@ public class circle {
 	int x;
 	int y;
 	private String connectedID;
+	private boolean triggered;
 
 	public circle(double x, double y, double r, String i, int xpos, int ypos) {
 		ID = i;
 		circle=new Circle(x,y,r);
 		this.x = xpos;
 		this.y = ypos;
+		triggered=false;
 	}
 
 	public circle(Circle c){
@@ -61,4 +63,11 @@ public class circle {
 		}
 	}
 
+	public void trigger(){
+		triggered = true;
+	}
+	
+	public void unTrigger(){
+		triggered = false;
+	}
 }

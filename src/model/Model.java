@@ -135,6 +135,7 @@ public class Model extends Observable {
 					if (time < shortestTime) {
 						shortestTime = time;
 						newVelo = Geometry.reflectCircle(c.getCenter(), b.getCenter(), b.getVelo());
+						triggerCircle(circle.getID());
 					}
 				}
 				
@@ -145,12 +146,14 @@ public class Model extends Observable {
 						if (time < shortestTime) {
 							shortestTime = time;
 							newVelo = Geometry.reflectWall(line, b.getVelo(), 1.0);
+							triggerTriangle(triangle.getID());
 					}
 					for (Circle c : triangle.getCircles()){
 						time = Geometry.timeUntilCircleCollision(c, ballCircle, ballVelocity);
 						if (time < shortestTime) {
 							shortestTime = time;
 							newVelo = Geometry.reflectCircle(c.getCenter(), b.getCenter(), b.getVelo());
+							triggerTriangle(triangle.getID());
 						}
 					}
 				}
@@ -170,6 +173,8 @@ public class Model extends Observable {
 					if (time < shortestTime) {
 						shortestTime = time;
 						newVelo = Geometry.reflectWall(line, b.getVelo(), 1.0);
+						triggerSquare(s.getID());
+
 					}
 				}
 				for (Circle c : s.getCircles()){
@@ -177,6 +182,7 @@ public class Model extends Observable {
 					if (time < shortestTime) {
 						shortestTime = time;
 						newVelo = Geometry.reflectCircle(c.getCenter(), b.getCenter(), b.getVelo());
+						triggerSquare(s.getID());
 					}
 				}
 				}
@@ -195,7 +201,7 @@ public class Model extends Observable {
 					time = Geometry.timeUntilWallCollision(line, ballCircle, ballVelocity);
 					if (time <= 0.05){
 						shortestTime = time;
-						absorber.setAbsorbed(true);					
+						absorber.setAbsorbed(true);	
 					}
 					else if (time < shortestTime){
 						shortestTime = time;
@@ -668,6 +674,37 @@ public class Model extends Observable {
 		this.setChanged();
 		this.notifyObservers();
 	}
+	
+	public boolean triggerTriangle(String id){
+		for(Triangle triangle : triangles){
+			if(triangle.getID().equals(id)){
+				triangle.trigger();
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean triggerSquare(String id){
+		for(Square square: squares){
+			if(square.getID().equals(id)){
+				square.trigger();
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean triggerCircle(String id){
+		for(circle circle: circles){
+			if(circle.getID().equals(id)){
+				circle.trigger();
+				return true;
+			}
+		}
+		return false;
+	}
+
 	}
 
 	

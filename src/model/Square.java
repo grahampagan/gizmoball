@@ -35,6 +35,7 @@ public class Square {
 	ArrayList<Circle> cs;
 	private String ID;
 	private String connectedID;
+	private boolean triggered;
 	
 	private int xboardpos;
 	private int yboardpos;
@@ -48,6 +49,8 @@ public class Square {
 		cs = new ArrayList();
 		ID = i;
 
+		triggered = false;
+		
 		xboardpos = j;
 		yboardpos=k;
 		ls.add(new LineSegment(x, y + h, x + w, y + h));	//bottom
@@ -146,5 +149,14 @@ public class Square {
 			return true;
 		}
 	}
+	
+	public void trigger(){
+		triggered = true;
+	}
+	
+	public void unTrigger(){
+		triggered = false;
+	}
+
 
 }
