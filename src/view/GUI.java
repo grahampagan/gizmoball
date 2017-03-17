@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import model.Absorber;
+import model.Ball;
 import model.Model;
 import controller.*;
 
@@ -34,6 +35,7 @@ public class GUI implements ActionListener {
 	private JComboBox<String> gizmo;
 	private boolean addingAbsorber = false;
 	private boolean moving = false;
+	private boolean addingBall = false;
 	private int fx;
 	private int fy;
 	private int absorberX;
@@ -129,7 +131,7 @@ public class GUI implements ActionListener {
 		buildButtons.add(gizmo);
 
 		JButton addBallButton = new JButton("Add Ball: ");
-		addBallButton.addActionListener(l);
+		addBallButton.addActionListener(this);
 		addBallButton.setMaximumSize(new Dimension(160, 160));
 		buildButtons.add(addBallButton);
 		buildButtonsArray.add(addBallButton);
@@ -288,6 +290,16 @@ public class GUI implements ActionListener {
 						}
 						moving = false;
 					}
+					if (addingBall) {
+						double xm = Math.floor(e.getX());
+						double ym = Math.floor(e.getY());
+
+						Ball b = new Ball(xm, ym, 200, 200, "B1");
+						mod.setBall(b);
+						mod.notifyObs();
+
+						addingBall = false;
+					}
 				}
 			}
 
@@ -431,6 +443,10 @@ public class GUI implements ActionListener {
 				fy = mod.getGridHighlight().getPositionY();
 				
 				moving = true;
+				break;
+			case "Add Ball: ":
+				System.out.println("add ball pressed");
+				addingBall = true;
 				break;
 		}
 	}

@@ -240,6 +240,8 @@ public class Model extends Observable {
 	public Ball getBall(){
 		return b;
 	}
+
+	public void setBall(Ball b) {this.b = b; }
 	
 	public void setBallSpeed(int x, int y){
 		b.setVelo(new Vect(x, y));

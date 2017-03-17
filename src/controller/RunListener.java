@@ -92,8 +92,10 @@ public class RunListener implements ActionListener {
 					e1.printStackTrace();
 				}
 				break;
-			case "Clear board":
+			case "Save Model":
 				model.saveToFile();
+				break;
+			case "Clear board":
 				model.clearBoard();
 				break;
 			case "Rotate":
