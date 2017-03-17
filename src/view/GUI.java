@@ -405,7 +405,7 @@ public class GUI implements ActionListener {
 		disconnectButton.setFocusable(false);
 		keyConnectButton.setFocusable(false);
 		keyDisconnectButton.setFocusable(false);
-		saveModelButton.setFocusable(false);
+		loadModelButton.setFocusable(false);
 		saveModelButton.setFocusable(false);
 		reloadModelButton.setFocusable(false);
 		quitBuildButton.setFocusable(false);

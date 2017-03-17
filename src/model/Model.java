@@ -328,11 +328,11 @@ public class Model extends Observable {
 			}
 		}
 		
-		for(Flipper f: flippers){
-			if(f.getID().equals(id)){
-				return true;
-			}
-		}
+//		for(Flipper f: flippers){
+//			if(f.getID().equals(id)){
+//				return true;
+//			}
+//		}
 
 		return false;
 
