@@ -148,9 +148,6 @@ public class GUI implements ActionListener {
 		buildButtons.add(addAbsorberButton);
 		buildButtonsArray.add(addAbsorberButton);
 
-		JPanel empty = new JPanel();
-		buildButtons.add(empty);
-
 		JButton AddLeftFlipperButton = new JButton("Add Left Flipper");
 		AddLeftFlipperButton.addActionListener(l);
 		AddLeftFlipperButton.setMaximumSize(new Dimension(160, 160));
@@ -242,6 +239,12 @@ public class GUI implements ActionListener {
 		loadModelButton.setMaximumSize(new Dimension(160, 160));
 		buildButtons.add(loadModelButton);
 		buildButtonsArray.add(loadModelButton);
+
+		JButton saveModelButton = new JButton("Save Model");
+		saveModelButton.addActionListener(l);
+		saveModelButton.setMaximumSize(new Dimension(160, 160));
+		buildButtons.add(saveModelButton);
+		buildButtonsArray.add(saveModelButton);
 
 		JButton reloadModelButton = new JButton("Reload Model");
 		reloadModelButton.addActionListener(l);
@@ -390,11 +393,12 @@ public class GUI implements ActionListener {
 		disconnectButton.setFocusable(false);
 		keyConnectButton.setFocusable(false);
 		keyDisconnectButton.setFocusable(false);
-		loadModelButton.setFocusable(false);
+		saveModelButton.setFocusable(false);
+		saveModelButton.setFocusable(false);
 		reloadModelButton.setFocusable(false);
 		quitBuildButton.setFocusable(false);
 		runModeButton.setFocusable(false);
-		empty.setFocusable(false);
+
 	}
 
 	@Override

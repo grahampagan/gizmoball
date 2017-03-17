@@ -1,7 +1,11 @@
 package main;
 
 import model.*;
+import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class MainTesting {
@@ -13,6 +17,9 @@ public class MainTesting {
 	//RUN MODE TESTS
 	
 	Model b = new Model();
+
+	public MainTesting() throws IOException {
+	}
 
 	@Test
 	public void testAddSquare() {
@@ -61,7 +68,7 @@ public class MainTesting {
 	@Test
 	public void testAddFlipper(){
 		//add a flipper to the board
-		Flipper f = new Flipper();
+//		Flipper f = new Flipper();
 		//b.addFlipper(f);
 		//assertEquals(b.containsName("f"), true);
 		
@@ -112,7 +119,7 @@ public class MainTesting {
 		b.addTriangle(t);
 		
 		b.clearBoard();
-		
+
 		assertEquals((b.containsName("s")||b.containsName("tri")), false);
 		
 	}
