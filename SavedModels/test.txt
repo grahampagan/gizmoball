@@ -1,0 +1,23 @@
+Square S17x5 17 5
+Square S11x9 11 9
+Square S5x6 5 6
+Square S1x10 1 10
+Square S15x9 15 9
+Circle C14x7 14 7
+Circle C7x10 7 10
+Circle C2x6 2 6
+Triangle T0x14 0 14
+Rotate T0x14
+Rotate T0x14
+Rotate T0x14
+Triangle T19x14 19 14
+Rotate T19x14
+Rotate T19x14
+Triangle T19x0 19 0
+Rotate T19x0
+Rotate T19x0
+Rotate T19x0
+Rotate T19x0
+Rotate T19x0
+Triangle T1x0 1 0
+Absorber A0x19 0 19 20 20

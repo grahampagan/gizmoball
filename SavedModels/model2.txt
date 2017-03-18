@@ -1,0 +1,4 @@
+Square S15x4 15 4
+Circle C6x6 6 6
+Triangle T13x11 13 11
+Absorber A4x16 4 16 18 17
