@@ -66,6 +66,7 @@ public class RunListener implements ActionListener {
 			case "Load":
 				try {
 					f.run();
+					f.setFileLoaded(true);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -74,6 +75,7 @@ public class RunListener implements ActionListener {
 			case "Load Model":
 				try {
 					f.run();
+					f.setFileLoaded(true);
 				} catch (IOException e2) {
 					// TODO Auto-generated catch block
 					e2.printStackTrace();
