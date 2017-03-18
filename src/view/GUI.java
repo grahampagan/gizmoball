@@ -140,6 +140,8 @@ public class GUI implements ActionListener {
 		ballInput.setLayout(new GridLayout(2, 1));
 		JTextField xCoord = new JTextField();
 		JTextField yCoord = new JTextField();
+		xCoord.setText("200");
+		yCoord.setText(("200"));
 		ballInput.add(xCoord);
 		ballInput.add(yCoord);
 		buildButtons.add(ballInput);
@@ -295,13 +297,6 @@ public class GUI implements ActionListener {
 						double ym = Math.floor(e.getY()/25);
 						double xv = Double.parseDouble(xCoord.getText());
 						double yv = Double.parseDouble(yCoord.getText());
-
-						if(xv == 0) {
-							xv = 200;
-						}
-						if(yv == 0) {
-							yv = 200;
-						}
 
 						Ball b = new Ball((xm * 25) + 12.5, (ym * 25) + 12.5, xv, yv, "B1");
 						mod.setBall(b);
