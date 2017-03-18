@@ -30,8 +30,11 @@ public class Model extends Observable {
 
 	private ArrayList<Flipper> flippers;
 
-
-	public Model() throws IOException {
+	//**********************************
+	//used to be a throws IOException here
+	//but had to remove to do testing 
+	//will replace later on
+	public Model(){
 //		b = new Ball(335, 25, 100, 100, "ball1");
 
 		walls = new Walls(0, 0, 500, 500);
