@@ -32,7 +32,8 @@ public class Model extends Observable {
 
 
 	public Model() throws IOException {
-		b = new Ball(335, 25, 100, 100, "ball1");
+//		b = new Ball(335, 25, 100, 100, "ball1");
+
 		walls = new Walls(0, 0, 500, 500);
 		lines = new ArrayList<Line>();
 		circles = new ArrayList<circle>();
@@ -739,6 +740,8 @@ public class Model extends Observable {
 	public void saveToFile(){
 		StringBuilder output = new StringBuilder();
 		String newLine = System.getProperty("line.separator");
+
+		output.append("Ball " + b.getID() + " " + b.getExactX() + " " + b.getExactY() + " " + b.getVelo().getX() + " " + b.getVelo().getY() + newLine);
 
 		for(Square s : squares){
 			output.append("Square " + s.getID() + " " + s.getPositionX() + " " + s.getPositionY() + newLine);

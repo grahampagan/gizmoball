@@ -35,7 +35,7 @@ public class Main {
 //		
 //		model = f.run();
 
-		model.setBallSpeed(200, 200);
+//		model.setBallSpeed(200, 200);
 
 		// Vertical line at (100,100), width 300
 //		model.addLine(new Line(100, 100, 300));

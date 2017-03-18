@@ -1,3 +1,5 @@
+Ball ball1 335.0 25.0 100.0 100.0
+
 Triangle T 19 0
 Rotate T
 Triangle T2 1 1
