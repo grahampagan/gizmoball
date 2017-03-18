@@ -2,6 +2,7 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javax.swing.JComboBox;
@@ -36,7 +37,11 @@ public class RunListener implements ActionListener {
 		xFric = xF;
 		yFric = yF;
 		timer = new Timer(50, this);
-		f = new FileParser(model);
+		try {
+			f = new FileParser(model);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
