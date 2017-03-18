@@ -291,10 +291,10 @@ public class GUI implements ActionListener {
 						moving = false;
 					}
 					if (addingBall) {
-						double xm = Math.floor(e.getX());
-						double ym = Math.floor(e.getY());
+						double xm = Math.floor(e.getX()/25);
+						double ym = Math.floor(e.getY()/25);
 
-						Ball b = new Ball(xm, ym, 200, 200, "B1");
+						Ball b = new Ball((xm * 25) + 12.5, (ym * 25) + 12.5, 200, 200, "B1");
 						mod.setBall(b);
 						mod.notifyObs();
 
