@@ -1,5 +1,6 @@
 package model;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Observable;
 
@@ -16,6 +17,7 @@ public class Absorber extends Observable  {
 	private String type;
 	private String ID;
 	private String connectedID;
+	private Color colour;
 	
 	public Absorber(int x, int y, int w, int h, String id) {
 		xpos = x;
@@ -26,6 +28,7 @@ public class Absorber extends Observable  {
 		cs = new ArrayList();
 		absorbed = false; 
 		ID = id;
+		colour = new Color(152, 2, 252);
 		
 		ls.add(new LineSegment(x, y + h, x + w, y + h));	//bottom
 		ls.add(new LineSegment(x, y, x, y + h));			//left
@@ -46,6 +49,8 @@ public class Absorber extends Observable  {
 	public ArrayList<Circle> getCircles() {
 		return cs;
 	}
+
+	public Color getColour() { return colour; }
 
 	public int getX() {
 		return xpos;

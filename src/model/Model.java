@@ -1,5 +1,6 @@
 package model;
 
+import java.awt.*;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -24,6 +25,8 @@ public class Model extends Observable {
 	private double mu, mu2;
 	private Square gridHighlight;
 	private boolean buildMode;
+	private Color gridHighlightColour;
+	private Color boardBackgroundColour;
 
 	private ArrayList<Flipper> flippers;
 
@@ -44,9 +47,15 @@ public class Model extends Observable {
 		mu = 0;
 		mu2 = 0;
 		buildMode = false;
+		gridHighlightColour = Color.RED;
+		boardBackgroundColour = Color.GRAY;
 		
 		flippers=new ArrayList<Flipper>();
 	}
+
+	public Color getGridHighlightColour() { return gridHighlightColour; }
+
+	public Color getBoardBackgroundColour() { return boardBackgroundColour; }
 	
 	private Ball moveBallForTime(Ball ball, double time){
 		double newX = 0.0;

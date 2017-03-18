@@ -34,6 +34,8 @@ public  class Board extends JPanel implements Observer {
 		height = h;
 		gm = m;
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
+		this.setBackground(gm.getBoardBackgroundColour());
+
 	}
 
 	// Fix onscreen size
@@ -54,6 +56,7 @@ public  class Board extends JPanel implements Observer {
 		
 		// Draw all the squares
 		for (Square s : gm.getSquares()) {
+			g2.setColor(s.getColour());
 			g2.drawRect(s.getX(), s.getY(), s.getWidth(), s.getHeight());
 			g2.fillRect(s.getX(), s.getY(), s.getWidth(), s.getHeight());
 
@@ -61,6 +64,7 @@ public  class Board extends JPanel implements Observer {
 
 		//draw all the circles
 		for (circle c : gm.getCircles()) {
+			g2.setColor(c.getColour());
 			Circle circle = c.getCircle();
 			double x = circle.getCenter().getX()-(circle.getRadius());
 			double y = circle.getCenter().getY()-(circle.getRadius());
@@ -70,13 +74,15 @@ public  class Board extends JPanel implements Observer {
 		
 		//draw all the absorbers
 		for (Absorber a : gm.getAbsorbers()){
-	    	g.drawRect(a.getX(), a.getY(), a.getWidth(), a.getHeight());
+	    	g.setColor(a.getColour());
+			g.drawRect(a.getX(), a.getY(), a.getWidth(), a.getHeight());
 	    	g.fillRect(a.getX(), a.getY(), a.getWidth(), a.getHeight());
 	    }
 	    
 	    //draw all the triangles
 	    for(Triangle t : gm.getTriangles()){
 	    	if(t!=null){
+	    		g.setColor(t.getColour());
 	    		g.drawPolygon(t.getXPoints(), t.getYPoints(), 3);
 	    		g.fillPolygon(t.getXPoints(), t.getYPoints(), 3);
 	    	}
@@ -85,6 +91,7 @@ public  class Board extends JPanel implements Observer {
 	    //draw grid highlight
 	    if(gm.getBuildMode()){
 	    	Square gh = gm.getGridHighlight();
+	    	g.setColor(gm.getGridHighlightColour());
 	    	g.drawRect(gh.getX(), gh.getY(), gh.getWidth(), gh.getHeight());
 	    }
 		

@@ -1,5 +1,6 @@
 package model;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 import physics.LineSegment;
@@ -17,6 +18,8 @@ public class Triangle {
 	
 	private int xboardpos;
 	private int yboardpos;
+
+	private Color colour;
 
 	private int rotations;
 	
@@ -36,6 +39,7 @@ public class Triangle {
 		ls = new ArrayList<>();
 		cs = new ArrayList<>();
 		rotations = 0;
+		colour = new Color(1, 145, 18);
 		
 		xPos1 = x1;
 		xPos2 = x2;
@@ -66,6 +70,8 @@ public ArrayList<LineSegment> getLineSeg(){
 public ArrayList<Circle> getCircles() {
 	return cs;
 }
+
+public Color getColour() { return colour; }
 
 public int getx1(){
 	return xPos1;

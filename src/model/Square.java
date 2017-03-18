@@ -1,5 +1,6 @@
 package model;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 import physics.*;
@@ -36,7 +37,7 @@ public class Square {
 	private String ID;
 	private String connectedID;
 	private boolean triggered;
-	
+	private Color colour;
 	private int xboardpos;
 	private int yboardpos;
 
@@ -49,6 +50,7 @@ public class Square {
 		cs = new ArrayList();
 		ID = i;
 		connectedID = "";
+		colour = new Color(2, 98, 252);
 
 		triggered = false;
 		
@@ -65,6 +67,8 @@ public class Square {
 		cs.add(new Circle(x + w, y + h, 0));	//bottom right
 		
 	}
+
+	public Color getColour() { return colour; }
 
 	public ArrayList<LineSegment> getLineSeg() {
 		return ls;

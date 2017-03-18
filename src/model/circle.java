@@ -1,5 +1,6 @@
 package model;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 import physics.*;
@@ -12,6 +13,7 @@ public class circle {
 	int y;
 	private String connectedID;
 	private boolean triggered;
+	private Color colour;
 
 	public circle(double x, double y, double r, String i, int xpos, int ypos) {
 		ID = i;
@@ -20,6 +22,7 @@ public class circle {
 		this.y = ypos;
 		triggered=false;
 		connectedID = "";
+		colour = new Color(219, 107, 2);
 	}
 
 	public circle(Circle c){
@@ -33,6 +36,8 @@ public class circle {
 	public String getID(){
 		return ID;
 	}
+
+	public Color getColour() { return colour; }
 	
 	public int getPositionX(){
 		return x;
