@@ -50,10 +50,12 @@ public class FileParser {
                         } else if (Board.hasAtPosition(Integer.parseInt(array1[2]), Integer.parseInt(array1[3])) == true) {
                             System.out.println("tried to add a gizmo to a Board position with a space already occupied");
                         } else {
+                            String id = array1[1];
                             int x = Integer.parseInt(array1[2]);    //converts the x array position to the co-ordinates
                             int y = Integer.parseInt(array1[3]);    //converts the y array position to the co-ordinates
-                            String id = "A0" + x + "0" + y;
-                            Absorber a = new Absorber(x * 25, y * 25, 25, 25, id);    //creates a new square object for the underlying gizmo
+                            int w = Integer.parseInt(array1[4]);
+                            int h = Integer.parseInt(array1[5]);
+                            Absorber a = new Absorber(x * 25, y * 25, w * 25, h * 25, id);    //creates a new square object for the underlying gizmo
                             Board.addAbsorber(a);    //adds a new gizmo (creating it with the label) and adding it to the board
                         }
 

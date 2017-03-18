@@ -65,6 +65,7 @@ public class RunListener implements ActionListener {
 				break;
 			case "Load":
 				try {
+					f.setFileLoaded(false);
 					f.run();
 					f.setFileLoaded(true);
 				} catch (IOException e1) {
@@ -74,6 +75,7 @@ public class RunListener implements ActionListener {
 				break;
 			case "Load Model":
 				try {
+					f.setFileLoaded(false);
 					f.run();
 					f.setFileLoaded(true);
 				} catch (IOException e2) {
