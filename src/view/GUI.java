@@ -293,8 +293,17 @@ public class GUI implements ActionListener {
 					if (addingBall) {
 						double xm = Math.floor(e.getX()/25);
 						double ym = Math.floor(e.getY()/25);
+						double xv = Double.parseDouble(xCoord.getText());
+						double yv = Double.parseDouble(yCoord.getText());
 
-						Ball b = new Ball((xm * 25) + 12.5, (ym * 25) + 12.5, 200, 200, "B1");
+						if(xv == 0) {
+							xv = 200;
+						}
+						if(yv == 0) {
+							yv = 200;
+						}
+
+						Ball b = new Ball((xm * 25) + 12.5, (ym * 25) + 12.5, xv, yv, "B1");
 						mod.setBall(b);
 						mod.notifyObs();
 
