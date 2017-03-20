@@ -97,6 +97,7 @@ public  class Board extends JPanel implements Observer {
 	    	Square gh = gm.getGridHighlight();
 	    	g.setColor(gm.getGridHighlightColour());
 	    	g.drawRect(gh.getX(), gh.getY(), gh.getWidth(), gh.getHeight());
+	    	g.fillRect(gh.getX(), gh.getY(), gh.getWidth(), gh.getHeight());
 	    	try {
 				BufferedImage grid = ImageIO.read(new File("grid.png"));
 				g.drawImage(grid, 0, 0, null);
