@@ -604,8 +604,7 @@ public class Model extends Observable {
 		if(hasAtPosition(fromX, fromY)) {
 			System.out.println("from x: " + fromX + " y: " + fromY);
 			if(!hasAtPosition(x, y)) {
-				System.out.println("to x: " + x + " y: " + y);
-				// not implemented for circle yet				
+				System.out.println("to x: " + x + " y: " + y);			
 				
 				Iterator<circle> cirIte = circles.iterator();
 				ArrayList<circle> newCircles = new ArrayList<>();
@@ -618,9 +617,7 @@ public class Model extends Observable {
 						int oy = c.getPositionY();
 
 						circle c1 = new circle((x * 25) + 12.5, (y * 25) + 12.5, 12.5, c.getID(), x, y);
-						// delete(s.getID());
-						// addSquare(s1);
-						// squIte.remove();
+
 						oldCircles.add(c);
 						newCircles.add(c1);
 
@@ -635,15 +632,42 @@ public class Model extends Observable {
 				for (circle c : newCircles) {
 					addCircle(c);
 				}
+				
+				Iterator<Triangle> triIte = triangles.iterator();
+				ArrayList<Triangle> newTriangles = new ArrayList<>();
+				ArrayList<Triangle> oldTriangles = new ArrayList<>();
+				
+				while (triIte.hasNext()) {
+					Triangle t = triIte.next();
+					if (t.getPositionX() == fromX && t.getPositionY() == fromY) {
+						int ox = t.getPositionX();
+						int oy = t.getPositionY();
+						
+						Triangle t1 = new Triangle(t.getx1() + ((x - fromX) * 25), 
+								t.gety1() + ((y - fromY) * 25), 
+								t.getx2() + ((x - fromX) * 25), 
+								t.gety2() + ((y - fromY) * 25), 
+								t.getx3() + ((x - fromX) * 25), 
+								t.gety3() + ((y - fromY) * 25), 
+								t.getID(), 
+								x, 
+								y);
 
-
-//				for(Triangle triangle : triangles){
-//					if(triangle.getPositionX() == fromX && triangle.getPositionY() == fromY){
-//						triangle.setPositionX(x);
-//						triangle.setPositionY(y);
-//						System.out.println("moved triangle");
-//					}
-//				}
+						oldTriangles.add(t);
+						newTriangles.add(t1);
+						
+						System.out.println("ox: " + ox + " oy: " + oy + 
+								" cx: " + t.getPositionX() + " cy: " + t.getPositionY());
+						
+						
+					}
+				}
+				for (Triangle t : oldTriangles) {
+					delete(t.getID());
+				}
+				for (Triangle t : newTriangles) {
+					addTriangle(t);
+				}
 
 				
 				Iterator<Square> squIte = squares.iterator();
@@ -657,9 +681,7 @@ public class Model extends Observable {
 						int oy = s.getPositionY();
 						
 						Square s1 = new Square(x * 25, y * 25, s.getWidth(), s.getHeight(), s.getID(), x, y);
-//						delete(s.getID());
-//						addSquare(s1);
-//						squIte.remove();
+
 						oldSquares.add(s);
 						newSquares.add(s1);
 						
