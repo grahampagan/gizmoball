@@ -274,21 +274,37 @@ public class Model extends Observable {
 	}
 	
 	public void addCircle(circle c){
+		if (c.getPositionX()<=18 && c.getPositionY()<=18){
 		circles.add(c);
 		this.setChanged();
 		this.notifyObservers();
+		}
+		else{
+			System.out.println("Object out of bounds");
+		}
 	}
 	
 	public void addAbsorber(Absorber a){
+		if (a.getPositionX()<=18 && a.getPositionY()<=18){
+	
 		absorbers.add(a);
 		this.setChanged();
 		this.notifyObservers();
+		}
+		else{
+			System.out.println("Object out of bounds");
+		}
 	}
 	
 	public void addSquare(Square s) {
+		if (s.getPositionX()<=18 && s.getPositionY()<=18){
 		squares.add(s);
 		this.setChanged();
 		this.notifyObservers();
+		}
+		else{
+			System.out.println("Object out of bounds");
+		}
 	}
 	
 	public ArrayList<Square> getSquares() {
@@ -300,9 +316,14 @@ public class Model extends Observable {
 	}
 	
 	public void addTriangle(Triangle t){
+		if (t.getPositionX()<=18 && t.getPositionY()<=18){
 		triangles.add(t);
 		this.setChanged();
 		this.notifyObservers();
+		}
+		else{
+			System.out.println("Object out of bounds");
+		}
 	}
 	
 	public ArrayList<Triangle> getTriangles(){
@@ -311,9 +332,14 @@ public class Model extends Observable {
 	
 	
 	public void addFlipper(Flipper f){
+		if (f.getPositionX()<=18 && f.getPositionY()<=18){
 		flippers.add(f);
 		this.setChanged();
 		this.notifyObservers();
+		}
+		else{
+			System.out.println("Object out of bounds");
+		}
 	}
 	
 	public ArrayList<Flipper> getFLippers(){
