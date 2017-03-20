@@ -201,8 +201,9 @@ public class RunListener implements ActionListener {
 					} else {
 						System.out.println("could not add triangle at " + xPos + " " + yPos);
 					}
-					break;					
+									
 				}
+				break;
 			
 			case "Apply Gravity: ":
 				double grav = Double.parseDouble(gravity.getText());				
