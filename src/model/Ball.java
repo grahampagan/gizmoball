@@ -9,6 +9,10 @@ public class Ball implements gizmo {
 	private double radius;
 	private double xpos;
 	private double ypos;
+	private double originalX;
+	private double originalY;
+	private double originalXVelo;
+	private double originalYVelo;
 	private boolean stopped; 
 	private Color colour;
 	private String type;
@@ -17,8 +21,12 @@ public class Ball implements gizmo {
 	public Ball(double xPos, double yPos, double xVelo, double yVelo, String id){
 		xpos = xPos;
 		ypos = yPos;
+		originalX = xPos;
+		originalY = yPos;
+		originalXVelo = xVelo;
+		originalYVelo = yVelo;
 		velo = new Vect(xVelo, yVelo);
-		radius = 10; 
+		radius = 5; 
 		colour = Color.BLUE;
 		type = "Ball";
 		ID = id;
@@ -130,5 +138,11 @@ public class Ball implements gizmo {
 	
 	public double getPositionY(){
 		return (ypos - 12.5)/25;
+	}
+	
+	public void resetBall(){
+		xpos = originalX;
+		ypos = originalY;
+		velo = new Vect(originalXVelo, originalYVelo);
 	}
 }

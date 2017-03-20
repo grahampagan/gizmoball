@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -292,6 +293,7 @@ public class GUI implements ActionListener {
 					if (addingBall) {
 						double xm = Math.floor(e.getX()/25);
 						double ym = Math.floor(e.getY()/25);
+						try{
 						double xv = Double.parseDouble(xCoord.getText());
 						double yv = Double.parseDouble(yCoord.getText());
 
@@ -300,6 +302,11 @@ public class GUI implements ActionListener {
 						mod.notifyObs();
 
 						addingBall = false;
+						} catch (NumberFormatException ballNumException){
+							Component frame = null;
+							JOptionPane.showMessageDialog(frame,
+								    "Ball velocity must be a numeric value.");
+						}
 					}
 				}
 			}

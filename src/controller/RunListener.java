@@ -62,6 +62,7 @@ public class RunListener implements ActionListener {
 			switch (e.getActionCommand()) {
 			case "Start":
 				timer.start();
+				model.getBall().start();
 				break;
 			case "Stop":
 				timer.stop();
@@ -213,17 +214,27 @@ public class RunListener implements ActionListener {
 				break;
 			
 			case "Apply Gravity: ":
+				try {
 				double grav = Double.parseDouble(gravity.getText());				
 				model.setGravity(grav);
 				System.out.println("Gravity set to: " + grav);
+				} catch (NumberFormatException gravityNumException){
+					JOptionPane.showMessageDialog(frame,
+						    "Gravity must be a numeric value.");
+				}
 				break;
 				
 			case "Apply Friction: ":
+				try{
 				double xFr = Double.parseDouble(xFric.getText());
 				double yFr = Double.parseDouble(yFric.getText());
 				model.setMu(xFr);
 				model.setMu2(yFr);
 				System.out.println("Friction set to Mu: " + xFr + " Mu2: " + yFr);
+				} catch (NumberFormatException fricNumException){
+					JOptionPane.showMessageDialog(frame,
+						    "Friction must be a numeric value.");
+				}
 				break;
 			case "Build Mode":
 				timer.stop();
@@ -231,6 +242,9 @@ public class RunListener implements ActionListener {
 				build.setVisible(true);
 				frame.pack();
 				model.setBuildMode(true);
+				if(model.getBall() != null){
+					model.getBall().resetBall();
+				}
 				break;
 			case "Run Mode":
 				run.setVisible(true);
