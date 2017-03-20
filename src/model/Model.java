@@ -386,6 +386,12 @@ public class Model extends Observable {
 				return true;
 			}
 		}
+		
+		if(b!= null){
+			if(b.getPositionX() == parseInt && b.getPositionY() == parseInt2){
+				return true;
+			}
+		}
 
 		return false;
 
@@ -454,6 +460,15 @@ public class Model extends Observable {
 		      if(a.getID().equals(id)) {
 		        absorberIter.remove();
 		      }
+		}
+		
+		if(b!=null){
+			if(b.getID().equals(id)){
+				System.out.println("Ball deleted.");
+				b = null;
+				this.setChanged();
+				this.notifyObservers();
+			}
 		}
 
 	}
@@ -591,6 +606,12 @@ public class Model extends Observable {
 				
 				if(xStart <= x && xEnd> x && yStart<= y && yEnd> y){
 					r = a.getID();
+				}
+			}
+			
+			if(b!=null){
+				if(b.getPositionX() == x && b.getPositionY() == y){
+					r = b.getID();
 				}
 			}
 		}

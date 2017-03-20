@@ -123,4 +123,12 @@ public class Ball implements gizmo {
 		// TODO Auto-generated method stub
 		return type;
 	}
+	
+	public double getPositionX(){
+		return (xpos - 12.5)/25;
+	}
+	
+	public double getPositionY(){
+		return (ypos - 12.5)/25;
+	}
 }
