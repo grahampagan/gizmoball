@@ -93,8 +93,8 @@ public class Model extends Observable {
 				b.setVelo(cd.getVelo());
 //				b.applyFriction(mu, mu2, tuc);
 //				b.applyGravity(gravity, tuc);
-				b.applyGravity(gravity);
-				b.applyFriction(mu, mu2);
+//				b.applyGravity(gravity);
+//				b.applyFriction(mu, mu2);
 			}
 			
 
