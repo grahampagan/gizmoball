@@ -54,7 +54,10 @@ public class GUI implements ActionListener {
 		gravInp = new JTextField();
 		xFricIn = new JTextField();
 		yFricIn = new JTextField();
-		l = new RunListener(mod, gizmo, gravInp, xFricIn, yFricIn);
+		f = new JFrame("MW8 Gizmoball");
+		runButtons = new JPanel();
+		buildButtons = new JPanel();
+		l = new RunListener(mod, gizmo, gravInp, xFricIn, yFricIn, f, runButtons, buildButtons);
 		k = new KeyboardListener(mod);
 		b = new Board(500, 500, mod);
 	}
@@ -65,7 +68,6 @@ public class GUI implements ActionListener {
 
 	public void runModeGUI () throws IOException {
 
-		f = new JFrame("MW8 Gizmoball");
 		p = new JPanel();
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Container c = f.getContentPane();
@@ -75,7 +77,6 @@ public class GUI implements ActionListener {
 		JLabel gridLabel = new JLabel(new ImageIcon(grid));
 		p.add(gridLabel);
 
-		runButtons = new JPanel();
 		runButtons.setLayout(new GridLayout(7, 1));
 
 		JButton startButton = new JButton("Start");
@@ -104,7 +105,7 @@ public class GUI implements ActionListener {
 		runButtons.add(reloadButton);
 
 		JButton buildModeButton = new JButton("Build Mode");
-		buildModeButton.addActionListener(this);
+		buildModeButton.addActionListener(l);
 		buildModeButton.setMaximumSize(new Dimension(160, 160));
 		runButtons.add(buildModeButton);
 
@@ -113,7 +114,6 @@ public class GUI implements ActionListener {
 		quitButton.setMaximumSize(new Dimension(160, 160));
 		runButtons.add(quitButton);
 
-		buildButtons = new JPanel();
 		buildButtons.setLayout(new GridLayout(12, 2));
 
 		JButton addGizmoButton = new JButton("Add Gizmo: ");
@@ -143,12 +143,6 @@ public class GUI implements ActionListener {
 		ballInput.add(yCoord);
 		buildButtons.add(ballInput);
 
-		JButton addAbsorberButton = new JButton("Add Absorber: ");
-		addAbsorberButton.addActionListener(this);
-		addAbsorberButton.setMaximumSize(new Dimension(160, 160));
-		buildButtons.add(addAbsorberButton);
-		buildButtonsArray.add(addAbsorberButton);
-
 		JButton AddLeftFlipperButton = new JButton("Add Left Flipper");
 		AddLeftFlipperButton.addActionListener(l);
 		AddLeftFlipperButton.setMaximumSize(new Dimension(160, 160));
@@ -160,6 +154,12 @@ public class GUI implements ActionListener {
 		addRightFlipperButton.setMaximumSize(new Dimension(160, 160));
 		buildButtons.add(addRightFlipperButton);
 		buildButtonsArray.add(addRightFlipperButton);
+		
+		JButton addAbsorberButton = new JButton("Add Absorber");
+		addAbsorberButton.addActionListener(this);
+		addAbsorberButton.setMaximumSize(new Dimension(160, 160));
+		buildButtons.add(addAbsorberButton);
+		buildButtonsArray.add(addAbsorberButton);
 
 		JButton rotateButton = new JButton("Rotate");
 		rotateButton.addActionListener(l);
@@ -178,13 +178,7 @@ public class GUI implements ActionListener {
 		moveButton.setMaximumSize(new Dimension(160, 160));
 		buildButtons.add(moveButton);
 		buildButtonsArray.add(moveButton);
-
-		JButton clearBoardButton = new JButton("Clear board");
-		clearBoardButton.addActionListener(l);
-		clearBoardButton.setMaximumSize(new Dimension(160, 160));
-		buildButtons.add(clearBoardButton);
-		buildButtonsArray.add(clearBoardButton);
-
+		
 		JButton frictionButton = new JButton("Apply Friction: ");
 		frictionButton.addActionListener(l);
 		frictionButton.setMaximumSize(new Dimension(160, 160));
@@ -210,6 +204,12 @@ public class GUI implements ActionListener {
 		gravInput.add(gravInp);
 		gravInp.setText("0");
 		buildButtons.add(gravInput);
+		
+		JButton clearBoardButton = new JButton("Clear board");
+		clearBoardButton.addActionListener(l);
+		clearBoardButton.setMaximumSize(new Dimension(160, 160));
+		buildButtons.add(clearBoardButton);
+		buildButtonsArray.add(clearBoardButton);
 
 		JButton connectButton = new JButton("Connect");
 		connectButton.addActionListener(l);
@@ -259,7 +259,7 @@ public class GUI implements ActionListener {
 		buildButtons.add(quitBuildButton);
 
 		JButton runModeButton = new JButton("Run Mode");
-		runModeButton.addActionListener(this);
+		runModeButton.addActionListener(l);
 		runModeButton.setMaximumSize(new Dimension(160, 160));
 		buildButtons.add(runModeButton);
 		buildButtonsArray.add(runModeButton);
@@ -417,21 +417,7 @@ public class GUI implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		switch(e.getActionCommand()) {
-			case "Build Mode":
-				runButtons.setVisible(false);
-				buildButtons.setVisible(true);
-				f.pack();
-				mod.setBuildMode(true);
-				break;
-
-			case "Run Mode":
-				runButtons.setVisible(true);
-				buildButtons.setVisible(false);
-				f.pack();
-				mod.setBuildMode(false);
-				break;
-
-			case "Add Absorber: ":
+			case "Add Absorber":
 				addingAbsorber = true;
 				for(JButton b: buildButtonsArray){
 					b.setEnabled(false);

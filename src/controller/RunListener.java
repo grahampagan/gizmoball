@@ -6,6 +6,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.Timer;
 
@@ -29,14 +31,20 @@ public class RunListener implements ActionListener {
 	private JTextField gravity;
 	private JTextField xFric;
 	private JTextField yFric;
+	private JFrame frame;
+	private JPanel run;
+	private JPanel build;
 
-	public RunListener(Model m, JComboBox<String> g, JTextField grav, JTextField xF, JTextField yF) {
+	public RunListener(Model m, JComboBox<String> g, JTextField grav, JTextField xF, JTextField yF, JFrame fr, JPanel rb, JPanel bb) {
 		model = m;
 		gizmo = g;
 		gravity = grav;
 		xFric = xF;
 		yFric = yF;
 		timer = new Timer(50, this);
+		frame = fr;
+		run = rb;
+		build = bb;
 		try {
 			f = new FileParser(model);
 		} catch (FileNotFoundException e) {
@@ -197,6 +205,19 @@ public class RunListener implements ActionListener {
 				double yFr = Double.parseDouble(yFric.getText());
 				model.setMu(xFr);
 				model.setMu2(yFr);
+				break;
+			case "Build Mode":
+				timer.stop();
+				run.setVisible(false);
+				build.setVisible(true);
+				frame.pack();
+				model.setBuildMode(true);
+				break;
+			case "Run Mode":
+				run.setVisible(true);
+				build.setVisible(false);
+				frame.pack();
+				model.setBuildMode(false);
 				break;
 			}
 		
