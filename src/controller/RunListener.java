@@ -7,6 +7,7 @@ import java.io.IOException;
 
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.Timer;
@@ -169,6 +170,8 @@ public class RunListener implements ActionListener {
 						System.out.println("added circle at " + xPos + " " + yPos);
 					}
 					else {
+						JOptionPane.showMessageDialog(frame,
+							    "Could not add circle as a gizmo already exists in this space.");
 						System.out.println("could not add circle at " + xPos + " " + yPos);
 					}
 					break;
@@ -184,6 +187,8 @@ public class RunListener implements ActionListener {
 						model.addSquare(s);
 						System.out.println("added square at " + xPos + " " + yPos);
 					} else {
+						JOptionPane.showMessageDialog(frame,
+							    "Could not add square as a gizmo already exists in this space.");
 						System.out.println("could not add square at " + xPos + " " + yPos);
 					}
 					break;
@@ -199,6 +204,8 @@ public class RunListener implements ActionListener {
 						model.addTriangle(t);
 						System.out.println("added triangle at " + xPos + " " + yPos);
 					} else {
+						JOptionPane.showMessageDialog(frame,
+							    "Could not add triangle as a gizmo already exists in this space.");
 						System.out.println("could not add triangle at " + xPos + " " + yPos);
 					}
 									

@@ -1,9 +1,11 @@
 package view;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Stroke;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -94,10 +96,6 @@ public  class Board extends JPanel implements Observer {
 	    
 	    //draw grid highlight
 	    if(gm.getBuildMode()){
-	    	Square gh = gm.getGridHighlight();
-	    	g.setColor(gm.getGridHighlightColour());
-	    	g.drawRect(gh.getX(), gh.getY(), gh.getWidth(), gh.getHeight());
-	    	g.fillRect(gh.getX(), gh.getY(), gh.getWidth(), gh.getHeight());
 	    	try {
 				BufferedImage grid = ImageIO.read(new File("grid.png"));
 				g.drawImage(grid, 0, 0, null);
@@ -105,6 +103,14 @@ public  class Board extends JPanel implements Observer {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+	    	Square gh = gm.getGridHighlight();
+	    	g.setColor(gm.getGridHighlightColour());
+	    	float thickness = 3;
+	    	Stroke oldStroke = g2.getStroke();
+	    	g2.setStroke(new BasicStroke(thickness));
+	    	g.drawRect(gh.getX(), gh.getY(), gh.getWidth(), gh.getHeight());
+	    	g2.setStroke(oldStroke);
+//	    	g.fillRect(gh.getX(), gh.getY(), gh.getWidth(), gh.getHeight());
 	    }
 		
 		Ball b = gm.getBall();
