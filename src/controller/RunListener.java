@@ -207,6 +207,7 @@ public class RunListener implements ActionListener {
 			case "Apply Gravity: ":
 				double grav = Double.parseDouble(gravity.getText());				
 				model.setGravity(grav);
+				System.out.println("Gravity set to: " + grav);
 				break;
 				
 			case "Apply Friction: ":
@@ -214,6 +215,7 @@ public class RunListener implements ActionListener {
 				double yFr = Double.parseDouble(yFric.getText());
 				model.setMu(xFr);
 				model.setMu2(yFr);
+				System.out.println("Friction set to Mu: " + xFr + " Mu2: " + yFr);
 				break;
 			case "Build Mode":
 				timer.stop();
