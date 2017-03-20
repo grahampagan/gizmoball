@@ -231,6 +231,9 @@ public class RunListener implements ActionListener {
 				build.setVisible(true);
 				frame.pack();
 				model.setBuildMode(true);
+				if(model.getBall() != null){
+					model.getBall().resetBall();
+				}
 				break;
 			case "Run Mode":
 				run.setVisible(true);
