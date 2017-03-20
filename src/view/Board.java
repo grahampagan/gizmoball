@@ -4,9 +4,13 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
@@ -93,6 +97,13 @@ public  class Board extends JPanel implements Observer {
 	    	Square gh = gm.getGridHighlight();
 	    	g.setColor(gm.getGridHighlightColour());
 	    	g.drawRect(gh.getX(), gh.getY(), gh.getWidth(), gh.getHeight());
+	    	try {
+				BufferedImage grid = ImageIO.read(new File("grid.png"));
+				g.drawImage(grid, 0, 0, null);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	    }
 		
 		Ball b = gm.getBall();
