@@ -1,0 +1,3 @@
+Absorber A0x1 0 1 19 2
+Absorber A1x18 1 18 20 19
+Absorber A9x9 9 9 10 10
