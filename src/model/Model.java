@@ -47,9 +47,6 @@ public class Model extends Observable {
 		triangles = new ArrayList<Triangle>();
 		absorbers = new ArrayList<Absorber>();
 		gridHighlight = new Square(0, 0, 25, 25, "GH", 0, 0);
-//		gravity = 25;							//These are the values that 
-//		mu = 0.025;								//the game should be played at, but it doesn't work well.
-//		mu2 = 0.025;	
 		gravity = 0;
 		mu = 0;
 		mu2 = 0;
@@ -99,10 +96,6 @@ public class Model extends Observable {
 				b = moveBallForTime(b, tuc);
 				// Post collision velocity ...
 				b.setVelo(cd.getVelo());
-//				b.applyFriction(mu, mu2, tuc);
-//				b.applyGravity(gravity, tuc);
-//				b.applyGravity(gravity);
-//				b.applyFriction(mu, mu2);
 			}
 			
 

@@ -20,21 +20,24 @@ public class FileParser {
     }
 
     public Model run() throws IOException {
-        FileReader input = new FileReader("myFile");
+//        FileReader input = new FileReader("myFile");
         String userdir = System.getProperty("user.dir");
         JFileChooser chooser = new JFileChooser(userdir + "\\SavedModels");
-        BufferedReader bufread = new BufferedReader(input);
+//        BufferedReader bufread = new BufferedReader(input);
+        BufferedReader bufread = null;
         if (fileLoaded) {
+        	Board.clearBoard();
             System.out.println("File reloaded");
             bufread = new BufferedReader(loadedFile);
         } else {
             int returnVal = chooser.showOpenDialog(null);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
+            	Board.clearBoard();
                 File i = chooser.getSelectedFile();
                 FileReader input2 = new FileReader(i);
                 bufread = new BufferedReader(input2);
                 loadedFile = new FileReader(i);
-            }
+            } else if (returnVal == JFileChooser.CANCEL_OPTION){}
         }
 
             String myline = null;
