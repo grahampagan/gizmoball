@@ -58,7 +58,8 @@ public class Model extends Observable {
 		
 		flippers=new ArrayList<Flipper>();
 		flippers2 = new ArrayList<flipper2>();
-
+		
+		flippers2.add(new flipper2("id",1,1));
 
 		
 	}

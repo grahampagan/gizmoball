@@ -161,6 +161,9 @@ public class Square {
 	public void unTrigger(){
 		triggered = false;
 	}
-
+	
+	public boolean checkTriggered(){
+		return triggered;
+	}
 
 }

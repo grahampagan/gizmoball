@@ -133,10 +133,11 @@ public class flipper2 implements KeyListener{
 	public void setRectangle(){
 		if(flipped == true){
 	        rectangle = new Square(x * 25, y * 25, 12, 50, ID, x,y);    //creates a new square object for the underlying gizmo
+			flipped = false;
 
 		}else{
 	        rectangle = new Square(x * 25, y * 25, 50, 12, ID, x,y);    //creates a new square object for the underlying gizmo
-
+	        flipped = true;
 		}
 	}
 

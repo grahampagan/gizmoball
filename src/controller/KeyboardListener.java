@@ -21,11 +21,24 @@ public class KeyboardListener implements KeyListener {
             	a.releaseBall(b);
             }
 		}	
+		
+		if(k.getKeyCode()==KeyEvent.VK_UP){
+            for(flipper2 f : model.getFlippers2()){
+            	f.setRectangle();
+            }
+		}	
+
 	}
 
 	@Override
-	public void keyReleased(KeyEvent arg0) {
+	public void keyReleased(KeyEvent k) {
 		// TODO Auto-generated method stub
+		if(k.getKeyCode()==KeyEvent.VK_UP){
+            for(flipper2 f : model.getFlippers2()){
+            	f.setRectangle();
+            }
+		}	
+
 		
 	}
 

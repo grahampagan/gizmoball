@@ -61,23 +61,24 @@ public class FileParser {
 
                         break;
 
-			case "Ball":
-				if (Board.containsName(array1[1]) == true) {
-					System.out.println("Tried to add a ball with a duplicate name");
-				} else if (Board.hasAtPosition((int) Double.parseDouble(array1[2]),
-						(int) Double.parseDouble(array1[3])) == true) {
-					System.out.println("tried to add a ball to a Board position with a space already occupied");
-				} else {
-					String id = array1[1];
-					double bx = Double.parseDouble(array1[2]);
-					double by = Double.parseDouble(array1[3]);
-					double xv = Double.parseDouble(array1[4]);
-					double yv = Double.parseDouble(array1[5]);
-
-					Ball b = new Ball(bx, by, xv, yv, id);
-					Board.setBall(b);
-				}
-				break;
+					case "Ball":
+						if (Board.containsName(array1[1]) == true) {
+							System.out.println("Tried to add a ball with a duplicate name");
+						} else if (Board.hasAtPosition((int) Double.parseDouble(array1[2]),
+								(int) Double.parseDouble(array1[3])) == true) {
+							System.out.println("tried to add a ball to a Board position with a space already occupied");
+						} else {
+							String id = array1[1];
+							double bx = Double.parseDouble(array1[2]);
+							double by = Double.parseDouble(array1[3]);
+							double xv = Double.parseDouble(array1[4]);
+							double yv = Double.parseDouble(array1[5]);
+		
+							Ball b = new Ball(bx, by, xv, yv, id);
+							Board.setBall(b);
+						}
+						
+						break;
 
                     case "Rotate":
                         if (Board.containsName(array1[1]) == true) {

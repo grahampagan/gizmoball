@@ -196,9 +196,17 @@ public class Board extends JPanel implements Observer {
 		
 		// Draw all the squares
 		for (Square s : gm.getSquares()) {
-			g2.setColor(s.getColour());
-			g2.drawRect(s.getX(), s.getY(), s.getWidth(), s.getHeight());
-			g2.fillRect(s.getX(), s.getY(), s.getWidth(), s.getHeight());
+			if(s.checkTriggered()==true){
+				g2.setColor(new Color(2, 98, 252));
+				g2.drawRect(s.getX(), s.getY(), s.getWidth(), s.getHeight());
+				g2.fillRect(s.getX(), s.getY(), s.getWidth(), s.getHeight());
+
+			}else{
+				g2.setColor(s.getColour());
+				g2.drawRect(s.getX(), s.getY(), s.getWidth(), s.getHeight());
+				g2.fillRect(s.getX(), s.getY(), s.getWidth(), s.getHeight());
+
+			}
 
 		}
 
