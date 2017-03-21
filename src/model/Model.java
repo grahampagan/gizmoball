@@ -29,8 +29,6 @@ public class Model extends Observable {
 	private Color boardBackgroundColour;
 
 	private ArrayList<Flipper> flippers;
-	private ArrayList<flipper2> flippers2;
-
 
 	//**********************************
 	//used to be a throws IOException here
@@ -57,8 +55,6 @@ public class Model extends Observable {
 		boardBackgroundColour = Color.GRAY;
 		
 		flippers=new ArrayList<Flipper>();
-		flippers2 = new ArrayList<flipper2>();
-		flippers2.add(new flipper2(10, 10, 1, 1, null, 10, 10));
 	}
 
 	public Color getGridHighlightColour() { return gridHighlightColour; }
@@ -278,7 +274,7 @@ public class Model extends Observable {
 	}
 	
 	public void addCircle(circle c){
-		if (c.getPositionX()<=19 && c.getPositionY()<=19){
+		if (c.getPositionX()<=18 && c.getPositionY()<=18){
 		circles.add(c);
 		this.setChanged();
 		this.notifyObservers();
@@ -289,7 +285,7 @@ public class Model extends Observable {
 	}
 	
 	public void addAbsorber(Absorber a){
-		if (a.getPositionX()<=19 && a.getPositionY()<=19){
+		if (a.getPositionX()<=18 && a.getPositionY()<=18){
 	
 		absorbers.add(a);
 		this.setChanged();
@@ -301,7 +297,7 @@ public class Model extends Observable {
 	}
 	
 	public void addSquare(Square s) {
-		if (s.getPositionX()<=19 && s.getPositionY()<=19){
+		if (s.getPositionX()<=18 && s.getPositionY()<=18){
 		squares.add(s);
 		this.setChanged();
 		this.notifyObservers();
@@ -320,7 +316,7 @@ public class Model extends Observable {
 	}
 	
 	public void addTriangle(Triangle t){
-		if (t.getPositionX()<=19 && t.getPositionY()<=19){
+		if (t.getPositionX()<=18 && t.getPositionY()<=18){
 		triangles.add(t);
 		this.setChanged();
 		this.notifyObservers();
@@ -336,7 +332,7 @@ public class Model extends Observable {
 	
 	
 	public void addFlipper(Flipper f){
-		if (f.getPositionX()<=19 && f.getPositionY()<=19){
+		if (f.getPositionX()<=18 && f.getPositionY()<=18){
 		flippers.add(f);
 		this.setChanged();
 		this.notifyObservers();
@@ -850,11 +846,6 @@ public class Model extends Observable {
 	            ex.printStackTrace();
 	        }
 	    }
-	}
-
-	public ArrayList<flipper2> getFlippers2() {
-		// TODO Auto-generated method stub
-		return flippers2;
 	}
 
 	}

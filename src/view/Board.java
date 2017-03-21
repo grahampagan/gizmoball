@@ -24,7 +24,6 @@ import model.Model;
 import model.Square;
 import model.Triangle;
 import model.circle;
-import model.flipper2;
 import physics.Circle;
 import model.Line;
 
@@ -227,15 +226,6 @@ public class Board extends JPanel implements Observer {
 	    		g.fillPolygon(t.getXPoints(), t.getYPoints(), 3);
 	    	}
 	    }
-	    
-	    //draw flippers
-	    
-	    for(flipper2 f : gm.getFlippers2()){
-	        g.drawRoundRect(f.getXPos()*20, f.getYPos()*20,f.getSquare().getWidth(),f.getSquare().getHeight(), 50, 30);
-	        g.fillRoundRect(f.getXPos()*20, f.getYPos()*20,f.getSquare().getWidth(),f.getSquare().getHeight(), 50, 30);
-
-	    }
-	    
 	    
 	    //draw grid highlight
 	    if(gm.getBuildMode()){
