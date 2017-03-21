@@ -36,7 +36,7 @@ public class flipper2 implements KeyListener{
 		ID = id;
 		
 		
-        rectangle = new Square((xpos1 * 25)-12, ypos1 * 25, 12, 50, id, xpos1,ypos1);    //creates a new square object for the underlying gizmo
+        rectangle = new Square(xpos1 * 25, ypos1 * 25, 12, 50, id, xpos1,ypos1);    //creates a new square object for the underlying gizmo
 
         flipped = false;
 		
@@ -50,7 +50,7 @@ public class flipper2 implements KeyListener{
 		int code=k.getKeyCode();
 		if(code== KeyEvent.VK_UP){
 
-		setRectangle();
+//		setRectangle();
 		
 		if(flipped==true){
 			flipped = false;
@@ -130,15 +130,22 @@ public class flipper2 implements KeyListener{
 		return ypos1;
 	}
 	
-	public void setRectangle(){
-		if(flipped == true){
-	        rectangle = new Square(x * 25, y * 25, 12, 50, ID, x,y);    //creates a new square object for the underlying gizmo
-			flipped = false;
-
-		}else{
+	public void setRectangle1(){
+		if(flipped == false){
 	        rectangle = new Square(x * 25, y * 25, 50, 12, ID, x,y);    //creates a new square object for the underlying gizmo
 	        flipped = true;
 		}
 	}
+	
+	public void setRectangle2(){
+		if(flipped == true){
+	        rectangle = new Square(x * 25, y * 25, 12, 50, ID, x,y);    //creates a new square object for the underlying gizmo
+			flipped = false;
+
+		}
+	}
+
+	
+	
 
 }

@@ -24,7 +24,7 @@ public class KeyboardListener implements KeyListener {
 		
 		if(k.getKeyCode()==KeyEvent.VK_UP){
             for(flipper2 f : model.getFlippers2()){
-            	f.setRectangle();
+            	f.setRectangle1();
             }
 		}	
 
@@ -35,9 +35,9 @@ public class KeyboardListener implements KeyListener {
 		// TODO Auto-generated method stub
 		if(k.getKeyCode()==KeyEvent.VK_UP){
             for(flipper2 f : model.getFlippers2()){
-            	f.setRectangle();
+            	f.setRectangle2();
             }
-		}	
+		}
 
 		
 	}
