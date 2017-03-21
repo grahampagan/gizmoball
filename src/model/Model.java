@@ -882,9 +882,11 @@ public class Model extends Observable {
 	public void saveToFile(){
 		StringBuilder output = new StringBuilder();
 		String newLine = System.getProperty("line.separator");
-
-		output.append("Ball " + b.getID() + " " + b.getExactX() + " " + b.getExactY() + " " + b.getVelo().getX() + " " + b.getVelo().getY() + newLine);
-
+		
+		if(b!=null){
+			output.append("Ball " + b.getID() + " " + b.getExactX() + " " + b.getExactY() + " " + b.getVelo().getX() + " " + b.getVelo().getY() + newLine);
+		}
+		
 		for(Square s : squares){
 			output.append("Square " + s.getID() + " " + s.getPositionX() + " " + s.getPositionY() + newLine);
 		}
