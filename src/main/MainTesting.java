@@ -15,16 +15,42 @@ public class MainTesting{
 	
 	//COVERAGE MODEL TESTS
 	
-	/*@Test
+	@Test
 	public void testMoveBall(){
 		
 		Ball ball = new Ball(3,3,200,200,"b");
 		
 		//test move ball for time method
 		b.moveBallForTime(ball, 5);
+	}
+	
+	@Test
+	public void testGetId(){
+		Square s=new Square(10, 6, 3, 3, "s", 5, 5);
+		circle c = new circle(10.0, 10.0, 10.0, "Circle", 12, 10);
+		Triangle t = new Triangle(5,5, 2,10, 10, 10, "t", 13,2);
 		
-		//test move ball method
-		b.moveBall();
+		b.addSquare(s);
+		b.addCircle(c);
+		b.addTriangle(t);
+		
+		assertEquals(b.getIdOfPosition(5,5), "s");
+		assertEquals(b.getIdOfPosition(12,10), "Circle");
+		assertEquals(b.getIdOfPosition(13,2), "t");
+	}
+	
+	@Test
+	public void testGridHighlight(){
+		
+		Square s=new Square(75, 175, 25, 25, "s", 3, 7);
+		
+		b.setGridHighlight(3, 7);
+		assertEquals(b.getGridHighlight(), s);
+	}
+	
+	/*@Test
+	public void testHasAt(){
+		b.hasAtPosition(parseInt, parseInt2)
 	}*/
 		
 		//RUN MODE TESTS
@@ -76,14 +102,14 @@ public class MainTesting{
 			//b.addBall(ball);
 			//b.addBall(ball);
 			b.setBall(ball);
-			assertEquals(b.containsName("b"), true);
-			assertEquals(ball.getExactX(), 3);
-			assertEquals(ball.getExactY(), 3);
+			//assertEquals(b.containsName("b"), true);
+			//assertEquals(ball.getExactX(), 3);
+			//assertEquals(ball.getExactY(), 3);
 			
 			b.moveBall();
 			
-			assertFalse(ball.getExactX()==3);
-			assertFalse(ball.getExactY()==3);
+			assertEquals(ball.getExactX()==3, false);
+			assertEquals(ball.getExactY()==3, false);
 		}
 		
 		@Test
@@ -107,6 +133,15 @@ public class MainTesting{
 			
 		}
 		
+		@Test
+		public void testAddLine(){
+			Line l = new Line(3,12,5,"line");
+			b.addLine(l);
+			
+			assertEquals(b.containsName("line"), true);
+			
+		}
+		
 		@Test 
 		public void testRotate(){
 			//rotate a triangle
@@ -117,7 +152,10 @@ public class MainTesting{
 			assertEquals(t.getRotations(), 1);
 			b.rotate("tri");
 			assertEquals(t.getRotations(), 2);
-			
+			b.rotate("tri");
+			assertEquals(t.getRotations(), 3);
+			b.rotate("tri");
+			assertEquals(t.getRotations(), 4);
 		}
 		
 		//not sure of the difference between this and delete
@@ -177,7 +215,7 @@ public class MainTesting{
 		
 		@Test
 		public void testMove(){	
-		Square s = new Square(10,10,5,5,"s",8,8);
+		Square s = new Square(10,2,5,5,"s",8,8);
 		circle c = new circle(10.0, 10.0, 10.0, "c2", 1, 3);
 		Triangle t = new Triangle(5,5, 2,10, 10, 10, "t1", 13, 13);
 		
@@ -186,14 +224,22 @@ public class MainTesting{
 		b.addTriangle(t);
 		
 		assertEquals(s.getX(), 10);
-		assertEquals(s.getY(), 10);	
+		assertEquals(s.getY(), 2);	
 		assertEquals(c.getPositionX(), 1);
 		assertEquals(c.getPositionY(), 3);
 		assertEquals(t.getPositionX(), 13);
 		assertEquals(t.getPositionY(), 13);
-		b.move(10,10,15,12);
+		
+		b.move(8,8,15,12);
+		b.move(1, 3, 3, 1);
+		b.move(13,13,9,4);
+		
+		assertEquals(c.getPositionX(), 3);
+		assertEquals(c.getPositionY(), 1);
+		
 		assertEquals(s.getX(), 15);
 		assertEquals(s.getY(), 12);
+		
 		//assertFalse(b.atPosition(9, 9));
 		assertEquals(b.hasAtPosition(15, 12), true);
 		}
@@ -208,7 +254,9 @@ public class MainTesting{
 			
 			b.clearBoard();
 			
-			assertEquals((b.containsName("s")||b.containsName("tri")), false);
+			assertEquals(
+					b.containsName("s"), false);
+			assertEquals(b.containsName("tri"), false);
 			
 			assertEquals(b.hasAtPosition(8, 8), false);
 			assertEquals(b.hasAtPosition(12, 12), false);
@@ -291,6 +339,27 @@ public class MainTesting{
 		@Test
 		public void testReloadBuild(){
 			
+		}
+		
+		@Test
+		public void testSave(){
+			Square s = new Square(1,1,5,5,"s",1,1);
+			circle c = new circle(2.0, 2.0, 2.0, "c2", 8, 1);
+			Triangle t = new Triangle(5,5, 2,10, 10, 10, "t1", 13, 13);
+			Absorber a = new Absorber(10, 10, 4, 1, "ab");
+			Flipper f = new Flipper(5,4);
+			Ball ball = new Ball(2,2,100,100,"ball");
+			
+			b.addSquare(s);
+			b.addCircle(c);
+			b.addTriangle(t);
+			b.addAbsorber(a);
+			b.addFlipper(f);
+			b.setBall(ball);
+			
+			b.rotate("t1");
+			
+			b.saveToFile();
 		}
 		
 		@Test
@@ -389,8 +458,3 @@ public class MainTesting{
 		
 
 	}
-
-
-
-
-

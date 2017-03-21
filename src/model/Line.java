@@ -9,11 +9,13 @@ public class Line {
 	private Circle yCircle;
 	private int width;
 	private LineSegment ls;
+	private String id;
 
-	public Line(int x, int y, int w) {
+	public Line(int x, int y, int w, String i) {
 		xpos = x;
 		ypos = y;
 		width = w;
+		id = i;
 		ls = new LineSegment(x, y, x + w, y);
 		xCircle = new Circle(xpos, ypos, 0);
 		yCircle = new Circle(xpos + w, y, 0);
@@ -41,5 +43,9 @@ public class Line {
 	
 	public Circle getYCircle() {
 		return yCircle;
+	}
+	
+	public String getId(){
+		return id;
 	}
 }

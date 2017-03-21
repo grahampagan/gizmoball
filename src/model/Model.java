@@ -61,7 +61,7 @@ public class Model extends Observable {
 
 	public Color getBoardBackgroundColour() { return boardBackgroundColour; }
 	
-	private Ball moveBallForTime(Ball ball, double time){
+	public Ball moveBallForTime(Ball ball, double time){
 		double newX = 0.0;
 		double newY = 0.0;
 		double xVel = ball.getVelo().x();
@@ -270,7 +270,14 @@ public class Model extends Observable {
 	
 		
 	public void addLine(Line l) {
+		if (l.getX()<=18 && l.getY()<=18){
 		lines.add(l);
+		this.setChanged();
+		this.notifyObservers();
+		}
+		else{
+			System.out.println("Object out of bounds");
+		}
 	}
 	
 	public void addCircle(circle c){
@@ -849,6 +856,3 @@ public class Model extends Observable {
 	}
 
 	}
-
-	
-
