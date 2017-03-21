@@ -121,17 +121,17 @@ public class MainTesting{
 			assertEquals(b.hasAtPosition(18, 18), true);
 		}
 		
-		@Test
-		public void testAddFlipper(){
-			//add a flipper to the board
-			Flipper f = new Flipper(5,4);
-			b.addFlipper(f);
-			assertEquals(b.containsName("f"), true);
-			assertEquals(f.getPositionX(), 5);
-			assertEquals(f.getPositionY(), 4);
-			assertEquals(b.hasAtPosition(5, 4), true);
-			
-		}
+//		@Test
+//		public void testAddFlipper(){
+//			//add a flipper to the board
+//			Flipper f = new Flipper(5,4);
+//			b.addFlipper(f);
+//			assertEquals(b.containsName("f"), true);
+//			assertEquals(f.getPositionX(), 5);
+//			assertEquals(f.getPositionY(), 4);
+//			assertEquals(b.hasAtPosition(5, 4), true);
+//			
+//		}
 		
 		@Test
 		public void testAddLine(){
@@ -347,14 +347,14 @@ public class MainTesting{
 			circle c = new circle(2.0, 2.0, 2.0, "c2", 8, 1);
 			Triangle t = new Triangle(5,5, 2,10, 10, 10, "t1", 13, 13);
 			Absorber a = new Absorber(10, 10, 4, 1, "ab");
-			Flipper f = new Flipper(5,4);
+	//		Flipper f = new Flipper(5,4);
 			Ball ball = new Ball(2,2,100,100,"ball");
 			
 			b.addSquare(s);
 			b.addCircle(c);
 			b.addTriangle(t);
 			b.addAbsorber(a);
-			b.addFlipper(f);
+//			b.addFlipper(f);
 			b.setBall(ball);
 			
 			b.rotate("t1");
@@ -446,8 +446,8 @@ public class MainTesting{
 		@Test
 		public void testAddFlipperFail(){
 			assertEquals(b.containsName("f"), false);
-			Flipper ff = new Flipper(60,30);
-			b.addFlipper(ff);
+		//	Flipper ff = new Flipper(60,30);
+		//	b.addFlipper(ff);
 			assertEquals(b.containsName("ff"), false);
 			
 		}
