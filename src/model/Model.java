@@ -510,8 +510,20 @@ public class Model extends Observable {
 		}
 		
 		for(Absorber a : absorbers){
-			//STILL TO DOOOOOOOOOOOOOOOOOOOOOO
+			int currentX = a.getPositionX();
+			int currentY = a.getPositionY();
+			int endX = a.getEndPositionX();
+			int endY = a.getEndPositionY();
+
+			while(currentX < endX || currentY < endY){
+				if(currentX >= xPos && currentX < xEndPos && currentY >= yPos && currentY < yEndPos){
+					return true;
+				}
+				currentX++;
+				currentY++;
+			}
 		}
+		
 		return false;
 	}
 	
@@ -894,7 +906,7 @@ public class Model extends Observable {
 		}
 		
 		for(Absorber a : absorbers){
-			output.append("Absorber " + a.getID() + " " + a.getPositionX() + " " + a.getPositionY() + " " + a.getEndPositonX() + " " + a.getEndPositionY() + newLine);
+			output.append("Absorber " + a.getID() + " " + a.getPositionX() + " " + a.getPositionY() + " " + a.getEndPositionX() + " " + a.getEndPositionY() + newLine);
 		}
 		
 		String userdir = System.getProperty("user.dir");

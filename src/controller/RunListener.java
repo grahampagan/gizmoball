@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.Timer;
 
+import model.Absorber;
 import model.FileParser;
 import model.Model;
 import model.Square;
@@ -244,6 +245,9 @@ public class RunListener implements ActionListener {
 				model.setBuildMode(true);
 				if(model.getBall() != null){
 					model.getBall().resetBall();
+					for(Absorber a : model.getAbsorbers()){
+						a.setAbsorbed(false);
+					}
 				}
 				break;
 			case "Run Mode":

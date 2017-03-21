@@ -131,7 +131,7 @@ public class Absorber extends Observable  {
 		return ypos/25;
 	}
 	
-	public int getEndPositonX(){
+	public int getEndPositionX(){
 		return (xpos + width)/25;
 	}
 	

@@ -111,8 +111,8 @@ public class Ball implements gizmo {
 	}
 	
 	public void applyFriction(double mu, double mu2){
-		double xFriction = 1 - (mu/100);
-		double yFriction = 1 - (mu2/100);
+		double xFriction = 1 - (mu/1000);
+		double yFriction = 1 - (mu2/1000);
 		
 		double x = this.getVelo().getX() * xFriction;
 		double y = this.getVelo().getY() * yFriction;
