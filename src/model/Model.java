@@ -510,17 +510,14 @@ public class Model extends Observable {
 		}
 		
 		for(Absorber a : absorbers){
-			int currentX = a.getPositionX();
-			int currentY = a.getPositionY();
 			int endX = a.getEndPositionX();
 			int endY = a.getEndPositionY();
 
-			while(currentX < endX || currentY < endY){
-				if(currentX >= xPos && currentX < xEndPos && currentY >= yPos && currentY < yEndPos){
-					return true;
+			for(int currentX = a.getPositionX(); currentX < endX; currentX++){
+				for(int currentY = a.getPositionY(); currentY < endY; currentY++)
+					if(currentX >= xPos && currentX < xEndPos && currentY >= yPos && currentY < yEndPos){
+						return true;
 				}
-				currentX++;
-				currentY++;
 			}
 		}
 		
