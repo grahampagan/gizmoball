@@ -28,7 +28,7 @@ public class Model extends Observable {
 	private Color gridHighlightColour;
 	private Color boardBackgroundColour;
 
-	private ArrayList<Flipper> flippers;
+	//private ArrayList<Flipper> flippers;
 	private ArrayList<flipper2> flippers2;
 
 
@@ -56,7 +56,7 @@ public class Model extends Observable {
 		gridHighlightColour = Color.RED;
 		boardBackgroundColour = Color.GRAY;
 		
-		flippers=new ArrayList<Flipper>();
+//		flippers=new ArrayList<Flipper>();
 		flippers2 = new ArrayList<flipper2>();
 		
 		flippers2.add(new flipper2("id",1,1));
@@ -374,16 +374,16 @@ public class Model extends Observable {
 	}
 	
 	
-	public void addFlipper(Flipper f){
-		if (f.getPositionX()<=19 && f.getPositionY()<=19){
-		flippers.add(f);
-		this.setChanged();
-		this.notifyObservers();
-		}
-		else{
-			System.out.println("Object out of bounds");
-		}
-	}
+//	public void addFlipper(Flipper f){
+//		if (f.getPositionX()<=19 && f.getPositionY()<=19){
+//		flippers.add(f);
+//		this.setChanged();
+//		this.notifyObservers();
+//		}
+//		else{
+//			System.out.println("Object out of bounds");
+//		}
+//	}
 	
 	public void addFlipper2(flipper2 f){
 		if (f.getPositionX()<=19 && f.getPositionY()<=19){
@@ -397,10 +397,10 @@ public class Model extends Observable {
 	}
 
 	
-	public ArrayList<Flipper> getFLippers(){
-		return flippers;
-	}
-	
+//	public ArrayList<Flipper> getFLippers(){
+//		return flippers;
+//	}
+//	
 	public boolean containsName(String id){
 		System.out.println(circles.isEmpty());
 		for (circle c : circles) {
@@ -457,11 +457,11 @@ public class Model extends Observable {
 			}
 		}
 		
-		for (Flipper f : flippers) {
-			if (Flipper.getPositionX()==parseInt && Flipper.getPositionY()==parseInt2){
-				return true;
-			}
-		}
+//		for (Flipper f : flippers) {
+//			if (Flipper.getPositionX()==parseInt && Flipper.getPositionY()==parseInt2){
+//				return true;
+//			}
+//		}
 		
 		for(Absorber a: absorbers){
 			int x = a.getX()/25;

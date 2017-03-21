@@ -8,7 +8,7 @@ import model.Model;
 import model.Square;
 import model.Absorber;
 import model.FileParser;
-import model.Flipper;
+
 import model.Line;
 import model.Triangle;
 import view.GUI;
@@ -49,7 +49,7 @@ public class Main {
 //		model.addSquare(new Square (250, 250, 100, 100));
 //		model.addCircle(new Circle (250, 250, 50));
 //		model.addTriangle(new Triangle(500, 30, 500, 20, 470, 20));
-		model.addFlipper(new Flipper(400,400));
+	//	model.addFlipper(new Flipper(400,400));
 
 
 
