@@ -27,7 +27,7 @@ public class flipper2 implements KeyListener{
 	private boolean flipped;
 	
 	
-	public flipper2(int x, int y, int w, int h, String id, int j, int k){
+	public flipper2(String id, int j, int k){
 		xpos1 = j;
 		ypos1 = k;
 		xpos2 = xpos1+1;
@@ -36,10 +36,10 @@ public class flipper2 implements KeyListener{
 		ID = id;
 		
 		
-        rectangle = new Square(x * 25, y * 25, 12, 50, id, j,k);    //creates a new square object for the underlying gizmo
+        rectangle = new Square((xpos1 * 25)-12, ypos1 * 25, 12, 50, id, xpos1,ypos1);    //creates a new square object for the underlying gizmo
 
         flipped = false;
-				
+		
 
 	}
 	

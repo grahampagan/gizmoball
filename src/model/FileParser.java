@@ -169,9 +169,31 @@ public class FileParser {
                         break;
 
                     case "RightFlipper":
+                        if (Board.containsName(array1[1]) == true) {
+                            System.out.println("Tried to add a gizmo with a duplicate name");
+                        } else if (Board.hasAtPosition(Integer.parseInt(array1[2]), Integer.parseInt(array1[3])) == true) {
+                            System.out.println("tried to add a gizmo to a Board position with a space already occupied");
+                        } else {
+                            int x = Integer.parseInt(array1[2]);    //converts the x array position to the co-ordinates
+                            int y = Integer.parseInt(array1[3]);    //converts the y array position to the co-ordinates
+                            Board.addFlipper2(new flipper2(array1[1],x,y));    //adds a new gizmo (creating it with the label) and adding it to the board
+                            System.out.println("added gizmo at " + x + " " + y);
+                        }
+
                         ;
 
                     case "LeftFlipper":
+                        if (Board.containsName(array1[1]) == true) {
+                            System.out.println("Tried to add a gizmo with a duplicate name");
+                        } else if (Board.hasAtPosition(Integer.parseInt(array1[2]), Integer.parseInt(array1[3])) == true) {
+                            System.out.println("tried to add a gizmo to a Board position with a space already occupied");
+                        } else {
+                            int x = Integer.parseInt(array1[2]);    //converts the x array position to the co-ordinates
+                            int y = Integer.parseInt(array1[3]);    //converts the y array position to the co-ordinates
+                            Board.addFlipper2(new flipper2(array1[1],x,y));    //adds a new gizmo (creating it with the label) and adding it to the board
+                            System.out.println("added flipper gizmo at " + x + " " + y);
+                        }
+
                         ;
 
                     default:

@@ -58,7 +58,9 @@ public class Model extends Observable {
 		
 		flippers=new ArrayList<Flipper>();
 		flippers2 = new ArrayList<flipper2>();
-		flippers2.add(new flipper2(10, 10, 1, 1, null, 10, 10));
+
+
+		
 	}
 
 	public Color getGridHighlightColour() { return gridHighlightColour; }
@@ -218,6 +220,35 @@ public class Model extends Observable {
 				}
 				}
 				
+				//flipper collisions
+				for(flipper2 f : flippers2){
+					
+					Square s = f.getSquare();
+					for (LineSegment line : s.getLineSeg()) {
+						time = Geometry.timeUntilWallCollision(line, ballCircle, ballVelocity);
+						if (time < shortestTime) {
+							System.out.println("collision flippers");
+							shortestTime = time;
+							newVelo = Geometry.reflectWall(line, b.getVelo(), 1.0);
+							if(s.isConnected()){
+								triggerSquare(s.getConnected());
+							}
+
+						}
+					}
+					for (Circle c : s.getCircles()){
+						time = Geometry.timeUntilCircleCollision(c, ballCircle, ballVelocity);
+						if (time < shortestTime) {
+							shortestTime = time;
+							newVelo = Geometry.reflectCircle(c.getCenter(), b.getCenter(), b.getVelo());
+							if(s.isConnected()){
+								triggerSquare(s.getConnected());
+							}
+						}
+					}
+
+
+				}
 				// Absorber collisions 
 				for (Absorber absorber: absorbers) {
 					if (absorber.getAbsorbed()){
@@ -353,6 +384,18 @@ public class Model extends Observable {
 		}
 	}
 	
+	public void addFlipper2(flipper2 f){
+		if (f.getPositionX()<=19 && f.getPositionY()<=19){
+		flippers2.add(f);
+		this.setChanged();
+		this.notifyObservers();
+		}
+		else{
+			System.out.println("Object out of bounds");
+		}
+	}
+
+	
 	public ArrayList<Flipper> getFLippers(){
 		return flippers;
 	}
@@ -378,11 +421,17 @@ public class Model extends Observable {
 			}
 		}
 		
-//		for(Flipper f: flippers){
-//			if(f.getID().equals(id)){
-//				return true;
-//			}
-//		}
+		for(flipper2 f: flippers2){
+			if(f.getID().equals(id)){
+				return true;
+			}
+		}
+		
+		for(flipper2 f : flippers2){ 
+			if(f.getID().equals(id)){
+				return true;
+			}
+		}
 
 		return false;
 
