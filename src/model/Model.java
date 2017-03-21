@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Observable;
+import java.util.Scanner;
 
 import javax.swing.JFileChooser;
 
@@ -923,6 +924,16 @@ public class Model extends Observable {
 	public ArrayList<flipper2> getFlippers2() {
 		// TODO Auto-generated method stub
 		return flippers2;
+	}
+	
+	public void getKeyPress(){	
+		String key;
+		System.out.println("Please enter a key to connect the gizmo to");
+		
+		Scanner sc = new Scanner(System.in);
+		key = sc.nextLine();
+		System.out.println(key);
+		sc.close();
 	}
 
 	}

@@ -256,6 +256,8 @@ public class RunListener implements ActionListener {
 				frame.pack();
 				model.setBuildMode(false);
 				break;
+			case "Key Connect":
+				model.getKeyPress();
 			}
 		
 	}
