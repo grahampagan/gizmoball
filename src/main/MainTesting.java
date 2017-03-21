@@ -273,7 +273,7 @@ public class MainTesting{
 		@Test
 		public void testGravity(){
 			b.setGravity(11.2);
-			assertTrue(b.getGraivty()==11.2);
+			assertTrue(b.getGravity()==11.2);
 		}
 		
 		@Test

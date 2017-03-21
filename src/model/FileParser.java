@@ -3,6 +3,7 @@ package model;
 import java.io.*;
 
 import physics.Circle;
+import view.GUI;
 
 import javax.swing.*;
 
@@ -119,6 +120,7 @@ public class FileParser {
                     case "Gravity":
                     	double grav = Double.parseDouble(array1[1]);
                     	Board.setGravity(grav);
+                        GUI.gravInp.setText(Double.toString(grav));
                     	System.out.println("Gravity set to: " + grav);
                         break;
 
@@ -127,6 +129,8 @@ public class FileParser {
                         double yfr = Double.parseDouble(array1[2]);
                         Board.setMu(xfr);
                         Board.setMu2(yfr);
+                        GUI.xFricIn.setText(Double.toString(xfr));
+                        GUI.yFricIn.setText(Double.toString(yfr));
                         System.out.println("Friction set to Mu: " + xfr + " Mu2: " + yfr);
                     	break;
 

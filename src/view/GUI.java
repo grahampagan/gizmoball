@@ -41,9 +41,9 @@ public class GUI implements ActionListener {
 	private int absorberXEnd;
 	private int absorberYEnd;
 	private ArrayList<JButton> buildButtonsArray = new ArrayList<JButton>();
-	private JTextField gravInp;
-	private JTextField xFricIn;
-	private JTextField yFricIn;
+	public static JTextField gravInp;
+	public static JTextField xFricIn;
+	public static JTextField yFricIn;
 
 	private Board b;
 
@@ -190,8 +190,8 @@ public class GUI implements ActionListener {
 		fricInput.setLayout(new GridLayout(2, 1));
 		fricInput.add(xFricIn);
 		fricInput.add(yFricIn);
-		xFricIn.setText("0.025");
-		yFricIn.setText("0.025");
+		xFricIn.setText(Double.toString(mod.getMu()));
+		yFricIn.setText(Double.toString(mod.getMu2()));
 		buildButtons.add(fricInput);
 
 		JButton gravityButton = new JButton("Apply Gravity: ");
@@ -203,7 +203,7 @@ public class GUI implements ActionListener {
 		JPanel gravInput = new JPanel();
 		gravInput.setLayout(new GridLayout(1, 1));
 		gravInput.add(gravInp);
-		gravInp.setText("25.0");
+		gravInp.setText(Double.toString(mod.getGravity()));
 		buildButtons.add(gravInput);
 		
 		JButton clearBoardButton = new JButton("Clear board");

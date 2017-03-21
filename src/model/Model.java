@@ -635,7 +635,7 @@ public class Model extends Observable {
 		gravity = g;
 	}
 	
-	public double getGraivty(){
+	public double getGravity(){
 		return gravity;
 	}
 	
@@ -901,6 +901,9 @@ public class Model extends Observable {
 		for(Absorber a : absorbers){
 			output.append("Absorber " + a.getID() + " " + a.getPositionX() + " " + a.getPositionY() + " " + a.getEndPositionX() + " " + a.getEndPositionY() + newLine);
 		}
+		
+		output.append("Gravity " + gravity + newLine);
+		output.append("Friction " + mu + " " + mu2);
 		
 		String userdir = System.getProperty("user.dir");
 	    JFileChooser chooser = new JFileChooser(userdir +"\\SavedModels");
