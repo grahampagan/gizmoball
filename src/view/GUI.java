@@ -136,8 +136,8 @@ public class GUI implements ActionListener {
 
 		JPanel ballInput = new JPanel();
 		ballInput.setLayout(new GridLayout(2, 1));
-		JTextField xCoord = new JTextField();
-		JTextField yCoord = new JTextField();
+		final JTextField xCoord = new JTextField();
+		final JTextField yCoord = new JTextField();
 		xCoord.setText("200");
 		yCoord.setText(("200"));
 		ballInput.add(xCoord);
