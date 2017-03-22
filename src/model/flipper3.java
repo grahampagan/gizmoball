@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import physics.Circle;
 import physics.LineSegment;
 
-public class flipper2 implements KeyListener{
+public class flipper3 implements KeyListener{
 
 	private int xpos1;	//the top left of the flipper 
 	private int ypos1;
@@ -27,9 +27,9 @@ public class flipper2 implements KeyListener{
 	private boolean flipped;
 	
 	
-	public flipper2(String id, int j, int k){
-		xpos1 = j;
-		ypos1 = k;
+	public flipper3(String id, int j, int k){
+		xpos1 = j+1;
+		ypos1 = k+1;
 		xpos2 = xpos1+1;
 		ypos2 = ypos1+1;
 		
@@ -134,7 +134,7 @@ public class flipper2 implements KeyListener{
 	
 	public void setRectangle1(){
 		if(flipped == false){
-	        rectangle = new Square(x * 25, y * 25, 50, 12, ID, x,y);    //creates a new square object for the underlying gizmo
+	        rectangle = new Square((x * 25)-50, y * 25, 50, 12, ID, x,y);    //creates a new square object for the underlying gizmo
 	        movingCircle = new circle(new Circle((xpos1*25)+12,(ypos1*25)+38,5));
 	        flipped = true;
 		}

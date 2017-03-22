@@ -15,9 +15,6 @@ import view.GUI;
 import view.RunGui;
 import physics.*; 
 
-/**
- * @author Murray Wood Demonstration of MVC and MIT Physics Collisions 2014
- */
 
 public class Main {
 

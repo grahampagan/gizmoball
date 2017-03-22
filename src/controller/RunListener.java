@@ -20,10 +20,6 @@ import model.Triangle;
 import model.circle;
 import physics.Circle;
 
-/**
- * @author Murray Wood Demonstration of MVC and MIT Physics Collisions 2014
- */
-
 public class RunListener implements ActionListener {
 
 	private Timer timer;
@@ -256,6 +252,21 @@ public class RunListener implements ActionListener {
 				break;
 			case "Key Connect":
 				model.getKeyPress();
+				break;
+				
+			case "Connect":
+				int x1 = model.getGridHighlight().getPositionX();
+				int y1 = model.getGridHighlight().getPositionY();
+
+				String string = model.getIdOfPosition(x1, y1);
+				if (string != null) {
+					System.out.println("connect "+x1+ " "+y1);
+				}
+				else {
+					System.out.println("could not connect gizmo");
+				}
+				break;
+
 			}
 		
 	}

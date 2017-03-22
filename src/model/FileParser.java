@@ -116,7 +116,14 @@ public class FileParser {
                         ;
 
                     case "Connect":
-                        ;
+                    	
+                    	if(Board.connect(array1[1], array1[2])==true){
+                        	System.out.println("connected "+ array1[1] + " "+array1[2]); 
+                    	}else{
+                        	System.out.println("did not connect");
+
+                    	}
+                        break;
 
                     case "KeyConnect":
                         ;
@@ -190,10 +197,10 @@ public class FileParser {
                         } else {
                             int x = Integer.parseInt(array1[2]);    //converts the x array position to the co-ordinates
                             int y = Integer.parseInt(array1[3]);    //converts the y array position to the co-ordinates
-                            Board.addFlipper2(new flipper2(array1[1],x,y));    //adds a new gizmo (creating it with the label) and adding it to the board
-                            System.out.println("added flippers gizmo at " + x + " " + y);
+                            Board.addFlipper3(new flipper3(array1[1],x,y));    //adds a new gizmo (creating it with the label) and adding it to the board
+                            System.out.println("added rightflippers gizmo at " + x + " " + y);
                         }
-
+                        break
                         ;
 
                     case "LeftFlipper":
@@ -205,9 +212,9 @@ public class FileParser {
                             int x = Integer.parseInt(array1[2]);    //converts the x array position to the co-ordinates
                             int y = Integer.parseInt(array1[3]);    //converts the y array position to the co-ordinates
                             Board.addFlipper2(new flipper2(array1[1],x,y));    //adds a new gizmo (creating it with the label) and adding it to the board
-                            System.out.println("added flipper gizmo at " + x + " " + y);
+                            System.out.println("added leftflipper gizmo at " + x + " " + y);
                         }
-
+                        break
                         ;
 
                     default:

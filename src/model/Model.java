@@ -32,6 +32,7 @@ public class Model extends Observable {
 
 	//private ArrayList<Flipper> flippers;
 	private ArrayList<flipper2> flippers2;
+	private ArrayList<flipper3> flippers3;
 
 
 	//**********************************
@@ -57,7 +58,7 @@ public class Model extends Observable {
 		
 //		flippers=new ArrayList<Flipper>();
 		flippers2 = new ArrayList<flipper2>();
-		
+		flippers3 = new ArrayList<flipper3>();
 
 		
 	}
@@ -951,5 +952,49 @@ public class Model extends Observable {
 	public String getKey(){
 		return key;
 	}
+	
+	public boolean connect(String id1, String id2){
+		if(containsName(id1)==false || containsName(id2)==false){
+			System.out.println("tried to connect two gizmos where one or the other or both dont exist");
+			return false;
+		}else{
+			for (circle c : circles) {
+				if (c.getID().equals(id1)){
+					c.setConnected(id2);
+					return true;
+				}
+			}
 
+			for(Triangle triangle : triangles){
+				if(triangle.getID().equals(id1)){
+					triangle.setConnected(id2);
+					return true;
+				}
+			}
+
+			for(Square s : squares){
+				if(s.getID().equals(id1)){
+					s.setConnected(id2);
+					return true;
+				}
+			}
+			
+			for (Absorber a : absorbers) {
+				if(a.getID().equals(id1)){
+					a.setConnected(id2);
+					return true;
+				}
+
+		}
 	}
+		return false;
+	}
+
+	public void addFlipper3(flipper3 flipper3) {
+		flippers3.add(flipper3);
+	}
+	
+	public ArrayList<flipper3> getFlippers3(){
+		return flippers3;
+	}
+}
