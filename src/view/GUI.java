@@ -313,6 +313,7 @@ public class GUI implements ActionListener {
 						} else {
 							JOptionPane.showMessageDialog(frame,
 								    "Could not add ball as a gizmo already exists in this space.");
+							addingBall = false;
 						}
 					}
 				}
@@ -377,6 +378,8 @@ public class GUI implements ActionListener {
 							Absorber a = new Absorber(absorberX, absorberY, width, height, id);
 							mod.addAbsorber(a);
 						} else {
+							JOptionPane.showMessageDialog(frame,
+								    "Could not add absorber as a gizmo already exists in this area.");
 							System.out.println("Could not add absorber.");
 						}
 						
