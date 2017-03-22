@@ -4,3 +4,5 @@ Circle c2 8 1
 Triangle t1 13 13
 Rotate t1
 Absorber ab 0 0 0 0
+Gravity 0.0
+Friction 0.0 0.0
