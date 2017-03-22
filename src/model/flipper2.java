@@ -3,6 +3,7 @@ package model;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import physics.Circle;
 import physics.LineSegment;
@@ -157,6 +158,7 @@ public class flipper2 implements KeyListener{
 			return true;
 		}
 	}
+
 	
 
 }

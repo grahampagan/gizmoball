@@ -590,8 +590,29 @@ public class Model extends Observable {
 				this.notifyObservers();
 			}
 		}
+		
+		Iterator<flipper2> flipper2Iter = flippers2.iterator();
+		while(flipper2Iter.hasNext()){
+			flipper2 f = flipper2Iter.next();
+		      if(f.getID().equals(id)) {
+		        flipper2Iter.remove();
+		      }
+		}
+		
+		Iterator<flipper3> flipper3Iter = flippers3.iterator();
+		while(flipper3Iter.hasNext()){
+			flipper3 f = flipper3Iter.next();
+		      if(f.getID().equals(id)) {
+		        flipper3Iter.remove();
+		      }
+		}
+
 
 	}
+
+
+
+	
 	
 	public void rotate(String id){
 
@@ -717,6 +738,20 @@ public class Model extends Observable {
 					r = s.getID();
 				}
 			}
+			
+			for(flipper2 f : flippers2){
+				if(f.chordCheck(x,y)==false){
+					r = f.getID();
+				}
+			}
+			
+			for(flipper3 f : flippers3){
+				if(f.chordCheck(x,y)==false){
+					r = f.getID();
+				}
+			}
+
+
 			
 			for (Absorber a : absorbers) {
 				int xStart = a.getX()/25;
