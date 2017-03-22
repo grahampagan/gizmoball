@@ -19,8 +19,6 @@ public class MainTesting{
 	public void testMoveBall(){
 		
 		Ball ball = new Ball(3,3,200,200,"b");
-		
-		//test move ball for time method
 		b.moveBallForTime(ball, 5);
 	}
 	
@@ -47,8 +45,6 @@ public class MainTesting{
 
 		@Test
 		public void testAddSquare() throws IOException{
-			
-			//add a square to the board
 			Square s=new Square(10, 10, 3, 3, "s", 5, 5);
 			b.addSquare(s);
 			assertEquals(b.containsName("s"), true);
@@ -60,9 +56,6 @@ public class MainTesting{
 		
 		@Test
 		public void testAddCircles(){
-			
-			
-			//add a circle to the board
 			circle c = new circle(10.0, 10.0, 10.0, "Circle", 12, 12);	
 			b.addCircle(c);
 			assertEquals(b.containsName("Circle"), true);
@@ -74,7 +67,6 @@ public class MainTesting{
 		
 		@Test
 		public void testAddTriangles(){
-			//add a triangle to the board
 			Triangle t = new Triangle(5,5, 2,10, 10, 10, "t", 13,13);
 			b.addTriangle(t);
 			assertEquals(b.containsName("t"), true);
@@ -85,14 +77,9 @@ public class MainTesting{
 		
 		@Test
 		public void testAddBall(){
-			//add a ball to the board
 			Ball ball = new Ball(3,3,200,200,"b");	
-			//b.addBall(ball);
-			//b.addBall(ball);
+
 			b.setBall(ball);
-			//assertEquals(b.containsName("b"), true);
-			//assertEquals(ball.getExactX(), 3);
-			//assertEquals(ball.getExactY(), 3);
 			
 			b.moveBall();
 			
@@ -102,7 +89,6 @@ public class MainTesting{
 		
 		@Test
 		public void testAddAbsorber(){
-			//add an absorber to the board
 			Absorber a = new Absorber(10, 10, 4, 1, "ab");
 			b.addAbsorber(a);
 		
@@ -119,9 +105,17 @@ public class MainTesting{
 			
 		}
 		
+		@Test
+		public void testAddFlipper(){
+			assertEquals(b.containsName("f"), false);
+			flipper3 ff = new flipper3("ff",3,3);
+			b.addFlipper3(ff);
+			assertEquals(b.containsName("ff"), true);
+			
+		}
+		
 		@Test 
 		public void testRotate(){
-			//rotate a triangle
 			Triangle t = new Triangle(3,3,1,8,8,8,"tri", 12,12);
 			b.addTriangle(t);
 			assertEquals(t.getRotations(), 0);
@@ -205,7 +199,6 @@ public class MainTesting{
 		assertEquals(s.getX(), 15);
 		assertEquals(s.getY(), 12);
 		
-		//assertFalse(b.atPosition(9, 9));
 		assertEquals(b.hasAtPosition(15, 12), true);
 		}
 		
@@ -248,7 +241,6 @@ public class MainTesting{
 			assertEquals(s.isConnected(), false);
 			s.setConnected("Circle");
 			assertEquals(s.isConnected(), true);
-			//assertEquals(c.isConnected(), true);
 		}
 		
 		@Test
@@ -258,7 +250,6 @@ public class MainTesting{
 			s.setConnected("Circle");
 			assertEquals(s.isConnected(), true);
 			s.setConnected("Circle");
-			//assertEquals(s.isConnected(), false);
 		}
 		
 		@Test
@@ -273,7 +264,6 @@ public class MainTesting{
 		@Test
 		public void testKeyConnect(){
 			b.getKeyPress();
-			//b.enterKey("e");
 			assertEquals(b.getKey(), "d");
 		}
 		
@@ -283,28 +273,24 @@ public class MainTesting{
 		}
 		
 		@Test
-		public void testLoadBuild(){
+		public void testLoad(){
 			
 			FileParser f = null;
 			
-			//assertEquals(f.getFileLoaded(), false);
-			
-			/*try{
+			try{
 			f = new FileParser(b);
 			}catch(FileNotFoundException e){
 				e.printStackTrace();
 			}
 			try{
-			f.run();
+			f.run(true);
 			}catch(IOException e1){
 				e1.printStackTrace();
 			}
-			
-			assertEquals(f.getFileLoaded(), true);*/
 		}
 		
 		@Test
-		public void testReloadBuild(){
+		public void testReload(){
 			
 		}
 		
@@ -314,14 +300,12 @@ public class MainTesting{
 			circle c = new circle(2.0, 2.0, 2.0, "c2", 8, 1);
 			Triangle t = new Triangle(5,5, 2,10, 10, 10, "t1", 13, 13);
 			Absorber a = new Absorber(10, 10, 4, 1, "ab");
-	//		Flipper f = new Flipper(5,4);
 			Ball ball = new Ball(2,2,100,100,"ball");
 			
 			b.addSquare(s);
 			b.addCircle(c);
 			b.addTriangle(t);
 			b.addAbsorber(a);
-//			b.addFlipper(f);
 			b.setBall(ball);
 			
 			b.rotate("t1");
@@ -340,7 +324,6 @@ public class MainTesting{
 		@Test
 		public void testStart(){
 			Ball ball = new Ball(2,2,100,100,"ball");
-			//b.add(ball);
 			ball.stop();
 			ball.start();
 			assertEquals(ball.stopped(), false);
@@ -349,25 +332,9 @@ public class MainTesting{
 		@Test
 		public void testStop(){
 			Ball ball = new Ball(5,5,50,50,"ball");
-			//b.add(ball);
 			ball.start();
 			ball.stop();
 			assertEquals(ball.stopped(), true);
-		}
-		
-		@Test
-		public void testTick(){
-			
-		}
-		
-		@Test
-		public void testLoadRun(){
-			
-		}
-		
-		@Test
-		public void testReloadRun(){
-			
 		}
 		
 		@Test
@@ -413,8 +380,8 @@ public class MainTesting{
 		@Test
 		public void testAddFlipperFail(){
 			assertEquals(b.containsName("f"), false);
-		//	Flipper ff = new Flipper(60,30);
-		//	b.addFlipper(ff);
+			flipper3 ff = new flipper3("ff",30,30);
+			b.addFlipper3(ff);
 			assertEquals(b.containsName("ff"), false);
 			
 		}
