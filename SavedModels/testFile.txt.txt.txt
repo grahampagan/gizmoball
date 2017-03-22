@@ -1,0 +1,6 @@
+Ball ball 2.0 2.0 100.0 100.0
+Square s 1 1
+Circle c2 8 1
+Triangle t1 13 13
+Rotate t1
+Absorber ab 0 0 0 0

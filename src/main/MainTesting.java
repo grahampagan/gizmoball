@@ -39,19 +39,7 @@ public class MainTesting{
 		assertEquals(b.getIdOfPosition(13,2), "t");
 	}
 	
-	@Test
-	public void testGridHighlight(){
-		
-		Square s=new Square(75, 175, 25, 25, "s", 3, 7);
-		
-		b.setGridHighlight(3, 7);
-		assertEquals(b.getGridHighlight(), s);
-	}
-	
-	/*@Test
-	public void testHasAt(){
-		b.hasAtPosition(parseInt, parseInt2)
-	}*/
+
 		
 		//RUN MODE TESTS
 		
@@ -117,21 +105,10 @@ public class MainTesting{
 			//add an absorber to the board
 			Absorber a = new Absorber(10, 10, 4, 1, "ab");
 			b.addAbsorber(a);
+		
 			assertEquals(b.containsName("a"), true);
 			assertEquals(b.hasAtPosition(18, 18), true);
 		}
-		
-//		@Test
-//		public void testAddFlipper(){
-//			//add a flipper to the board
-//			Flipper f = new Flipper(5,4);
-//			b.addFlipper(f);
-//			assertEquals(b.containsName("f"), true);
-//			assertEquals(f.getPositionX(), 5);
-//			assertEquals(f.getPositionY(), 4);
-//			assertEquals(b.hasAtPosition(5, 4), true);
-//			
-//		}
 		
 		@Test
 		public void testAddLine(){
@@ -156,18 +133,6 @@ public class MainTesting{
 			assertEquals(t.getRotations(), 3);
 			b.rotate("tri");
 			assertEquals(t.getRotations(), 4);
-		}
-		
-		//not sure of the difference between this and delete
-		@Test
-		public void testRemove(){
-			Square s = new Square(10,10,3,3,"s",5,5);
-			b.addSquare(s);
-			
-			//b.addGizmo(sq, 10, 10);
-			//assertTrue(b.removeGizmo(10,10));
-			
-			
 		}
 		
 		@Test
@@ -266,8 +231,8 @@ public class MainTesting{
 		public void testFriction(){
 			b.setMu(12.21);
 			b.setMu2(13.32);
-			assertEquals(b.getMu(), 12.21);
-			assertEquals(b.getMu2(), 13);
+			assertTrue(b.getMu()== 12.21);
+			assertTrue(b.getMu2()==13.32);
 		}
 		
 		@Test
@@ -307,7 +272,9 @@ public class MainTesting{
 		
 		@Test
 		public void testKeyConnect(){
-			
+			b.getKeyPress();
+			//b.enterKey("e");
+			assertEquals(b.getKey(), "d");
 		}
 		
 		@Test
@@ -458,3 +425,5 @@ public class MainTesting{
 		
 
 	}
+
+

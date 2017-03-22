@@ -187,7 +187,7 @@ public class FileParser {
                             int x = Integer.parseInt(array1[2]);    //converts the x array position to the co-ordinates
                             int y = Integer.parseInt(array1[3]);    //converts the y array position to the co-ordinates
                             Board.addFlipper2(new flipper2(array1[1],x,y));    //adds a new gizmo (creating it with the label) and adding it to the board
-                            System.out.println("added gizmo at " + x + " " + y);
+                            System.out.println("added flippers gizmo at " + x + " " + y);
                         }
 
                         ;
