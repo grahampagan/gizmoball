@@ -28,6 +28,7 @@ public class Model extends Observable {
 	private boolean buildMode;
 	private Color gridHighlightColour;
 	private Color boardBackgroundColour;
+	String key;
 
 	//private ArrayList<Flipper> flippers;
 	private ArrayList<flipper2> flippers2;
@@ -923,13 +924,17 @@ public class Model extends Observable {
 	}
 	
 	public void getKeyPress(){	
-		String key;
+	
 		System.out.println("Please enter a key to connect the gizmo to");
 		
 		Scanner sc = new Scanner(System.in);
 		key = sc.nextLine();
 		System.out.println(key);
 		sc.close();
+	}
+	
+	public String getKey(){
+		return key;
 	}
 
 	}
