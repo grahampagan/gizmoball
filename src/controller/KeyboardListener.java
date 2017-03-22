@@ -27,8 +27,10 @@ public class KeyboardListener implements KeyListener {
             	f.setRectangle1();
             }
             
-            for(flipper3 f : model.getFlippers3()){
-            	f.setRectangle1();
+            for(flipper3 flipper3 : model.getFlippers3()){
+            	flipper3.setRectangle1();
+            	System.out.println("flipper 3 flipped");
+
             }
 
 		}	
@@ -43,8 +45,8 @@ public class KeyboardListener implements KeyListener {
             	f.setRectangle2();
             }
             
-            for(flipper3 f : model.getFlippers3()){
-            	f.setRectangle2();
+            for(flipper3 flipper3 : model.getFlippers3()){
+            	flipper3.setRectangle2();
             }
 
 		}

@@ -28,20 +28,20 @@ public class flipper3 implements KeyListener{
 	
 	
 	public flipper3(String id, int j, int k){
-		xpos1 = j+1;
-		ypos1 = k+1;
+		xpos1 = j;
+		ypos1 = k;
 		xpos2 = xpos1+1;
 		ypos2 = ypos1+1;
 		
 		ID = id;
 		
 		
-        rectangle = new Square(xpos1 * 25, ypos1 * 25, 12, 50, id, xpos1,ypos1);    //creates a new square object for the underlying gizmo
+        rectangle = new Square((xpos1 * 25)+37, ypos1 * 25, 12, 50, id, xpos1,ypos1);    //creates a new square object for the underlying gizmo
 
         flipped = false;
 		
-        cornerCircle = new circle(new Circle((xpos1*25)+12,(ypos1*25)+12,5));
-        movingCircle = new circle(new Circle((xpos1*25)+12,(ypos1*25)+38,5));
+        cornerCircle = new circle(new Circle((xpos1*25)+43,(ypos1*25)+8,5));
+        movingCircle = new circle(new Circle((xpos1*25)+43,(ypos1*25)+46,5));
 
 	}
 	
@@ -134,16 +134,16 @@ public class flipper3 implements KeyListener{
 	
 	public void setRectangle1(){
 		if(flipped == false){
-	        rectangle = new Square((xpos1 * 25)-50, ypos1 * 25, 50, 12, ID, x,y);    //creates a new square object for the underlying gizmo
-	        movingCircle = new circle(new Circle((xpos1*25)+12,(ypos1*25)+38,5));
+	        rectangle = new Square(xpos1*25, ypos1*25, 50, 12, ID, xpos1, ypos1);    //creates a new square object for the underlying gizmo
+	        movingCircle = new circle(new Circle((xpos1*25)+7,(ypos1*25)+5,5));
 	        flipped = true;
 		}
 	}
 	
 	public void setRectangle2(){
 		if(flipped == true){
-	        rectangle = new Square(xpos1 * 25, ypos1 * 25, 12, 50, ID, xpos1,ypos1);    //creates a new square object for the underlying gizmo
-	        movingCircle = new circle(new Circle((xpos1*25)+38,(ypos1*25)+12,5));
+	        rectangle = new Square((xpos1*25)+37, ypos1*25, 12, 50, ID, xpos1,ypos1);    //creates a new square object for the underlying gizmo
+	        movingCircle = new circle(new Circle((xpos1*25)+43,(ypos1*25)+46,5));
 			flipped = false;
 
 		}

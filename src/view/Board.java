@@ -120,15 +120,13 @@ public class Board extends JPanel implements Observer {
 	    //draw flippers
 	    
 	    for(flipper2 f : gm.getFlippers2()){
-	        g.drawRoundRect(f.getXPos()*25, f.getYPos()*25,f.getSquare().getWidth(),f.getSquare().getHeight(), 50, 30);
-	        g.fillRoundRect(f.getXPos()*25, f.getYPos()*25,f.getSquare().getWidth(),f.getSquare().getHeight(), 50, 30);
-
+	        g.drawRoundRect(f.getSquare().getX(), (f.getSquare().getY()),f.getSquare().getWidth(),f.getSquare().getHeight(), 50, 30);
+	        g.fillRoundRect(f.getSquare().getX(), (f.getSquare().getY()),f.getSquare().getWidth(),f.getSquare().getHeight(), 50, 30);
 	    }
 	    
 	    for(flipper3 f : gm.getFlippers3()){
-	        g.drawRoundRect((f.getXPos()*25)+12, (f.getYPos()*25)-22,f.getSquare().getWidth(),f.getSquare().getHeight(), 50, 30);
-	        g.fillRoundRect((f.getXPos()*25)+12, (f.getYPos()*25)-22,f.getSquare().getWidth(),f.getSquare().getHeight(), 50, 30);
-
+	        g.drawRoundRect((f.getSquare().getX()), (f.getSquare().getY()),f.getSquare().getWidth(),f.getSquare().getHeight(), 50, 30);
+	        g.fillRoundRect((f.getSquare().getX()), (f.getSquare().getY()),f.getSquare().getWidth(),f.getSquare().getHeight(), 50, 30);
 	    }
 
 	    
