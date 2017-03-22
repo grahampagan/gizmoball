@@ -44,7 +44,7 @@ public class GUI implements ActionListener {
 	public static JTextField gravInp;
 	public static JTextField xFricIn;
 	public static JTextField yFricIn;
-	private Component frame;
+	public static Component frame;
 
 	private Board b;
 

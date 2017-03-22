@@ -77,7 +77,7 @@ public class RunListener implements ActionListener {
 			case "Load":
 				try {
 					f.setFileLoaded(false);
-					f.run();
+					f.run(false);
 					f.setFileLoaded(true);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
@@ -87,7 +87,7 @@ public class RunListener implements ActionListener {
 			case "Load Model":
 				try {
 					f.setFileLoaded(false);
-					f.run();
+					f.run(false);
 					f.setFileLoaded(true);
 				} catch (IOException e2) {
 					// TODO Auto-generated catch block
@@ -96,17 +96,15 @@ public class RunListener implements ActionListener {
 				break;
 			case "Reload":
 				try { 
-					model.clearBoard();
-					f.run();
+					f.run(true);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				break;
 			case "Reload Model":
-				model.clearBoard();
 				try {
-					f.run();
+					f.run(true);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

@@ -20,17 +20,17 @@ public class FileParser {
         fileLoaded = x;
     }
 
-    public Model run() throws IOException {
-//        FileReader input = new FileReader("myFile");
+    public Model run(boolean r) throws IOException {
+    	boolean reload = r;
         String userdir = System.getProperty("user.dir");
         JFileChooser chooser = new JFileChooser(userdir + "\\SavedModels");
-//        BufferedReader bufread = new BufferedReader(input);
         BufferedReader bufread = null;
+        
         if (fileLoaded) {
         	Board.clearBoard();
             System.out.println("File reloaded");
             bufread = new BufferedReader(loadedFile);
-        } else {
+        } else if (!reload){
             int returnVal = chooser.showOpenDialog(null);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
             	Board.clearBoard();
@@ -38,7 +38,11 @@ public class FileParser {
                 FileReader input2 = new FileReader(i);
                 bufread = new BufferedReader(input2);
                 loadedFile = new FileReader(i);
+                fileLoaded = true;
             } else if (returnVal == JFileChooser.CANCEL_OPTION){}
+        } else {
+        	JOptionPane.showMessageDialog(GUI.frame,
+				    "No models have been previously loaded.");
         }
 
             String myline = null;
