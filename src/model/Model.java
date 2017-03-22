@@ -490,6 +490,19 @@ public class Model extends Observable {
 				return true;
 			}
 		}
+		
+		for(flipper2 f : flippers2){
+			if(f.chordCheck(parseInt,parseInt2)==false){
+				return true;
+			}
+		}
+		
+		for(flipper3 f : flippers3){
+			if(f.chordCheck(parseInt,parseInt2)==false){
+				return true;
+			}
+		}
+
 
 		return false;
 

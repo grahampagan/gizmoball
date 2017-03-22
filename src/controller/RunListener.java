@@ -18,6 +18,8 @@ import model.Model;
 import model.Square;
 import model.Triangle;
 import model.circle;
+import model.flipper2;
+import model.flipper3;
 import physics.Circle;
 
 public class RunListener implements ActionListener {
@@ -266,6 +268,51 @@ public class RunListener implements ActionListener {
 					System.out.println("could not connect gizmo");
 				}
 				break;
+				
+			case "Add Left Flipper":		
+				int xposition = model.getGridHighlight().getX();
+				int yposition = model.getGridHighlight().getY();
+
+				if (!model.hasAtPosition(xposition, yposition)) {
+					String id = "LeftFlipper" + xposition+ "x" + yposition;
+					if(model.containsName(id)) {
+						id = id + "+" + model.getFlippers2().size();
+					}
+					flipper2 f = new flipper2(id,xposition,yposition);
+
+					model.addFlipper2(f);
+					System.out.println("added leftflipper at " + xposition + " " + yposition);
+				}
+				else {
+					JOptionPane.showMessageDialog(frame,
+						    "Could not add flipper as a gizmo already exists in this space.");
+					System.out.println("could not add left flipper at " + xposition + " " + yposition);
+				}
+				break;
+
+				
+			case "Add Right Flipper":		
+				xposition = model.getGridHighlight().getX();
+				yposition = model.getGridHighlight().getY();
+
+				if (!model.hasAtPosition(xposition, yposition)) {
+					String id = "LeftFlipper" + xposition+ "x" + yposition;
+					if(model.containsName(id)) {
+						id = id + "+" + model.getFlippers3().size();
+					}
+					
+					flipper3 f = new flipper3(id,xposition,yposition);
+
+					model.addFlipper3(f);
+					System.out.println("added rightflipper at " + xposition + " " + yposition);
+				}
+				else {
+					JOptionPane.showMessageDialog(frame,
+						    "Could not add flipper as a gizmo already exists in this space.");
+					System.out.println("could not add right flipper at " + xposition + " " + yposition);
+				}
+				break;
+
 
 			}
 		

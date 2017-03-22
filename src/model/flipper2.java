@@ -149,7 +149,14 @@ public class flipper2 implements KeyListener{
 		}
 	}
 
-	
+	public boolean chordCheck(int x, int y){
+
+		if((x == xpos1 && y == ypos1) || (x == xpos1+1 && y == ypos1) || (x == xpos1 && y == ypos1+1) || (x == xpos1+1 && y == ypos1+1)){
+			return false;
+		}else{
+			return true;
+		}
+	}
 	
 
 }
