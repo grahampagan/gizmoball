@@ -261,6 +261,53 @@ public class Model extends Observable {
 
 
 				}
+				
+				//flipper collisions
+				for(flipper3 f : flippers3){
+					
+					Square s = f.getSquare();
+					for (LineSegment line : s.getLineSeg()) {
+						time = Geometry.timeUntilWallCollision(line, ballCircle, ballVelocity);
+						if (time < shortestTime) {
+							System.out.println("collision flippers");
+							shortestTime = time;
+							newVelo = Geometry.reflectWall(line, b.getVelo(), 1.0);
+							if(s.isConnected()){
+								triggerSquare(s.getConnected());
+							}
+
+						}
+					}
+					for (Circle c : s.getCircles()){
+						time = Geometry.timeUntilCircleCollision(c, ballCircle, ballVelocity);
+						if (time < shortestTime) {
+							shortestTime = time;
+							newVelo = Geometry.reflectCircle(c.getCenter(), b.getCenter(), b.getVelo());
+							if(s.isConnected()){
+								triggerSquare(s.getConnected());
+							}
+						}
+					}
+					
+					circle circle = f.getCornerCircle();
+						Circle c = circle.getCircle();
+						time = Geometry.timeUntilCircleCollision(c, ballCircle, ballVelocity);
+						if (time < shortestTime) {
+							shortestTime = time;
+							newVelo = Geometry.reflectCircle(c.getCenter(), b.getCenter(), b.getVelo());
+						}
+
+						circle = f.getMovingCircle();
+						c = circle.getCircle();
+						time = Geometry.timeUntilCircleCollision(c, ballCircle, ballVelocity);
+						if (time < shortestTime) {
+							shortestTime = time;
+							newVelo = Geometry.reflectCircle(c.getCenter(), b.getCenter(), b.getVelo());
+						}
+
+
+				}
+
 				// Absorber collisions 
 				for (Absorber absorber: absorbers) {
 					if (absorber.getAbsorbed()){
@@ -1039,7 +1086,14 @@ public class Model extends Observable {
 	}
 
 	public void addFlipper3(flipper3 flipper3) {
+		if (flipper3.getPositionX()<=19 && flipper3.getPositionY()<=19){
 		flippers3.add(flipper3);
+		this.setChanged();
+		this.notifyObservers();
+		}
+		else{
+			System.out.println("Object out of bounds");
+		}
 	}
 	
 	public ArrayList<flipper3> getFlippers3(){
