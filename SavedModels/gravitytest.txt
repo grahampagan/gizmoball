@@ -1,0 +1,2 @@
+Gravity 10.0
+Friction 1.0 2.0

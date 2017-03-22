@@ -28,6 +28,7 @@ public class Model extends Observable {
 	private boolean buildMode;
 	private Color gridHighlightColour;
 	private Color boardBackgroundColour;
+	String key;
 
 	//private ArrayList<Flipper> flippers;
 	private ArrayList<flipper2> flippers2;
@@ -650,7 +651,7 @@ public class Model extends Observable {
 		gravity = g;
 	}
 	
-	public double getGraivty(){
+	public double getGravity(){
 		return gravity;
 	}
 	
@@ -917,6 +918,9 @@ public class Model extends Observable {
 			output.append("Absorber " + a.getID() + " " + a.getPositionX() + " " + a.getPositionY() + " " + a.getEndPositionX() + " " + a.getEndPositionY() + newLine);
 		}
 		
+		output.append("Gravity " + gravity + newLine);
+		output.append("Friction " + mu + " " + mu2);
+		
 		String userdir = System.getProperty("user.dir");
 	    JFileChooser chooser = new JFileChooser(userdir +"\\SavedModels");
 	    int retrival = chooser.showSaveDialog(null);
@@ -935,13 +939,17 @@ public class Model extends Observable {
 	}
 	
 	public void getKeyPress(){	
-		String key;
+	
 		System.out.println("Please enter a key to connect the gizmo to");
 		
 		Scanner sc = new Scanner(System.in);
 		key = sc.nextLine();
 		System.out.println(key);
 		sc.close();
+	}
+	
+	public String getKey(){
+		return key;
 	}
 
 	}
