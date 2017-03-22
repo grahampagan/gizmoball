@@ -44,6 +44,7 @@ public class GUI implements ActionListener {
 	public static JTextField gravInp;
 	public static JTextField xFricIn;
 	public static JTextField yFricIn;
+	private Component frame;
 
 	private Board b;
 
@@ -61,6 +62,7 @@ public class GUI implements ActionListener {
 		l = new RunListener(mod, gizmo, gravInp, xFricIn, yFricIn, f, runButtons, buildButtons);
 		k = new KeyboardListener(mod);
 		b = new Board(500, 500, mod);
+		frame = null;
 	}
 
 	public void createGUI() throws IOException {
@@ -293,19 +295,24 @@ public class GUI implements ActionListener {
 					if (addingBall) {
 						double xm = Math.floor(e.getX()/25);
 						double ym = Math.floor(e.getY()/25);
-						try{
-						double xv = Double.parseDouble(xCoord.getText());
-						double yv = Double.parseDouble(yCoord.getText());
-
-						Ball b = new Ball((xm * 25) + 12.5, (ym * 25) + 12.5, xv, yv, "B1");
-						mod.setBall(b);
-						mod.notifyObs();
-
-						addingBall = false;
-						} catch (NumberFormatException ballNumException){
-							Component frame = null;
+						
+						if(mod.hasAtPosition((int) x, (int) y) == false){				
+							try{
+							double xv = Double.parseDouble(xCoord.getText());
+							double yv = Double.parseDouble(yCoord.getText());
+	
+							Ball b = new Ball((xm * 25) + 12.5, (ym * 25) + 12.5, xv, yv, "B1");
+							mod.setBall(b);
+							mod.notifyObs();
+	
+							addingBall = false;
+							} catch (NumberFormatException ballNumException){
+								JOptionPane.showMessageDialog(frame,
+									    "Ball velocity must be a numeric value.");
+							}
+						} else {
 							JOptionPane.showMessageDialog(frame,
-								    "Ball velocity must be a numeric value.");
+								    "Could not add ball as a gizmo already exists in this space.");
 						}
 					}
 				}
