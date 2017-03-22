@@ -57,7 +57,6 @@ public class Model extends Observable {
 //		flippers=new ArrayList<Flipper>();
 		flippers2 = new ArrayList<flipper2>();
 		
-		flippers2.add(new flipper2("id",1,1));
 
 		
 	}
@@ -241,6 +240,22 @@ public class Model extends Observable {
 							}
 						}
 					}
+					
+					circle circle = f.getCornerCircle();
+						Circle c = circle.getCircle();
+						time = Geometry.timeUntilCircleCollision(c, ballCircle, ballVelocity);
+						if (time < shortestTime) {
+							shortestTime = time;
+							newVelo = Geometry.reflectCircle(c.getCenter(), b.getCenter(), b.getVelo());
+						}
+
+						circle = f.getMovingCircle();
+						c = circle.getCircle();
+						time = Geometry.timeUntilCircleCollision(c, ballCircle, ballVelocity);
+						if (time < shortestTime) {
+							shortestTime = time;
+							newVelo = Geometry.reflectCircle(c.getCenter(), b.getCenter(), b.getVelo());
+						}
 
 
 				}

@@ -19,8 +19,8 @@ public class flipper2 implements KeyListener{
 
 	private Square rectangle;
 
-	private Circle cornerCircle;	//circle for the corner, which is stationary
-	private Circle movingCircle;	//circle for the moving circle, which traverses a curve throughout its bounding box to a limit
+	private circle cornerCircle;	//circle for the corner, which is stationary
+	private circle movingCircle;	//circle for the moving circle, which traverses a curve throughout its bounding box to a limit
 	private String ID;				
 	private String connectedID;
 	private boolean triggered;
@@ -40,6 +40,8 @@ public class flipper2 implements KeyListener{
 
         flipped = false;
 		
+        cornerCircle = new circle(new Circle(xpos1*25,ypos1*25,6.25));
+        movingCircle = new circle(new Circle((xpos1*25),(ypos1*25)+50,6.25));
 
 	}
 	
@@ -110,11 +112,11 @@ public class flipper2 implements KeyListener{
 		return y;
 	}
 
-	public Circle getCornerCircle(){
+	public circle getCornerCircle(){
 		return cornerCircle;
 	}
 	
-	public Circle getMovingCircle(){
+	public circle getMovingCircle(){
 		return movingCircle;
 	}
 	
