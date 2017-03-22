@@ -78,7 +78,7 @@ public class Board extends JPanel implements Observer {
 		// Draw all the squares
 		for (Square s : gm.getSquares()) {
 			if(s.checkTriggered()==true){
-				g2.setColor(new Color(2, 98, 1));
+				g2.setColor(Color.red);
 				g2.drawRect(s.getX(), s.getY(), s.getWidth(), s.getHeight());
 				g2.fillRect(s.getX(), s.getY(), s.getWidth(), s.getHeight());
 
@@ -93,6 +93,7 @@ public class Board extends JPanel implements Observer {
 
 		//draw all the circles
 		for (circle c : gm.getCircles()) {
+			
 			g2.setColor(c.getColour());
 			Circle circle = c.getCircle();
 			double x = circle.getCenter().getX()-(circle.getRadius());
@@ -121,11 +122,13 @@ public class Board extends JPanel implements Observer {
 	    
 	    for(flipper2 f : gm.getFlippers2()){
 	        g.drawRoundRect(f.getSquare().getX(), (f.getSquare().getY()),f.getSquare().getWidth(),f.getSquare().getHeight(), 50, 30);
+	        g.setColor(Color.YELLOW);
 	        g.fillRoundRect(f.getSquare().getX(), (f.getSquare().getY()),f.getSquare().getWidth(),f.getSquare().getHeight(), 50, 30);
 	    }
 	    
 	    for(flipper3 f : gm.getFlippers3()){
 	        g.drawRoundRect((f.getSquare().getX()), (f.getSquare().getY()),f.getSquare().getWidth(),f.getSquare().getHeight(), 50, 30);
+	        g.setColor(Color.YELLOW);
 	        g.fillRoundRect((f.getSquare().getX()), (f.getSquare().getY()),f.getSquare().getWidth(),f.getSquare().getHeight(), 50, 30);
 	    }
 

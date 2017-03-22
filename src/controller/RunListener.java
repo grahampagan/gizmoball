@@ -280,7 +280,12 @@ public class RunListener implements ActionListener {
 					if(model.containsName(id)) {
 						id = id + "+" + model.getFlippers2().size();
 					}
-					flipper2 f = new flipper2(id,xposition,yposition);
+					
+					if(model.hasAtPosition(xposition, yposition)==true){
+						break;
+					}
+
+					flipper2 f = new flipper2(id,xposition/25,yposition/25);
 
 					model.addFlipper2(f);
 					System.out.println("added leftflipper at " + xposition + " " + yposition);
@@ -303,7 +308,11 @@ public class RunListener implements ActionListener {
 						id = id + "+" + model.getFlippers3().size();
 					}
 					
-					flipper3 f = new flipper3(id,xposition,yposition);
+					if(model.hasAtPosition(xposition, yposition) == true){
+						break;
+					}
+					
+					flipper3 f = new flipper3(id,xposition/25,yposition/25);
 
 					model.addFlipper3(f);
 					System.out.println("added rightflipper at " + xposition + " " + yposition);
