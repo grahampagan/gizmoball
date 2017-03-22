@@ -134,7 +134,7 @@ public class flipper3 implements KeyListener{
 	
 	public void setRectangle1(){
 		if(flipped == false){
-	        rectangle = new Square((x * 25)-50, y * 25, 50, 12, ID, x,y);    //creates a new square object for the underlying gizmo
+	        rectangle = new Square((xpos1 * 25)-50, ypos1 * 25, 50, 12, ID, x,y);    //creates a new square object for the underlying gizmo
 	        movingCircle = new circle(new Circle((xpos1*25)+12,(ypos1*25)+38,5));
 	        flipped = true;
 		}
@@ -142,7 +142,7 @@ public class flipper3 implements KeyListener{
 	
 	public void setRectangle2(){
 		if(flipped == true){
-	        rectangle = new Square(x * 25, y * 25, 12, 50, ID, x,y);    //creates a new square object for the underlying gizmo
+	        rectangle = new Square(xpos1 * 25, ypos1 * 25, 12, 50, ID, xpos1,ypos1);    //creates a new square object for the underlying gizmo
 	        movingCircle = new circle(new Circle((xpos1*25)+38,(ypos1*25)+12,5));
 			flipped = false;
 

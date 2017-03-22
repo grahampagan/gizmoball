@@ -206,7 +206,7 @@ public class FileParser {
                     case "LeftFlipper":
                         if (Board.containsName(array1[1]) == true) {
                             System.out.println("Tried to add a gizmo with a duplicate name");
-                        } else if (Board.hasAtPosition(Integer.parseInt(array1[2]), Integer.parseInt(array1[3])) == true) {
+                        } else if (Board.hasAtPosition(Integer.parseInt(array1[2]), Integer.parseInt(array1[3])) == true || Board.hasAtPosition(Integer.parseInt(array1[2])+1, Integer.parseInt(array1[3])) == true || Board.hasAtPosition(Integer.parseInt(array1[2]), Integer.parseInt(array1[3])+1) == true || Board.hasAtPosition(Integer.parseInt(array1[2])+1, Integer.parseInt(array1[3])+1) == true) {
                             System.out.println("tried to add a gizmo to a Board position with a space already occupied");
                         } else {
                             int x = Integer.parseInt(array1[2]);    //converts the x array position to the co-ordinates
